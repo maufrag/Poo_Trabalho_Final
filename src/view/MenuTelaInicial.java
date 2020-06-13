@@ -35,7 +35,8 @@ public class MenuTelaInicial extends JPanel {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTable table;
+	private JTable tableConsultaVeiculo;
+	private JTable tableEdicao;
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
@@ -46,6 +47,7 @@ public class MenuTelaInicial extends JPanel {
 	 */
 	public MenuTelaInicial() {
 		setLayout(new GridLayout(1, 0, 0, 0));
+		setBounds(150, 150, 640, 480);
 
 		JSplitPane splitPane = new JSplitPane();
 		add(splitPane);
@@ -146,30 +148,15 @@ public class MenuTelaInicial extends JPanel {
 		splitPane.setRightComponent(layeredPane);
 		layeredPane.setLayout(new CardLayout(0, 0));
 
-		JPanel panel_1 = new JPanel();
-		layeredPane.add(panel_1, "name_5287606677500");
-		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
-		gbl_panel_1.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
-		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		panel_1.setLayout(gbl_panel_1);
-
-		JLabel lblNewLabel = new JLabel("Pinto");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridx = 4;
-		gbc_lblNewLabel.gridy = 5;
-		panel_1.add(lblNewLabel, gbc_lblNewLabel);
-
 		JPanel veiculosPanel = new JPanel();
 		layeredPane.add(veiculosPanel, "name_5290351763300");
 		veiculosPanel.setLayout(new GridLayout(1, 0, 0, 0));
 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		JTabbedPane tabbedPaneVeiculos = new JTabbedPane(JTabbedPane.TOP);
 		JPanel cadastrarVeiculoPanel = new JPanel();
 		JPanel consultarVeiculoPanel = new JPanel();
 		JPanel editarVeiculoPanel = new JPanel();
-		tabbedPane.addTab("Cadastrar", cadastrarVeiculoPanel);
+		tabbedPaneVeiculos.addTab("Cadastrar", cadastrarVeiculoPanel);
 		cadastrarVeiculoPanel.setLayout(new BorderLayout(0, 0));
 
 		JPanel obterDadosPanel = new JPanel();
@@ -278,7 +265,7 @@ public class MenuTelaInicial extends JPanel {
 					.addContainerGap(58, Short.MAX_VALUE))
 		);
 		obterDadosForm.setLayout(gl_obterDadosForm);
-		tabbedPane.addTab("Consultar", consultarVeiculoPanel);
+		tabbedPaneVeiculos.addTab("Consultar", consultarVeiculoPanel);
 		consultarVeiculoPanel.setLayout(new BorderLayout(0, 0));
 
 		JPanel consultarDadosPanel = new JPanel();
@@ -329,10 +316,10 @@ public class MenuTelaInicial extends JPanel {
 				{ "Sue", "Black", "Knitting", new Integer(2), new Boolean(false) },
 				{ "Jane", "White", "Speed reading", new Integer(20), new Boolean(true) },
 				{ "Joe", "Brown", "Pool", new Integer(10), new Boolean(false) } };
-		table = new JTable(data, columnNames);
+		tableConsultaVeiculo = new JTable(data, columnNames);
 		
-		scrollPane.setViewportView(table);
-		tabbedPane.addTab("Editar", editarVeiculoPanel);
+		scrollPane.setViewportView(tableConsultaVeiculo);
+		tabbedPaneVeiculos.addTab("Editar", editarVeiculoPanel);
 		editarVeiculoPanel.setLayout(new BorderLayout(0, 0));
 		
 		Component rigidArea_16 = Box.createRigidArea(new Dimension(20, 20));
@@ -347,174 +334,147 @@ public class MenuTelaInicial extends JPanel {
 		Component rigidArea_19 = Box.createRigidArea(new Dimension(20, 20));
 		editarVeiculoPanel.add(rigidArea_19, BorderLayout.EAST);
 		
-		JPanel panel_2 = new JPanel();
-		editarVeiculoPanel.add(panel_2, BorderLayout.CENTER);
-		
 		JPanel panelEdicao = new JPanel();
-		panelEdicao.setBackground(SystemColor.desktop);
+		editarVeiculoPanel.add(panelEdicao, BorderLayout.CENTER);
+		
+		JPanel panelEdicaoTabela = new JPanel();
+		panelEdicaoTabela.setBackground(SystemColor.menu);
 		
 		JPanel panelTabelaParaEdicao = new JPanel();
-		panelTabelaParaEdicao.setBackground(Color.MAGENTA);
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addComponent(panelEdicao, GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+		panelTabelaParaEdicao.setBackground(SystemColor.menu);
+		GroupLayout gl_panelEdicao = new GroupLayout(panelEdicao);
+		gl_panelEdicao.setHorizontalGroup(
+			gl_panelEdicao.createParallelGroup(Alignment.LEADING)
+				.addComponent(panelEdicaoTabela, GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
 				.addComponent(panelTabelaParaEdicao, GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
 		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup()
+		gl_panelEdicao.setVerticalGroup(
+			gl_panelEdicao.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panelEdicao.createSequentialGroup()
 					.addComponent(panelTabelaParaEdicao, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panelEdicao, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
+					.addComponent(panelEdicaoTabela, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
 		);
-		panelEdicao.setLayout(new BorderLayout(0, 0));
+		panelTabelaParaEdicao.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPaneTabelaEdicao = new JScrollPane();
+		panelTabelaParaEdicao.add(scrollPaneTabelaEdicao, BorderLayout.CENTER);
+		
+		tableEdicao = new JTable(data, columnNames);
+		scrollPaneTabelaEdicao.setViewportView(tableEdicao);
+		panelEdicaoTabela.setLayout(new BorderLayout(0, 0));
 		
 		Component rigidArea_20 = Box.createRigidArea(new Dimension(20, 20));
-		panelEdicao.add(rigidArea_20, BorderLayout.EAST);
+		panelEdicaoTabela.add(rigidArea_20, BorderLayout.EAST);
 		
 		Component rigidArea_21 = Box.createRigidArea(new Dimension(20, 20));
-		panelEdicao.add(rigidArea_21, BorderLayout.WEST);
+		panelEdicaoTabela.add(rigidArea_21, BorderLayout.WEST);
 		
-		JPanel panel_4 = new JPanel();
-		panelEdicao.add(panel_4, BorderLayout.NORTH);
-		GridBagLayout gbl_panel_4 = new GridBagLayout();
-		gbl_panel_4.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
-		gbl_panel_4.rowHeights = new int[]{21, -7, 0, 0, 0, 0, 0, 0};
-		gbl_panel_4.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_4.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel_4.setLayout(gbl_panel_4);
+		JPanel panelCamposEdicao = new JPanel();
+		panelEdicaoTabela.add(panelCamposEdicao, BorderLayout.CENTER);
+		GridBagLayout gbl_panelCamposEdicao = new GridBagLayout();
+		gbl_panelCamposEdicao.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panelCamposEdicao.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
+		gbl_panelCamposEdicao.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panelCamposEdicao.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panelCamposEdicao.setLayout(gbl_panelCamposEdicao);
 		
 		Component rigidArea_22 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_22 = new GridBagConstraints();
 		gbc_rigidArea_22.insets = new Insets(0, 0, 5, 5);
 		gbc_rigidArea_22.gridx = 0;
 		gbc_rigidArea_22.gridy = 0;
-		panel_4.add(rigidArea_22, gbc_rigidArea_22);
+		panelCamposEdicao.add(rigidArea_22, gbc_rigidArea_22);
 		
-		Component rigidArea_23 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_23 = new GridBagConstraints();
-		gbc_rigidArea_23.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_23.gridx = 1;
-		gbc_rigidArea_23.gridy = 0;
-		panel_4.add(rigidArea_23, gbc_rigidArea_23);
-		
-		Component rigidArea_24 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_24 = new GridBagConstraints();
-		gbc_rigidArea_24.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_24.gridx = 0;
-		gbc_rigidArea_24.gridy = 1;
-		panel_4.add(rigidArea_24, gbc_rigidArea_24);
-		
-		JLabel label = new JLabel("New label");
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.anchor = GridBagConstraints.EAST;
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 2;
-		gbc_label.gridy = 1;
-		panel_4.add(label, gbc_label);
-		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		GridBagConstraints gbc_textField_7 = new GridBagConstraints();
-		gbc_textField_7.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_7.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_7.gridx = 3;
-		gbc_textField_7.gridy = 1;
-		panel_4.add(textField_7, gbc_textField_7);
-		
-		JLabel label_1 = new JLabel("New label");
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.anchor = GridBagConstraints.EAST;
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 2;
-		gbc_label_1.gridy = 2;
-		panel_4.add(label_1, gbc_label_1);
+		JLabel lblNewLabel_6 = new JLabel("New label");
+		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
+		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_6.gridx = 1;
+		gbc_lblNewLabel_6.gridy = 1;
+		panelCamposEdicao.add(lblNewLabel_6, gbc_lblNewLabel_6);
 		
 		textField_4 = new JTextField();
-		textField_4.setColumns(10);
 		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_4.gridx = 3;
-		gbc_textField_4.gridy = 2;
-		panel_4.add(textField_4, gbc_textField_4);
+		gbc_textField_4.gridy = 1;
+		panelCamposEdicao.add(textField_4, gbc_textField_4);
+		textField_4.setColumns(10);
 		
-		JButton button = new JButton("Selecionar");
-		button.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 5, 0);
-		gbc_button.gridx = 5;
-		gbc_button.gridy = 2;
-		panel_4.add(button, gbc_button);
+		JButton btnNewButton_4 = new JButton("Selecionar");
+		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
+		gbc_btnNewButton_4.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_4.gridx = 6;
+		gbc_btnNewButton_4.gridy = 1;
+		panelCamposEdicao.add(btnNewButton_4, gbc_btnNewButton_4);
 		
-		JLabel label_2 = new JLabel("New label");
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.anchor = GridBagConstraints.EAST;
-		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 2;
-		gbc_label_2.gridy = 3;
-		panel_4.add(label_2, gbc_label_2);
+		JLabel lblNewLabel_7 = new JLabel("New label");
+		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
+		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_7.gridx = 1;
+		gbc_lblNewLabel_7.gridy = 2;
+		panelCamposEdicao.add(lblNewLabel_7, gbc_lblNewLabel_7);
 		
 		textField_5 = new JTextField();
-		textField_5.setColumns(10);
 		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_5.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_5.gridx = 3;
-		gbc_textField_5.gridy = 3;
-		panel_4.add(textField_5, gbc_textField_5);
+		gbc_textField_5.gridy = 2;
+		panelCamposEdicao.add(textField_5, gbc_textField_5);
+		textField_5.setColumns(10);
 		
-		JButton button_1 = new JButton("Atualizar");
-		button_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.insets = new Insets(0, 0, 5, 0);
-		gbc_button_1.gridx = 5;
-		gbc_button_1.gridy = 3;
-		panel_4.add(button_1, gbc_button_1);
+		JButton btnNewButton_5 = new JButton("Atualizar");
+		btnNewButton_5.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		GridBagConstraints gbc_btnNewButton_5 = new GridBagConstraints();
+		gbc_btnNewButton_5.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_5.gridx = 6;
+		gbc_btnNewButton_5.gridy = 2;
+		panelCamposEdicao.add(btnNewButton_5, gbc_btnNewButton_5);
 		
-		JLabel label_3 = new JLabel("New label");
-		GridBagConstraints gbc_label_3 = new GridBagConstraints();
-		gbc_label_3.anchor = GridBagConstraints.EAST;
-		gbc_label_3.insets = new Insets(0, 0, 5, 5);
-		gbc_label_3.gridx = 2;
-		gbc_label_3.gridy = 4;
-		panel_4.add(label_3, gbc_label_3);
+		JLabel lblNewLabel_8 = new JLabel("New label");
+		GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
+		gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_8.gridx = 1;
+		gbc_lblNewLabel_8.gridy = 3;
+		panelCamposEdicao.add(lblNewLabel_8, gbc_lblNewLabel_8);
 		
 		textField_6 = new JTextField();
-		textField_6.setColumns(10);
 		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_6.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_6.gridx = 3;
-		gbc_textField_6.gridy = 4;
-		panel_4.add(textField_6, gbc_textField_6);
+		gbc_textField_6.gridy = 3;
+		panelCamposEdicao.add(textField_6, gbc_textField_6);
+		textField_6.setColumns(10);
 		
-		JButton button_2 = new JButton("Remover");
-		button_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		GridBagConstraints gbc_button_2 = new GridBagConstraints();
-		gbc_button_2.insets = new Insets(0, 0, 5, 0);
-		gbc_button_2.gridx = 5;
-		gbc_button_2.gridy = 4;
-		panel_4.add(button_2, gbc_button_2);
-		panel_2.setLayout(gl_panel_2);
-		veiculosPanel.add(tabbedPane);
-
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.WHITE);
-		layeredPane.add(panel_3, "name_5293316963100");
-		GridBagLayout gbl_panel_3 = new GridBagLayout();
-		gbl_panel_3.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
-		gbl_panel_3.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
-		gbl_panel_3.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		panel_3.setLayout(gbl_panel_3);
-
-		JLabel lblNewLabel_2 = new JLabel("gay");
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.gridx = 4;
-		gbc_lblNewLabel_2.gridy = 5;
-		panel_3.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		JButton btnNewButton_6 = new JButton("Remover");
+		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		GridBagConstraints gbc_btnNewButton_6 = new GridBagConstraints();
+		gbc_btnNewButton_6.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_6.gridx = 6;
+		gbc_btnNewButton_6.gridy = 3;
+		panelCamposEdicao.add(btnNewButton_6, gbc_btnNewButton_6);
+		
+		JLabel lblNewLabel_9 = new JLabel("New label");
+		GridBagConstraints gbc_lblNewLabel_9 = new GridBagConstraints();
+		gbc_lblNewLabel_9.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_9.gridx = 1;
+		gbc_lblNewLabel_9.gridy = 4;
+		panelCamposEdicao.add(lblNewLabel_9, gbc_lblNewLabel_9);
+		
+		textField_7 = new JTextField();
+		GridBagConstraints gbc_textField_7 = new GridBagConstraints();
+		gbc_textField_7.insets = new Insets(0, 0, 0, 5);
+		gbc_textField_7.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_7.gridx = 3;
+		gbc_textField_7.gridy = 4;
+		panelCamposEdicao.add(textField_7, gbc_textField_7);
+		textField_7.setColumns(10);
+		panelEdicao.setLayout(gl_panelEdicao);
+		veiculosPanel.add(tabbedPaneVeiculos);
 
 		alternarTela(botaoVeiculos, layeredPane, veiculosPanel);
 
