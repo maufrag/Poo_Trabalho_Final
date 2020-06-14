@@ -21,10 +21,6 @@ import javax.swing.JButton;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JComboBox;
 import javax.swing.BoxLayout;
 import java.awt.Window.Type;
@@ -63,7 +59,7 @@ public class MainView extends JFrame {
 	 */
 	public MainView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(150, 150, 640, 480);
+		setBounds(150, 150, 708, 532);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -78,17 +74,17 @@ public class MainView extends JFrame {
 		loginPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		layeredPane.add(loginPanel, "name_131966053068800");
 		GridBagLayout gbl_loginPanel = new GridBagLayout();
-		gbl_loginPanel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_loginPanel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_loginPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+		gbl_loginPanel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_loginPanel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_loginPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_loginPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_loginPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		loginPanel.setLayout(gbl_loginPanel);
 
 		Component rigidArea_5 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_5 = new GridBagConstraints();
 		gbc_rigidArea_5.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_5.gridx = 9;
+		gbc_rigidArea_5.gridx = 10;
 		gbc_rigidArea_5.gridy = 0;
 		loginPanel.add(rigidArea_5, gbc_rigidArea_5);
 
@@ -151,33 +147,47 @@ public class MainView extends JFrame {
 		Component rigidArea_7 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_7 = new GridBagConstraints();
 		gbc_rigidArea_7.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_7.gridx = 9;
+		gbc_rigidArea_7.gridx = 10;
 		gbc_rigidArea_7.gridy = 1;
 		loginPanel.add(rigidArea_7, gbc_rigidArea_7);
 		
 		Component rigidArea_40 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_40 = new GridBagConstraints();
 		gbc_rigidArea_40.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_40.gridx = 9;
+		gbc_rigidArea_40.gridx = 10;
 		gbc_rigidArea_40.gridy = 2;
 		loginPanel.add(rigidArea_40, gbc_rigidArea_40);
 
 		Component rigidArea_10 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_10 = new GridBagConstraints();
 		gbc_rigidArea_10.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_10.gridx = 9;
+		gbc_rigidArea_10.gridx = 10;
 		gbc_rigidArea_10.gridy = 3;
 		loginPanel.add(rigidArea_10, gbc_rigidArea_10);
+		
+		Component rigidArea_45 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_45 = new GridBagConstraints();
+		gbc_rigidArea_45.insets = new Insets(0, 0, 5, 5);
+		gbc_rigidArea_45.gridx = 10;
+		gbc_rigidArea_45.gridy = 4;
+		loginPanel.add(rigidArea_45, gbc_rigidArea_45);
+		
+		Component rigidArea_46 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_46 = new GridBagConstraints();
+		gbc_rigidArea_46.insets = new Insets(0, 0, 5, 5);
+		gbc_rigidArea_46.gridx = 9;
+		gbc_rigidArea_46.gridy = 5;
+		loginPanel.add(rigidArea_46, gbc_rigidArea_46);
 
 		JPanel panel = new JPanel();
 		panel.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.gridwidth = 2;
+		gbc_panel.gridwidth = 3;
 		gbc_panel.gridheight = 3;
 		gbc_panel.insets = new Insets(0, 0, 5, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 8;
-		gbc_panel.gridy = 4;
+		gbc_panel.gridy = 6;
 		loginPanel.add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 54, -45, 0, 0, 0 };
@@ -275,68 +285,68 @@ public class MainView extends JFrame {
 		Component rigidArea_42 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_42 = new GridBagConstraints();
 		gbc_rigidArea_42.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_42.gridx = 10;
-		gbc_rigidArea_42.gridy = 4;
+		gbc_rigidArea_42.gridx = 11;
+		gbc_rigidArea_42.gridy = 6;
 		loginPanel.add(rigidArea_42, gbc_rigidArea_42);
 		
 		Component rigidArea_41 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_41 = new GridBagConstraints();
 		gbc_rigidArea_41.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_41.gridx = 11;
-		gbc_rigidArea_41.gridy = 4;
+		gbc_rigidArea_41.gridx = 12;
+		gbc_rigidArea_41.gridy = 6;
 		loginPanel.add(rigidArea_41, gbc_rigidArea_41);
 
 		Component rigidArea_21 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_21 = new GridBagConstraints();
 		gbc_rigidArea_21.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_21.gridx = 12;
-		gbc_rigidArea_21.gridy = 4;
+		gbc_rigidArea_21.gridx = 13;
+		gbc_rigidArea_21.gridy = 6;
 		loginPanel.add(rigidArea_21, gbc_rigidArea_21);
 
 		Component rigidArea_20 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_20 = new GridBagConstraints();
 		gbc_rigidArea_20.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_20.gridx = 13;
-		gbc_rigidArea_20.gridy = 4;
+		gbc_rigidArea_20.gridx = 14;
+		gbc_rigidArea_20.gridy = 6;
 		loginPanel.add(rigidArea_20, gbc_rigidArea_20);
 
 		Component rigidArea_22 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_22 = new GridBagConstraints();
 		gbc_rigidArea_22.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_22.gridx = 14;
-		gbc_rigidArea_22.gridy = 4;
+		gbc_rigidArea_22.gridx = 15;
+		gbc_rigidArea_22.gridy = 6;
 		loginPanel.add(rigidArea_22, gbc_rigidArea_22);
 
 		Component rigidArea_23 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_23 = new GridBagConstraints();
 		gbc_rigidArea_23.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_23.gridx = 15;
-		gbc_rigidArea_23.gridy = 4;
+		gbc_rigidArea_23.gridx = 16;
+		gbc_rigidArea_23.gridy = 6;
 		loginPanel.add(rigidArea_23, gbc_rigidArea_23);
 
 		Component rigidArea_24 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_24 = new GridBagConstraints();
 		gbc_rigidArea_24.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_24.gridx = 16;
-		gbc_rigidArea_24.gridy = 4;
+		gbc_rigidArea_24.gridx = 17;
+		gbc_rigidArea_24.gridy = 6;
 		loginPanel.add(rigidArea_24, gbc_rigidArea_24);
 
 		Component rigidArea_25 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_25 = new GridBagConstraints();
 		gbc_rigidArea_25.insets = new Insets(0, 0, 5, 0);
-		gbc_rigidArea_25.gridx = 17;
-		gbc_rigidArea_25.gridy = 4;
+		gbc_rigidArea_25.gridx = 18;
+		gbc_rigidArea_25.gridy = 6;
 		loginPanel.add(rigidArea_25, gbc_rigidArea_25);
 
 		JPanel CadastroPanel = new JPanel();
 		CadastroPanel.setBackground(Color.WHITE);
 		layeredPane.add(CadastroPanel, "name_131966069903300");
 		GridBagLayout gbl_CadastroPanel = new GridBagLayout();
-		gbl_CadastroPanel.columnWidths = new int[] { 56, 0, 0, 27, 92, 134, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_CadastroPanel.rowHeights = new int[] { 0, 0, 0, 0, 20, 20, 20, 22, 0, 0, 0, 0, 0 };
-		gbl_CadastroPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+		gbl_CadastroPanel.columnWidths = new int[] { 56, 0, 0, 0, 0, 27, 92, 134, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_CadastroPanel.rowHeights = new int[] { 0, 0, 0, 0, 0, 20, 20, 0, 0, 0, 0, 36, 22, 0, 0, 0, 0, 0 };
+		gbl_CadastroPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				0.0, Double.MIN_VALUE };
-		gbl_CadastroPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+		gbl_CadastroPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				Double.MIN_VALUE };
 		CadastroPanel.setLayout(gbl_CadastroPanel);
 
@@ -351,45 +361,87 @@ public class MainView extends JFrame {
 		Component rigidArea_18 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_18 = new GridBagConstraints();
 		gbc_rigidArea_18.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_18.gridx = 5;
+		gbc_rigidArea_18.gridx = 7;
 		gbc_rigidArea_18.gridy = 0;
 		CadastroPanel.add(rigidArea_18, gbc_rigidArea_18);
 
 		Component rigidArea_15 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_15 = new GridBagConstraints();
 		gbc_rigidArea_15.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_15.gridx = 5;
+		gbc_rigidArea_15.gridx = 7;
 		gbc_rigidArea_15.gridy = 1;
 		CadastroPanel.add(rigidArea_15, gbc_rigidArea_15);
 		
 				Component rigidArea_14 = Box.createRigidArea(new Dimension(20, 20));
 				GridBagConstraints gbc_rigidArea_14 = new GridBagConstraints();
 				gbc_rigidArea_14.insets = new Insets(0, 0, 5, 5);
-				gbc_rigidArea_14.gridx = 5;
+				gbc_rigidArea_14.gridx = 7;
 				gbc_rigidArea_14.gridy = 2;
 				CadastroPanel.add(rigidArea_14, gbc_rigidArea_14);
 
 		Component rigidArea_16 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_16 = new GridBagConstraints();
 		gbc_rigidArea_16.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_16.gridx = 5;
+		gbc_rigidArea_16.gridx = 7;
 		gbc_rigidArea_16.gridy = 3;
 		CadastroPanel.add(rigidArea_16, gbc_rigidArea_16);
+						
+						Component rigidArea_49 = Box.createRigidArea(new Dimension(20, 20));
+						GridBagConstraints gbc_rigidArea_49 = new GridBagConstraints();
+						gbc_rigidArea_49.insets = new Insets(0, 0, 5, 5);
+						gbc_rigidArea_49.gridx = 7;
+						gbc_rigidArea_49.gridy = 4;
+						CadastroPanel.add(rigidArea_49, gbc_rigidArea_49);
+				
+						Component rigidArea_11 = Box.createRigidArea(new Dimension(20, 20));
+						GridBagConstraints gbc_rigidArea_11 = new GridBagConstraints();
+						gbc_rigidArea_11.insets = new Insets(0, 0, 5, 5);
+						gbc_rigidArea_11.gridx = 1;
+						gbc_rigidArea_11.gridy = 5;
+						CadastroPanel.add(rigidArea_11, gbc_rigidArea_11);
+				
+				Component rigidArea_47 = Box.createRigidArea(new Dimension(20, 20));
+				GridBagConstraints gbc_rigidArea_47 = new GridBagConstraints();
+				gbc_rigidArea_47.insets = new Insets(0, 0, 5, 5);
+				gbc_rigidArea_47.gridx = 2;
+				gbc_rigidArea_47.gridy = 5;
+				CadastroPanel.add(rigidArea_47, gbc_rigidArea_47);
+				
+						Component rigidArea_13 = Box.createRigidArea(new Dimension(20, 20));
+						GridBagConstraints gbc_rigidArea_13 = new GridBagConstraints();
+						gbc_rigidArea_13.insets = new Insets(0, 0, 5, 5);
+						gbc_rigidArea_13.gridx = 3;
+						gbc_rigidArea_13.gridy = 5;
+						CadastroPanel.add(rigidArea_13, gbc_rigidArea_13);
+				
+				Component rigidArea_48 = Box.createRigidArea(new Dimension(20, 20));
+				GridBagConstraints gbc_rigidArea_48 = new GridBagConstraints();
+				gbc_rigidArea_48.insets = new Insets(0, 0, 5, 5);
+				gbc_rigidArea_48.gridx = 4;
+				gbc_rigidArea_48.gridy = 5;
+				CadastroPanel.add(rigidArea_48, gbc_rigidArea_48);
+		
+				Component rigidArea_17 = Box.createRigidArea(new Dimension(20, 20));
+				GridBagConstraints gbc_rigidArea_17 = new GridBagConstraints();
+				gbc_rigidArea_17.insets = new Insets(0, 0, 5, 5);
+				gbc_rigidArea_17.gridx = 5;
+				gbc_rigidArea_17.gridy = 5;
+				CadastroPanel.add(rigidArea_17, gbc_rigidArea_17);
 
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.gridheight = 7;
 		gbc_panel_1.gridwidth = 4;
-		gbc_panel_1.gridheight = 3;
 		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_1.fill = GridBagConstraints.VERTICAL;
-		gbc_panel_1.gridx = 4;
-		gbc_panel_1.gridy = 4;
+		gbc_panel_1.gridx = 6;
+		gbc_panel_1.gridy = 5;
 		CadastroPanel.add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 37, 64, 60, 104, 25, 0 };
-		gbl_panel_1.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 		
 		Component rigidArea_35 = Box.createRigidArea(new Dimension(20, 20));
@@ -490,7 +542,7 @@ public class MainView extends JFrame {
 
 		JButton botaoCadastrar = new JButton("Cadastrar");
 		GridBagConstraints gbc_botaoCadastrar = new GridBagConstraints();
-		gbc_botaoCadastrar.insets = new Insets(0, 0, 0, 5);
+		gbc_botaoCadastrar.insets = new Insets(0, 0, 5, 5);
 		gbc_botaoCadastrar.gridwidth = 2;
 		gbc_botaoCadastrar.gridx = 1;
 		gbc_botaoCadastrar.gridy = 6;
@@ -498,100 +550,86 @@ public class MainView extends JFrame {
 
 		JButton botaoLimpar = new JButton("Limpar");
 		GridBagConstraints gbc_botaoLimpar = new GridBagConstraints();
-		gbc_botaoLimpar.insets = new Insets(0, 0, 0, 5);
+		gbc_botaoLimpar.insets = new Insets(0, 0, 5, 5);
 		gbc_botaoLimpar.gridx = 3;
 		gbc_botaoLimpar.gridy = 6;
 		panel_1.add(botaoLimpar, gbc_botaoLimpar);
-
-		Component rigidArea_11 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_11 = new GridBagConstraints();
-		gbc_rigidArea_11.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_11.gridx = 1;
-		gbc_rigidArea_11.gridy = 5;
-		CadastroPanel.add(rigidArea_11, gbc_rigidArea_11);
-
-		Component rigidArea_13 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_13 = new GridBagConstraints();
-		gbc_rigidArea_13.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_13.gridx = 2;
-		gbc_rigidArea_13.gridy = 5;
-		CadastroPanel.add(rigidArea_13, gbc_rigidArea_13);
-
-		Component rigidArea_17 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_17 = new GridBagConstraints();
-		gbc_rigidArea_17.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_17.gridx = 3;
-		gbc_rigidArea_17.gridy = 5;
-		CadastroPanel.add(rigidArea_17, gbc_rigidArea_17);
-
-		Component rigidArea_27 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_27 = new GridBagConstraints();
-		gbc_rigidArea_27.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_27.gridx = 8;
-		gbc_rigidArea_27.gridy = 5;
-		CadastroPanel.add(rigidArea_27, gbc_rigidArea_27);
-
-		Component rigidArea_28 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_28 = new GridBagConstraints();
-		gbc_rigidArea_28.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_28.gridx = 9;
-		gbc_rigidArea_28.gridy = 5;
-		CadastroPanel.add(rigidArea_28, gbc_rigidArea_28);
-
-		Component rigidArea_29 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_29 = new GridBagConstraints();
-		gbc_rigidArea_29.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_29.gridx = 10;
-		gbc_rigidArea_29.gridy = 5;
-		CadastroPanel.add(rigidArea_29, gbc_rigidArea_29);
-
-		Component rigidArea_30 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_30 = new GridBagConstraints();
-		gbc_rigidArea_30.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_30.gridx = 11;
-		gbc_rigidArea_30.gridy = 5;
-		CadastroPanel.add(rigidArea_30, gbc_rigidArea_30);
-
-		Component rigidArea_31 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_31 = new GridBagConstraints();
-		gbc_rigidArea_31.insets = new Insets(0, 0, 5, 0);
-		gbc_rigidArea_31.gridx = 12;
-		gbc_rigidArea_31.gridy = 5;
-		CadastroPanel.add(rigidArea_31, gbc_rigidArea_31);
+		
+		Component rigidArea_50 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_50 = new GridBagConstraints();
+		gbc_rigidArea_50.insets = new Insets(0, 0, 0, 5);
+		gbc_rigidArea_50.gridx = 2;
+		gbc_rigidArea_50.gridy = 7;
+		panel_1.add(rigidArea_50, gbc_rigidArea_50);
+		
+				Component rigidArea_27 = Box.createRigidArea(new Dimension(20, 20));
+				GridBagConstraints gbc_rigidArea_27 = new GridBagConstraints();
+				gbc_rigidArea_27.insets = new Insets(0, 0, 5, 5);
+				gbc_rigidArea_27.gridx = 10;
+				gbc_rigidArea_27.gridy = 5;
+				CadastroPanel.add(rigidArea_27, gbc_rigidArea_27);
+		
+				Component rigidArea_28 = Box.createRigidArea(new Dimension(20, 20));
+				GridBagConstraints gbc_rigidArea_28 = new GridBagConstraints();
+				gbc_rigidArea_28.insets = new Insets(0, 0, 5, 5);
+				gbc_rigidArea_28.gridx = 11;
+				gbc_rigidArea_28.gridy = 5;
+				CadastroPanel.add(rigidArea_28, gbc_rigidArea_28);
+		
+				Component rigidArea_29 = Box.createRigidArea(new Dimension(20, 20));
+				GridBagConstraints gbc_rigidArea_29 = new GridBagConstraints();
+				gbc_rigidArea_29.insets = new Insets(0, 0, 5, 5);
+				gbc_rigidArea_29.gridx = 12;
+				gbc_rigidArea_29.gridy = 5;
+				CadastroPanel.add(rigidArea_29, gbc_rigidArea_29);
+		
+				Component rigidArea_30 = Box.createRigidArea(new Dimension(20, 20));
+				GridBagConstraints gbc_rigidArea_30 = new GridBagConstraints();
+				gbc_rigidArea_30.insets = new Insets(0, 0, 5, 5);
+				gbc_rigidArea_30.gridx = 13;
+				gbc_rigidArea_30.gridy = 5;
+				CadastroPanel.add(rigidArea_30, gbc_rigidArea_30);
+				
+						Component rigidArea_31 = Box.createRigidArea(new Dimension(20, 20));
+						GridBagConstraints gbc_rigidArea_31 = new GridBagConstraints();
+						gbc_rigidArea_31.insets = new Insets(0, 0, 5, 0);
+						gbc_rigidArea_31.gridx = 14;
+						gbc_rigidArea_31.gridy = 5;
+						CadastroPanel.add(rigidArea_31, gbc_rigidArea_31);
 				
 				Component rigidArea_39 = Box.createRigidArea(new Dimension(20, 20));
 				GridBagConstraints gbc_rigidArea_39 = new GridBagConstraints();
 				gbc_rigidArea_39.insets = new Insets(0, 0, 5, 5);
-				gbc_rigidArea_39.gridx = 5;
-				gbc_rigidArea_39.gridy = 7;
+				gbc_rigidArea_39.gridx = 7;
+				gbc_rigidArea_39.gridy = 12;
 				CadastroPanel.add(rigidArea_39, gbc_rigidArea_39);
 		
 				Component rigidArea_32 = Box.createRigidArea(new Dimension(20, 20));
 				GridBagConstraints gbc_rigidArea_32 = new GridBagConstraints();
 				gbc_rigidArea_32.insets = new Insets(0, 0, 5, 5);
-				gbc_rigidArea_32.gridx = 5;
-				gbc_rigidArea_32.gridy = 8;
+				gbc_rigidArea_32.gridx = 7;
+				gbc_rigidArea_32.gridy = 13;
 				CadastroPanel.add(rigidArea_32, gbc_rigidArea_32);
 				
 				Component rigidArea_36 = Box.createRigidArea(new Dimension(20, 20));
 				GridBagConstraints gbc_rigidArea_36 = new GridBagConstraints();
 				gbc_rigidArea_36.insets = new Insets(0, 0, 5, 5);
-				gbc_rigidArea_36.gridx = 5;
-				gbc_rigidArea_36.gridy = 9;
+				gbc_rigidArea_36.gridx = 7;
+				gbc_rigidArea_36.gridy = 14;
 				CadastroPanel.add(rigidArea_36, gbc_rigidArea_36);
 				
 				Component rigidArea_37 = Box.createRigidArea(new Dimension(20, 20));
 				GridBagConstraints gbc_rigidArea_37 = new GridBagConstraints();
 				gbc_rigidArea_37.insets = new Insets(0, 0, 5, 5);
-				gbc_rigidArea_37.gridx = 5;
-				gbc_rigidArea_37.gridy = 10;
+				gbc_rigidArea_37.gridx = 7;
+				gbc_rigidArea_37.gridy = 15;
 				CadastroPanel.add(rigidArea_37, gbc_rigidArea_37);
 				
 				Component rigidArea_38 = Box.createRigidArea(new Dimension(20, 20));
 				GridBagConstraints gbc_rigidArea_38 = new GridBagConstraints();
 				gbc_rigidArea_38.insets = new Insets(0, 0, 0, 5);
-				gbc_rigidArea_38.gridx = 5;
-				gbc_rigidArea_38.gridy = 11;
+				gbc_rigidArea_38.gridx = 7;
+				gbc_rigidArea_38.gridy = 16;
 				CadastroPanel.add(rigidArea_38, gbc_rigidArea_38);
 
 		botaoVoltar.addActionListener(new ActionListener() {
