@@ -12,18 +12,14 @@ import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
 import javax.swing.JComboBox;
-import javax.swing.BoxLayout;
-import java.awt.Window.Type;
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import javax.swing.UIManager;

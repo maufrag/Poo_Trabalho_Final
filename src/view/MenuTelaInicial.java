@@ -30,7 +30,6 @@ import javax.swing.JTable;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import net.miginfocom.swing.MigLayout;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JComboBox;
 
@@ -628,42 +627,39 @@ public class MenuTelaInicial extends JPanel {
 		
 		JPanel informativoPanel = new JPanel();
 		alocarLayeredPane.add(informativoPanel, "name_140314221499500");
-		informativoPanel.setLayout(new MigLayout("", "[center][center][][][][center][-36.00]", "[][][][][][][][][][][]"));
+		informativoPanel.setLayout(new MigLayout("", "[center][center][][][110.00][][center][-36.00]", "[][][][][][][][][][][]"));
 		
 		Component rigidArea_53 = Box.createRigidArea(new Dimension(20, 20));
-		informativoPanel.add(rigidArea_53, "cell 4 0");
+		informativoPanel.add(rigidArea_53, "cell 4 0 2 1");
 		
 		Component rigidArea_52 = Box.createRigidArea(new Dimension(20, 20));
-		informativoPanel.add(rigidArea_52, "cell 4 1");
+		informativoPanel.add(rigidArea_52, "cell 4 1 2 1");
 		
 		JLabel lblNewLabel = new JLabel("<html><body>Para realizar uma aloca\u00E7\u00E3o \u00E9 necess\u00E1rio que o cliente esteja cadastrado no sistema</html></body>");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		informativoPanel.add(lblNewLabel, "cell 0 2 5 1");
-		
-		Component rigidArea_39 = Box.createRigidArea(new Dimension(20, 20));
-		informativoPanel.add(rigidArea_39, "cell 5 2,alignx trailing");
+		informativoPanel.add(lblNewLabel, "cell 0 2 6 1");
 		
 		Component rigidArea_38 = Box.createRigidArea(new Dimension(20, 20));
-		informativoPanel.add(rigidArea_38, "flowx,cell 0 3 5 1,alignx leading");
+		informativoPanel.add(rigidArea_38, "flowx,cell 0 3 6 1,alignx leading");
 		
 		Component rigidArea_42 = Box.createRigidArea(new Dimension(20, 20));
-		informativoPanel.add(rigidArea_42, "cell 0 5 5 1");
+		informativoPanel.add(rigidArea_42, "cell 0 5 6 1");
 		
 		Component rigidArea_43 = Box.createRigidArea(new Dimension(20, 20));
-		informativoPanel.add(rigidArea_43, "cell 0 6 5 1");
+		informativoPanel.add(rigidArea_43, "cell 0 6 6 1");
 		
 		Component rigidArea_41 = Box.createRigidArea(new Dimension(20, 20));
-		informativoPanel.add(rigidArea_41, "cell 0 7 5 1");
+		informativoPanel.add(rigidArea_41, "cell 0 7 6 1");
 		
 		JPanel cadastrarClientePanel = new JPanel();
 		alocarLayeredPane.add(cadastrarClientePanel, "name_140314239938399");
 		
 		JPanel cadastrarAluguelPanel = new JPanel();
 		alocarLayeredPane.add(cadastrarAluguelPanel, "name_140314256682900");
-		cadastrarAluguelPanel.setLayout(new MigLayout("", "[][][][right][][25.00][][][22.00][][][][29.00,left]", "[][][][][][][][][][][][]"));
+		cadastrarAluguelPanel.setLayout(new MigLayout("", "[][][center][37.00][][][][][][29.00,left]", "[][][][][][][][][][][][]"));
 		
 		Component rigidArea_62 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_62, "cell 9 0");
+		cadastrarAluguelPanel.add(rigidArea_62, "cell 6 0");
 		
 		Component rigidArea_73 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarAluguelPanel.add(rigidArea_73, "cell 0 1");
@@ -671,88 +667,261 @@ public class MenuTelaInicial extends JPanel {
 		Component rigidArea_72 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarAluguelPanel.add(rigidArea_72, "cell 1 1");
 		
-		Component rigidArea_66 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_66, "cell 2 1");
-		
 		Component rigidArea_60 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_60, "cell 7 1");
-		
-		Component rigidArea_61 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_61, "cell 9 1");
-		
-		Component rigidArea_63 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_63, "cell 10 1");
+		cadastrarAluguelPanel.add(rigidArea_60, "cell 4 1");
 		
 		Component rigidArea_64 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_64, "cell 11 1");
+		cadastrarAluguelPanel.add(rigidArea_64, "cell 8 1");
 		
 		Component rigidArea_65 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_65, "cell 12 1");
+		cadastrarAluguelPanel.add(rigidArea_65, "cell 9 1");
+		
+		Component rigidArea_66 = Box.createRigidArea(new Dimension(20, 20));
+		cadastrarAluguelPanel.add(rigidArea_66, "cell 1 2");
 		
 		JLabel lblNewLabel_14 = new JLabel("Cliente:");
-		cadastrarAluguelPanel.add(lblNewLabel_14, "cell 3 2,alignx trailing");
+		cadastrarAluguelPanel.add(lblNewLabel_14, "cell 2 2,alignx trailing");
 		
 		JComboBox comboBox = new JComboBox();
-		cadastrarAluguelPanel.add(comboBox, "cell 4 2 5 1,growx");
+		cadastrarAluguelPanel.add(comboBox, "cell 3 2 3 1,growx");
+		
+		Component rigidArea_63 = Box.createRigidArea(new Dimension(20, 20));
+		cadastrarAluguelPanel.add(rigidArea_63, "cell 8 2");
 		
 		JLabel lblNewLabel_15 = new JLabel("Veiculo:");
-		cadastrarAluguelPanel.add(lblNewLabel_15, "cell 3 3");
+		cadastrarAluguelPanel.add(lblNewLabel_15, "cell 2 3,alignx trailing");
 		
 		JComboBox comboBox_1 = new JComboBox();
-		cadastrarAluguelPanel.add(comboBox_1, "cell 4 3 5 1,growx");
+		cadastrarAluguelPanel.add(comboBox_1, "cell 3 3 3 1,growx");
 		
 		JLabel lblNewLabel_16 = new JLabel("Data da aloca\u00E7\u00E3o:");
-		cadastrarAluguelPanel.add(lblNewLabel_16, "cell 3 4,alignx trailing");
+		cadastrarAluguelPanel.add(lblNewLabel_16, "cell 2 4,alignx trailing");
 		
 		textField_13 = new JTextField();
-		cadastrarAluguelPanel.add(textField_13, "cell 4 4 5 1,growx");
+		cadastrarAluguelPanel.add(textField_13, "cell 3 4 3 1,growx");
 		textField_13.setColumns(10);
 		
 		JLabel lblNewLabel_17 = new JLabel("Data devolu\u00E7\u00E3o:");
-		cadastrarAluguelPanel.add(lblNewLabel_17, "cell 3 5,alignx trailing");
+		cadastrarAluguelPanel.add(lblNewLabel_17, "cell 2 5,alignx trailing");
 		
 		textField_14 = new JTextField();
-		cadastrarAluguelPanel.add(textField_14, "cell 4 5 5 1,growx");
+		cadastrarAluguelPanel.add(textField_14, "cell 3 5 3 1,growx");
 		textField_14.setColumns(10);
 		
-		Component rigidArea_67 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_67, "cell 6 6");
-		
 		Component rigidArea_68 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_68, "cell 6 7");
+		cadastrarAluguelPanel.add(rigidArea_68, "cell 5 6");
 		
-		Component rigidArea_69 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_69, "cell 6 8");
+		Component rigidArea_67 = Box.createRigidArea(new Dimension(20, 20));
+		cadastrarAluguelPanel.add(rigidArea_67, "cell 5 7");
 		
-		JButton btnNewButton_13 = new JButton("New button");
-		cadastrarAluguelPanel.add(btnNewButton_13, "cell 1 9 4 1");
-		
-		JButton btnNewButton_14 = new JButton("New button");
-		cadastrarAluguelPanel.add(btnNewButton_14, "cell 5 9 6 1");
-		
-		Component rigidArea_70 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_70, "cell 6 10");
-		
-		Component rigidArea_71 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarAluguelPanel.add(rigidArea_71, "cell 6 11");
+		JButton realizarAlocacaoButton = new JButton("Alocar");
+		cadastrarAluguelPanel.add(realizarAlocacaoButton, "cell 2 9");
 		//layeredPane_1.setLayout(new FormLayout(new ColumnSpec[] {},
 			//new RowSpec[] {}));
 		alocacoesTabbedPane.addTab("Consultar Alocação", consultarAluguelPanel);
 		consultarAluguelPanel.setLayout(new BorderLayout(0, 0));
+		
+		Component rigidArea_61 = Box.createRigidArea(new Dimension(20, 20));
+		consultarAluguelPanel.add(rigidArea_61, BorderLayout.SOUTH);
+		
+		Component rigidArea_69 = Box.createRigidArea(new Dimension(20, 20));
+		consultarAluguelPanel.add(rigidArea_69, BorderLayout.NORTH);
+		
+		Component rigidArea_70 = Box.createRigidArea(new Dimension(20, 20));
+		consultarAluguelPanel.add(rigidArea_70, BorderLayout.WEST);
+		
+		Component rigidArea_71 = Box.createRigidArea(new Dimension(20, 20));
+		consultarAluguelPanel.add(rigidArea_71, BorderLayout.EAST);
+		
+		JPanel panel_1 = new JPanel();
+		consultarAluguelPanel.add(panel_1, BorderLayout.CENTER);
+		
+		JPanel panel_3 = new JPanel();
+		
+		JPanel panel_5 = new JPanel();
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel_5, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+				.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+					.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
+		);
+		panel_5.setLayout(new BorderLayout(0, 0));
+		
+		Component rigidArea_74 = Box.createRigidArea(new Dimension(20, 20));
+		panel_5.add(rigidArea_74, BorderLayout.WEST);
+		
+		Component rigidArea_75 = Box.createRigidArea(new Dimension(20, 20));
+		panel_5.add(rigidArea_75, BorderLayout.EAST);
+		
+		JPanel panel_6 = new JPanel();
+		panel_5.add(panel_6, BorderLayout.CENTER);
+		GridBagLayout gbl_panel_6 = new GridBagLayout();
+		gbl_panel_6.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_6.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_6.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_6.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel_6.setLayout(gbl_panel_6);
+		
+		JLabel lblNewLabel_22 = new JLabel("Filtros");
+		GridBagConstraints gbc_lblNewLabel_22 = new GridBagConstraints();
+		gbc_lblNewLabel_22.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_22.gridx = 2;
+		gbc_lblNewLabel_22.gridy = 0;
+		panel_6.add(lblNewLabel_22, gbc_lblNewLabel_22);
+		
+		JLabel lblNewLabel_18 = new JLabel("Cliente:");
+		GridBagConstraints gbc_lblNewLabel_18 = new GridBagConstraints();
+		gbc_lblNewLabel_18.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_18.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_18.gridx = 2;
+		gbc_lblNewLabel_18.gridy = 1;
+		panel_6.add(lblNewLabel_18, gbc_lblNewLabel_18);
+		
+		JComboBox comboBox_2_1 = new JComboBox();
+		GridBagConstraints gbc_comboBox_2_1 = new GridBagConstraints();
+		gbc_comboBox_2_1.gridwidth = 2;
+		gbc_comboBox_2_1.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox_2_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_2_1.gridx = 3;
+		gbc_comboBox_2_1.gridy = 1;
+		panel_6.add(comboBox_2_1, gbc_comboBox_2_1);
+		
+		Component rigidArea_76 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_76 = new GridBagConstraints();
+		gbc_rigidArea_76.insets = new Insets(0, 0, 5, 5);
+		gbc_rigidArea_76.gridx = 0;
+		gbc_rigidArea_76.gridy = 2;
+		panel_6.add(rigidArea_76, gbc_rigidArea_76);
+		
+		Component rigidArea_77 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_77 = new GridBagConstraints();
+		gbc_rigidArea_77.insets = new Insets(0, 0, 5, 5);
+		gbc_rigidArea_77.gridx = 1;
+		gbc_rigidArea_77.gridy = 2;
+		panel_6.add(rigidArea_77, gbc_rigidArea_77);
+		
+		JLabel lblNewLabel_19 = new JLabel("Funcionario:");
+		GridBagConstraints gbc_lblNewLabel_19 = new GridBagConstraints();
+		gbc_lblNewLabel_19.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_19.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_19.gridx = 2;
+		gbc_lblNewLabel_19.gridy = 2;
+		panel_6.add(lblNewLabel_19, gbc_lblNewLabel_19);
+		
+		JComboBox comboBox_2_2 = new JComboBox();
+		GridBagConstraints gbc_comboBox_2_2 = new GridBagConstraints();
+		gbc_comboBox_2_2.gridwidth = 2;
+		gbc_comboBox_2_2.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox_2_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_2_2.gridx = 3;
+		gbc_comboBox_2_2.gridy = 2;
+		panel_6.add(comboBox_2_2, gbc_comboBox_2_2);
+		
+		Component rigidArea_78 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_78 = new GridBagConstraints();
+		gbc_rigidArea_78.insets = new Insets(0, 0, 5, 5);
+		gbc_rigidArea_78.gridx = 5;
+		gbc_rigidArea_78.gridy = 2;
+		panel_6.add(rigidArea_78, gbc_rigidArea_78);
+		
+		Component rigidArea_79 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_79 = new GridBagConstraints();
+		gbc_rigidArea_79.insets = new Insets(0, 0, 5, 5);
+		gbc_rigidArea_79.gridx = 6;
+		gbc_rigidArea_79.gridy = 2;
+		panel_6.add(rigidArea_79, gbc_rigidArea_79);
+		
+		Component rigidArea_80 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_80 = new GridBagConstraints();
+		gbc_rigidArea_80.insets = new Insets(0, 0, 5, 5);
+		gbc_rigidArea_80.gridx = 7;
+		gbc_rigidArea_80.gridy = 2;
+		panel_6.add(rigidArea_80, gbc_rigidArea_80);
+		
+		Component rigidArea_81 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_81 = new GridBagConstraints();
+		gbc_rigidArea_81.insets = new Insets(0, 0, 5, 5);
+		gbc_rigidArea_81.gridx = 8;
+		gbc_rigidArea_81.gridy = 2;
+		panel_6.add(rigidArea_81, gbc_rigidArea_81);
+		
+		Component rigidArea_82 = Box.createRigidArea(new Dimension(20, 20));
+		GridBagConstraints gbc_rigidArea_82 = new GridBagConstraints();
+		gbc_rigidArea_82.insets = new Insets(0, 0, 5, 5);
+		gbc_rigidArea_82.gridx = 9;
+		gbc_rigidArea_82.gridy = 2;
+		panel_6.add(rigidArea_82, gbc_rigidArea_82);
+		
+		JButton filtrarButton = new JButton("Filtrar");
+		GridBagConstraints gbc_filtrarButton = new GridBagConstraints();
+		gbc_filtrarButton.insets = new Insets(0, 0, 5, 5);
+		gbc_filtrarButton.gridx = 10;
+		gbc_filtrarButton.gridy = 2;
+		panel_6.add(filtrarButton, gbc_filtrarButton);
+		
+		JLabel lblNewLabel_20 = new JLabel("New label");
+		GridBagConstraints gbc_lblNewLabel_20 = new GridBagConstraints();
+		gbc_lblNewLabel_20.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_20.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_20.gridx = 2;
+		gbc_lblNewLabel_20.gridy = 3;
+		panel_6.add(lblNewLabel_20, gbc_lblNewLabel_20);
+		
+		JButton limparFiltrosButton = new JButton("Limpar");
+		GridBagConstraints gbc_limparFiltrosButton = new GridBagConstraints();
+		gbc_limparFiltrosButton.insets = new Insets(0, 0, 5, 5);
+		gbc_limparFiltrosButton.gridx = 10;
+		gbc_limparFiltrosButton.gridy = 4;
+		panel_6.add(limparFiltrosButton, gbc_limparFiltrosButton);
+		
+		JLabel lblNewLabel_21 = new JLabel("Ordenar por:");
+		GridBagConstraints gbc_lblNewLabel_21 = new GridBagConstraints();
+		gbc_lblNewLabel_21.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_21.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_21.gridx = 2;
+		gbc_lblNewLabel_21.gridy = 5;
+		panel_6.add(lblNewLabel_21, gbc_lblNewLabel_21);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		GridBagConstraints gbc_comboBox_2 = new GridBagConstraints();
+		gbc_comboBox_2.gridwidth = 2;
+		gbc_comboBox_2.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_2.gridx = 3;
+		gbc_comboBox_2.gridy = 5;
+		panel_6.add(comboBox_2, gbc_comboBox_2);
+		
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Apenas ativos");
+		GridBagConstraints gbc_chckbxNewCheckBox_1 = new GridBagConstraints();
+		gbc_chckbxNewCheckBox_1.insets = new Insets(0, 0, 0, 5);
+		gbc_chckbxNewCheckBox_1.gridx = 3;
+		gbc_chckbxNewCheckBox_1.gridy = 6;
+		panel_6.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
+		panel_1.setLayout(gl_panel_1);
 		alocacoesPanel.add(alocacoesTabbedPane);
 		alternarTela(botaoAlocacoes, layeredPane, alocacoesPanel);
 		
+		Component rigidArea_39 = Box.createRigidArea(new Dimension(20, 20));
+		informativoPanel.add(rigidArea_39, "cell 4 8 2 1,alignx trailing");
+		
 		JButton btnNewButton_9 = new JButton("Prosseguir");
-		btnNewButton_9.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnNewButton_9.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		informativoPanel.add(btnNewButton_9, "cell 1 9");
 		
 		JButton cadastrarClienteButton = new JButton("Cadastrar Cliente");
-		cadastrarClienteButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		informativoPanel.add(cadastrarClienteButton, "cell 4 9,alignx right");
+		cadastrarClienteButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		informativoPanel.add(cadastrarClienteButton, "cell 5 9,alignx right");
 		alternarTela(cadastrarClienteButton, alocarLayeredPane, cadastrarClientePanel);
 		
 		Component rigidArea_54 = Box.createRigidArea(new Dimension(20, 20));
-		informativoPanel.add(rigidArea_54, "cell 4 10");
+		informativoPanel.add(rigidArea_54, "cell 4 10 2 1");
 		cadastrarClientePanel.setLayout(new MigLayout("", "[][49.00,trailing][49.00,trailing][111.00][111.00][][][][]", "[][][][][][][][][][][][][]"));
 		
 		JButton btnNewButton_12 = new JButton("<");
@@ -845,6 +1014,9 @@ public class MenuTelaInicial extends JPanel {
 		cadastrarClientePanel.add(rigidArea_59, "cell 2 12");
 		
 		alternarTela(btnNewButton_10 ,alocarLayeredPane, cadastrarAluguelPanel);
+		
+		JButton LimparContratoButton = new JButton("Limpar");
+		cadastrarAluguelPanel.add(LimparContratoButton, "cell 5 9");
 		
 	}
 
