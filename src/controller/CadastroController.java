@@ -11,16 +11,14 @@ import model.ContaModel;
 
 public class CadastroController {
 
-	public static void CadastrarFuncionario(ContaModel model) {
-		String mensagemFinal = "Cadastro realizado com sucesso.";
+	public static void cadastrarFuncionario(ContaModel model) {
 		model.setTelefoneContato(MetodosGerais.somenteDigitos(model.getTelefoneContato()));
 		String cpf = model.getCpf();
 		if (!MetodosGerais.cpfIsValid(cpf)) {
-			mensagemFinal = "CPF inválido.";
+			JOptionPane.showMessageDialog(new JFrame(), "CPF Inválido.");
 		} else {
 			FuncionarioRepository.insertInto(model);
 		}
-		JOptionPane.showMessageDialog(new JFrame(), mensagemFinal);
 	}
 
 	public static JComboBox<CargoModel> preencherComboBox() {

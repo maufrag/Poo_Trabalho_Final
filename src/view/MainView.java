@@ -6,9 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import controller.CadastroController;
 import controller.LoginController;
+import metodosGerais.CPFTextField;
 import metodosGerais.MetodosGerais;
 import model.CargoModel;
 import model.ContaModel;
@@ -24,6 +26,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Component;
@@ -45,7 +49,6 @@ public class MainView extends JFrame {
 	private JPasswordField passwordTextField;
 	private JButton botaoCadastrarFuncionario;
 	private JComboBox<CargoModel> comboBoxFuncionarios;
-
 	/**
 	 * Launch the application.
 	 */
@@ -508,8 +511,8 @@ public class MainView extends JFrame {
 		gbc_lblNewLabel_3.gridx = 0;
 		gbc_lblNewLabel_3.gridy = 2;
 		panel_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
-
-		cpfTextField = new JTextField();
+		
+		cpfTextField = new CPFTextField();
 		GridBagConstraints gbc_cpfTextField = new GridBagConstraints();
 		gbc_cpfTextField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cpfTextField.gridwidth = 2;
@@ -517,6 +520,7 @@ public class MainView extends JFrame {
 		gbc_cpfTextField.gridx = 2;
 		gbc_cpfTextField.gridy = 2;
 		panel_1.add(cpfTextField, gbc_cpfTextField);
+		
 		cpfTextField.setColumns(10);
 
 		JLabel lblNewLabel_4 = new JLabel("Telefone:");
@@ -692,11 +696,12 @@ public class MainView extends JFrame {
 
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				layeredPane.removeAll();
-				layeredPane.add(new MenuTelaInicial());
-				layeredPane.repaint();
-				layeredPane.revalidate();
-				//logar();
+				if (logar()) {
+					layeredPane.removeAll();
+					layeredPane.add(new MenuTelaInicial());
+					layeredPane.repaint();
+					layeredPane.revalidate();
+				}
 			}
 		});
 	}
@@ -710,7 +715,7 @@ public class MainView extends JFrame {
 			model.setIdCargo(comboBoxFuncionarios.getSelectedIndex());
 			// TODO adicionar data nascimento.
 			//
-			CadastroController.CadastrarFuncionario(model);
+			CadastroController.cadastrarFuncionario(model);
 			limparCampos();
 		}
 	}
@@ -733,18 +738,20 @@ public class MainView extends JFrame {
 		return valido;
 	}
 
-	private void logar() {
+	private Boolean logar() {
 		if (validarLogin()) {
-			ContaModel model = new ContaModel(loginTextField.getText(), passwordTextField.getPassword().toString());
-			LoginController.logar(model);
+			ContaModel model = new ContaModel(loginTextField.getText(),
+					String.valueOf(passwordTextField.getPassword()));
+			return LoginController.logar(model);
 		}
+		return false;
 	}
 
 	private Boolean validarLogin() {
 		Boolean valido = true;
 		if (MetodosGerais.StringIsNullOrWhiteSpace(loginTextField.getText())) {
 			valido = false;
-		} else if (MetodosGerais.StringIsNullOrWhiteSpace(passwordTextField.getPassword().toString())) {
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(String.valueOf(passwordTextField.getPassword()))) {
 			valido = false;
 		}
 		return valido;
@@ -755,6 +762,7 @@ public class MainView extends JFrame {
 		telefoneTextField.setText("");
 		cpfTextField.setText("");
 	}
-
-	// TODO adicionar verificação para usuario e senha
+	
+	//TODO - aplicar mascara para telefone
+	//TODO - aplicar o JDatePicker
 }
