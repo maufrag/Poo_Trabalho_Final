@@ -17,7 +17,7 @@ public class FuncionarioRepository {
 		String mensagemFinal;
 		Connection con = ConnectionFactory.getConnection();
 		try {
-			String queryConta = "Insert into conta (login, senha, ativo) values (?, ?, 1)";
+			String queryConta = "Insert into conta (login, senha, ativo) values (?, md5(?), 1)";
 			PreparedStatement statement1 = con.prepareStatement(queryConta);
 			contaModel.gerarUsuario();
 			statement1.setString(1, contaModel.getLogin());
@@ -31,13 +31,14 @@ public class FuncionarioRepository {
 
 			String queryFuncionario = "Insert into funcionario "
 					+ "(nomeCompleto, cpf, telefoneContato, dataNascimento, ativo, idConta, idCargo ) "
-					+ "values (?, ?, ?, ?, 1, ?, 1)";
+					+ "values (?, ?, ?, ?, 1, ?, ?)";
 			PreparedStatement statement3 = con.prepareStatement(queryFuncionario);
 			statement3.setString(1, contaModel.getNomeCompleto());
 			statement3.setString(2, contaModel.getCpf());
 			statement3.setString(3, contaModel.getTelefoneContato());
 			statement3.setDate(4, null);
 			statement3.setInt(5, idConta);
+			statement3.setInt(6, contaModel.getIdCargo());
 			statement3.execute();
 			con.close();
 			mensagemFinal = "Cadastro realizado com sucesso.";
@@ -54,7 +55,7 @@ public class FuncionarioRepository {
 		Boolean existe = false;
 		try {
 			Connection con = ConnectionFactory.getConnection();
-			String query = "Select * from conta where login = ? and senha = ?";
+			String query = "Select * from conta where login = ? and senha = md5(?)";
 			PreparedStatement statement = con.prepareStatement(query);
 			statement.setString(1, model.getLogin());
 			statement.setString(2, model.getPassword());

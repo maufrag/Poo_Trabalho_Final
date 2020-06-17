@@ -713,14 +713,10 @@ public class MainView extends JFrame {
 			model.setNomeCompleto(nomeCompletoTextField.getText());
 			model.setCpf(cpfTextField.getText());
 			model.setTelefoneContato(telefoneTextField.getText());
-			//model.setIdCargo(comboBoxFuncionarios.getSelectedIndex());
-			// TODO adicionar data nascimento.
 			CargoModel cargo = (CargoModel) comboBoxFuncionarios.getSelectedItem();
-			System.out.println(cargo.getIdCargo());
-			System.out.println(cargo.getNomeCargo());
-			//System.out.println(comboBoxFuncionarios.getSelectedObjects().getClass().toString());
-			//CadastroController.cadastrarFuncionario(model);
-			//limparCampos();
+			model.setIdCargo(cargo.getIdCargo());
+			CadastroController.cadastrarFuncionario(model);
+			limparCampos();
 		}
 	}
 
