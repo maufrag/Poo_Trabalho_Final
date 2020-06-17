@@ -714,7 +714,7 @@ public class MainView extends JFrame {
 			model.setTelefoneContato(telefoneTextField.getText());
 			model.setIdCargo(comboBoxFuncionarios.getSelectedIndex());
 			// TODO adicionar data nascimento.
-			//
+			
 			CadastroController.cadastrarFuncionario(model);
 			limparCampos();
 		}

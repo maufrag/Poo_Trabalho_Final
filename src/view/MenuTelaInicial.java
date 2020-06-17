@@ -14,6 +14,7 @@ import javax.swing.JSplitPane;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.CardLayout;
 import java.awt.Color;
 
@@ -24,6 +25,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
+import java.awt.EventQueue;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
 import javax.swing.JCheckBox;
@@ -33,12 +36,14 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 
 import controller.VeiculoController;
 import metodosGerais.MetodosGerais;
 import model.VeiculoModel;
 
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 
 public class MenuTelaInicial extends JPanel {
 	private JTextField modeloVeiculoTF;
@@ -48,10 +53,10 @@ public class MenuTelaInicial extends JPanel {
 	private JCheckBox veiculoChkBox;
 	private JTable table;
 	private JTable edicaoTable;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField fabricanteEdicaoTF;
+	private JTextField modeloEdicaoTF;
+	private JTextField anoEdicaoTF;
+	private JTextField disponibilidadeEdicaoTF;
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
@@ -59,6 +64,7 @@ public class MenuTelaInicial extends JPanel {
 	private JTextField textField_12;
 	private JTextField textField_13;
 	private JTextField textField_14;
+	private JTextField precoEdicaoTF;
 
 	/**
 	 * Create the panel.
@@ -451,7 +457,7 @@ public class MenuTelaInicial extends JPanel {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		panelTabelaParaEdicao.add(scrollPane_1, BorderLayout.CENTER);
 
-		edicaoTable = new JTable(data, columnNames);
+		edicaoTable = new JTable();
 		scrollPane_1.setViewportView(edicaoTable);
 		panelEdicaoTabela.setLayout(new BorderLayout(0, 0));
 
@@ -461,109 +467,130 @@ public class MenuTelaInicial extends JPanel {
 		Component rigidArea_21 = Box.createRigidArea(new Dimension(20, 20));
 		panelEdicaoTabela.add(rigidArea_21, BorderLayout.WEST);
 
-		JPanel panel_4 = new JPanel();
-		panelEdicaoTabela.add(panel_4, BorderLayout.CENTER);
-		GridBagLayout gbl_panel_4 = new GridBagLayout();
-		gbl_panel_4.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_panel_4.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
-		gbl_panel_4.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_4.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		panel_4.setLayout(gbl_panel_4);
+		JPanel edicaoPanel = new JPanel();
+		panelEdicaoTabela.add(edicaoPanel, BorderLayout.CENTER);
+		GridBagLayout gbl_edicaoPanel = new GridBagLayout();
+		gbl_edicaoPanel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_edicaoPanel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+		gbl_edicaoPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_edicaoPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		edicaoPanel.setLayout(gbl_edicaoPanel);
 
 		Component rigidArea_22 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_22 = new GridBagConstraints();
 		gbc_rigidArea_22.insets = new Insets(0, 0, 5, 5);
 		gbc_rigidArea_22.gridx = 0;
 		gbc_rigidArea_22.gridy = 0;
-		panel_4.add(rigidArea_22, gbc_rigidArea_22);
+		edicaoPanel.add(rigidArea_22, gbc_rigidArea_22);
 
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
-		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_6.gridx = 1;
-		gbc_lblNewLabel_6.gridy = 1;
-		panel_4.add(lblNewLabel_6, gbc_lblNewLabel_6);
+		JLabel frabricanteVeiculoLabel = new JLabel("Fabricante");
+		GridBagConstraints gbc_frabricanteVeiculoLabel = new GridBagConstraints();
+		gbc_frabricanteVeiculoLabel.anchor = GridBagConstraints.EAST;
+		gbc_frabricanteVeiculoLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_frabricanteVeiculoLabel.gridx = 1;
+		gbc_frabricanteVeiculoLabel.gridy = 1;
+		edicaoPanel.add(frabricanteVeiculoLabel, gbc_frabricanteVeiculoLabel);
 
-		textField_4 = new JTextField();
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 3;
-		gbc_textField_4.gridy = 1;
-		panel_4.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
+		fabricanteEdicaoTF = new JTextField();
+		GridBagConstraints gbc_fabricanteEdicaoTF = new GridBagConstraints();
+		gbc_fabricanteEdicaoTF.insets = new Insets(0, 0, 5, 5);
+		gbc_fabricanteEdicaoTF.fill = GridBagConstraints.HORIZONTAL;
+		gbc_fabricanteEdicaoTF.gridx = 3;
+		gbc_fabricanteEdicaoTF.gridy = 1;
+		edicaoPanel.add(fabricanteEdicaoTF, gbc_fabricanteEdicaoTF);
+		fabricanteEdicaoTF.setColumns(10);
 
-		JButton btnNewButton_4 = new JButton("Selecionar");
-		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
-		gbc_btnNewButton_4.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_4.gridx = 6;
-		gbc_btnNewButton_4.gridy = 1;
-		panel_4.add(btnNewButton_4, gbc_btnNewButton_4);
+		JButton selecionarVeiculoBtn = new JButton("Selecionar");
+		selecionarVeiculoBtn.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		GridBagConstraints gbc_selecionarVeiculoBtn = new GridBagConstraints();
+		gbc_selecionarVeiculoBtn.insets = new Insets(0, 0, 5, 5);
+		gbc_selecionarVeiculoBtn.gridx = 6;
+		gbc_selecionarVeiculoBtn.gridy = 1;
+		edicaoPanel.add(selecionarVeiculoBtn, gbc_selecionarVeiculoBtn);
 
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
-		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_7.gridx = 1;
-		gbc_lblNewLabel_7.gridy = 2;
-		panel_4.add(lblNewLabel_7, gbc_lblNewLabel_7);
+		JLabel modeloVeiculoLabel = new JLabel("Modelo:");
+		GridBagConstraints gbc_modeloVeiculoLabel = new GridBagConstraints();
+		gbc_modeloVeiculoLabel.anchor = GridBagConstraints.EAST;
+		gbc_modeloVeiculoLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_modeloVeiculoLabel.gridx = 1;
+		gbc_modeloVeiculoLabel.gridy = 2;
+		edicaoPanel.add(modeloVeiculoLabel, gbc_modeloVeiculoLabel);
 
-		textField_5 = new JTextField();
-		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-		gbc_textField_5.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_5.gridx = 3;
-		gbc_textField_5.gridy = 2;
-		panel_4.add(textField_5, gbc_textField_5);
-		textField_5.setColumns(10);
+		modeloEdicaoTF = new JTextField();
+		GridBagConstraints gbc_modeloEdicaoTF = new GridBagConstraints();
+		gbc_modeloEdicaoTF.insets = new Insets(0, 0, 5, 5);
+		gbc_modeloEdicaoTF.fill = GridBagConstraints.HORIZONTAL;
+		gbc_modeloEdicaoTF.gridx = 3;
+		gbc_modeloEdicaoTF.gridy = 2;
+		edicaoPanel.add(modeloEdicaoTF, gbc_modeloEdicaoTF);
+		modeloEdicaoTF.setColumns(10);
 
-		JButton btnNewButton_5 = new JButton("Atualizar");
-		btnNewButton_5.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		GridBagConstraints gbc_btnNewButton_5 = new GridBagConstraints();
-		gbc_btnNewButton_5.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_5.gridx = 6;
-		gbc_btnNewButton_5.gridy = 2;
-		panel_4.add(btnNewButton_5, gbc_btnNewButton_5);
+		JButton atualizarVeiculoBtn = new JButton("Atualizar");
+		atualizarVeiculoBtn.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		GridBagConstraints gbc_atualizarVeiculoBtn = new GridBagConstraints();
+		gbc_atualizarVeiculoBtn.insets = new Insets(0, 0, 5, 5);
+		gbc_atualizarVeiculoBtn.gridx = 6;
+		gbc_atualizarVeiculoBtn.gridy = 2;
+		edicaoPanel.add(atualizarVeiculoBtn, gbc_atualizarVeiculoBtn);
 
-		JLabel lblNewLabel_8 = new JLabel("New label");
+		JLabel lblNewLabel_8 = new JLabel("Ano:");
 		GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
+		gbc_lblNewLabel_8.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_8.gridx = 1;
 		gbc_lblNewLabel_8.gridy = 3;
-		panel_4.add(lblNewLabel_8, gbc_lblNewLabel_8);
+		edicaoPanel.add(lblNewLabel_8, gbc_lblNewLabel_8);
 
-		textField_6 = new JTextField();
-		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-		gbc_textField_6.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_6.gridx = 3;
-		gbc_textField_6.gridy = 3;
-		panel_4.add(textField_6, gbc_textField_6);
-		textField_6.setColumns(10);
+		anoEdicaoTF = new JTextField();
+		GridBagConstraints gbc_anoEdicaoTF = new GridBagConstraints();
+		gbc_anoEdicaoTF.insets = new Insets(0, 0, 5, 5);
+		gbc_anoEdicaoTF.fill = GridBagConstraints.HORIZONTAL;
+		gbc_anoEdicaoTF.gridx = 3;
+		gbc_anoEdicaoTF.gridy = 3;
+		edicaoPanel.add(anoEdicaoTF, gbc_anoEdicaoTF);
+		anoEdicaoTF.setColumns(10);
 
-		JButton btnNewButton_6 = new JButton("Remover");
-		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		GridBagConstraints gbc_btnNewButton_6 = new GridBagConstraints();
-		gbc_btnNewButton_6.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_6.gridx = 6;
-		gbc_btnNewButton_6.gridy = 3;
-		panel_4.add(btnNewButton_6, gbc_btnNewButton_6);
+		JButton removerVeiculoBtn = new JButton("Remover");
+		removerVeiculoBtn.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		GridBagConstraints gbc_removerVeiculoBtn = new GridBagConstraints();
+		gbc_removerVeiculoBtn.insets = new Insets(0, 0, 5, 5);
+		gbc_removerVeiculoBtn.gridx = 6;
+		gbc_removerVeiculoBtn.gridy = 3;
+		edicaoPanel.add(removerVeiculoBtn, gbc_removerVeiculoBtn);
 
-		JLabel lblNewLabel_9 = new JLabel("New label");
+		JLabel lblNewLabel_9 = new JLabel("Disponibilidade:");
 		GridBagConstraints gbc_lblNewLabel_9 = new GridBagConstraints();
-		gbc_lblNewLabel_9.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_9.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_9.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_9.gridx = 1;
 		gbc_lblNewLabel_9.gridy = 4;
-		panel_4.add(lblNewLabel_9, gbc_lblNewLabel_9);
+		edicaoPanel.add(lblNewLabel_9, gbc_lblNewLabel_9);
 
-		textField_7 = new JTextField();
-		GridBagConstraints gbc_textField_7 = new GridBagConstraints();
-		gbc_textField_7.insets = new Insets(0, 0, 0, 5);
-		gbc_textField_7.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_7.gridx = 3;
-		gbc_textField_7.gridy = 4;
-		panel_4.add(textField_7, gbc_textField_7);
-		textField_7.setColumns(10);
+		disponibilidadeEdicaoTF = new JTextField();
+		GridBagConstraints gbc_disponibilidadeEdicaoTF = new GridBagConstraints();
+		gbc_disponibilidadeEdicaoTF.insets = new Insets(0, 0, 5, 5);
+		gbc_disponibilidadeEdicaoTF.fill = GridBagConstraints.HORIZONTAL;
+		gbc_disponibilidadeEdicaoTF.gridx = 3;
+		gbc_disponibilidadeEdicaoTF.gridy = 4;
+		edicaoPanel.add(disponibilidadeEdicaoTF, gbc_disponibilidadeEdicaoTF);
+		disponibilidadeEdicaoTF.setColumns(10);
+
+		JLabel lblNewLabel_23 = new JLabel("Pre\u00E7o:");
+		GridBagConstraints gbc_lblNewLabel_23 = new GridBagConstraints();
+		gbc_lblNewLabel_23.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_23.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_23.gridx = 1;
+		gbc_lblNewLabel_23.gridy = 5;
+		edicaoPanel.add(lblNewLabel_23, gbc_lblNewLabel_23);
+
+		precoEdicaoTF = new JTextField();
+		GridBagConstraints gbc_precoEdicaoTF = new GridBagConstraints();
+		gbc_precoEdicaoTF.insets = new Insets(0, 0, 0, 5);
+		gbc_precoEdicaoTF.fill = GridBagConstraints.HORIZONTAL;
+		gbc_precoEdicaoTF.gridx = 3;
+		gbc_precoEdicaoTF.gridy = 5;
+		edicaoPanel.add(precoEdicaoTF, gbc_precoEdicaoTF);
+		precoEdicaoTF.setColumns(10);
 		panel_2.setLayout(gl_panel_2);
 		veiculosPanel.add(veiculosTabbedPane);
 
@@ -1020,7 +1047,13 @@ public class MenuTelaInicial extends JPanel {
 
 		JButton LimparContratoButton = new JButton("Limpar");
 		cadastrarAluguelPanel.add(LimparContratoButton, "cell 5 9");
+		VeiculoController.obterListaVeiculos(edicaoTable);
 
+		selecionarVeiculoBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				selecionarVeiculo();
+			}
+		});
 	}
 
 	public void alternarTela(JButton button, JLayeredPane layeredPane, JPanel panel) {
@@ -1050,6 +1083,22 @@ public class MenuTelaInicial extends JPanel {
 		return valido;
 	}
 
+	public void selecionarVeiculo() {
+		DefaultTableModel dtm = (DefaultTableModel) edicaoTable.getModel();
+		int linhaSelecinhada = edicaoTable.getSelectedRow();
+		System.out.println(linhaSelecinhada);
+		fabricanteEdicaoTF.setText("aaaaaa");
+		modeloEdicaoTF.setText(dtm.getValueAt(linhaSelecinhada, 2).toString());
+		anoEdicaoTF.setText(dtm.getValueAt(linhaSelecinhada, 3).toString());
+		disponibilidadeEdicaoTF.setText(dtm.getValueAt(linhaSelecinhada, 5).toString());
+		precoEdicaoTF.setText(dtm.getValueAt(linhaSelecinhada, 4).toString());
+		System.out.println(dtm.getValueAt(linhaSelecinhada, 1).toString());
+		System.out.println(dtm.getValueAt(linhaSelecinhada, 2).toString());
+		System.out.println(dtm.getValueAt(linhaSelecinhada, 3).toString());
+		System.out.println(dtm.getValueAt(linhaSelecinhada, 4).toString());
+		System.out.println(dtm.getValueAt(linhaSelecinhada, 5).toString());
+	}
+
 	public void obterDadosParaCadastroDeVeiculos() {
 		if (validarDadosParaCadastroDeVeiculo()) {
 			VeiculoModel model = new VeiculoModel();
@@ -1060,4 +1109,5 @@ public class MenuTelaInicial extends JPanel {
 			VeiculoController.cadastrarVeiculo(model);
 		}
 	}
+
 }

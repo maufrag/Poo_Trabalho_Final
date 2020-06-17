@@ -2,8 +2,12 @@ package Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.swing.JTable;
 
 import ConexaoDB.ConnectionFactory;
+import metodosGerais.MetodosGerais;
 import model.VeiculoModel;
 
 public class VeiculoRepository {
@@ -25,6 +29,22 @@ public class VeiculoRepository {
 
 			statement.execute();
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void obterVeiculos(JTable table) {
+		Connection con = ConnectionFactory.getConnection();
+		
+		try {
+			String query = "select * from veiculo";
+			
+			PreparedStatement statement = con.prepareStatement(query);
+			ResultSet rs = statement.executeQuery();
+			table.setModel(MetodosGerais.resultSetToTableModel(rs));
+			
+			
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
