@@ -5,9 +5,9 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-public class CPFTextField extends JTextField {
+public class CpfTextField extends JTextField {
 
-    public CPFTextField() {
+    public CpfTextField() {
 
         setDocument(new PlainDocument() {
 

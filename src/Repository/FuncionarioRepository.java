@@ -64,7 +64,9 @@ public class FuncionarioRepository {
 				// ContaModel retorno = new ContaModel(rs.getString("login"),
 				// rs.getString("senha"));
 				existe = true;
+				
 			}
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

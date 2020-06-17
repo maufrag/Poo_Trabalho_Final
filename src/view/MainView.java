@@ -10,8 +10,9 @@ import javax.swing.text.MaskFormatter;
 
 import controller.CadastroController;
 import controller.LoginController;
-import metodosGerais.CPFTextField;
+import metodosGerais.CpfTextField;
 import metodosGerais.MetodosGerais;
+import metodosGerais.TelefoneTextField;
 import model.CargoModel;
 import model.ContaModel;
 import model.FuncionarioModel;
@@ -512,7 +513,7 @@ public class MainView extends JFrame {
 		gbc_lblNewLabel_3.gridy = 2;
 		panel_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
-		cpfTextField = new CPFTextField();
+		cpfTextField = new CpfTextField();
 		GridBagConstraints gbc_cpfTextField = new GridBagConstraints();
 		gbc_cpfTextField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cpfTextField.gridwidth = 2;
@@ -532,7 +533,7 @@ public class MainView extends JFrame {
 		gbc_lblNewLabel_4.gridy = 3;
 		panel_1.add(lblNewLabel_4, gbc_lblNewLabel_4);
 
-		telefoneTextField = new JTextField();
+		telefoneTextField = new TelefoneTextField();
 		GridBagConstraints gbc_telefoneTextField = new GridBagConstraints();
 		gbc_telefoneTextField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_telefoneTextField.gridwidth = 2;
@@ -712,11 +713,14 @@ public class MainView extends JFrame {
 			model.setNomeCompleto(nomeCompletoTextField.getText());
 			model.setCpf(cpfTextField.getText());
 			model.setTelefoneContato(telefoneTextField.getText());
-			model.setIdCargo(comboBoxFuncionarios.getSelectedIndex());
+			//model.setIdCargo(comboBoxFuncionarios.getSelectedIndex());
 			// TODO adicionar data nascimento.
-			
-			CadastroController.cadastrarFuncionario(model);
-			limparCampos();
+			CargoModel cargo = (CargoModel) comboBoxFuncionarios.getSelectedItem();
+			System.out.println(cargo.getIdCargo());
+			System.out.println(cargo.getNomeCargo());
+			//System.out.println(comboBoxFuncionarios.getSelectedObjects().getClass().toString());
+			//CadastroController.cadastrarFuncionario(model);
+			//limparCampos();
 		}
 	}
 

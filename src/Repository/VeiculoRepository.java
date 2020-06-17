@@ -28,23 +28,38 @@ public class VeiculoRepository {
 			statement.setBoolean(5, model.getEstaDisponivel());
 
 			statement.execute();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void obterVeiculos(JTable table) {
 		Connection con = ConnectionFactory.getConnection();
-		
+
 		try {
 			String query = "select * from veiculo";
-			
+
 			PreparedStatement statement = con.prepareStatement(query);
 			ResultSet rs = statement.executeQuery();
 			table.setModel(MetodosGerais.resultSetToTableModel(rs));
-			
-			
-		} catch(Exception e) {
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void removerVeiculo(int idVeiculo) {
+		Connection con = ConnectionFactory.getConnection();
+
+		try {
+			String query = "delete from veiculo where idVeiculo = ?";
+
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setInt(1, idVeiculo);
+			statement.execute();
+			con.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

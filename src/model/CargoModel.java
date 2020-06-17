@@ -7,13 +7,16 @@ public class CargoModel {
 		this.nomeCargo = nomeCargo;
 	}
 
+	public CargoModel() {
+	}
+
 	private int idCargo;
 	private String nomeCargo;
 
 	public int getIdCargo() {
 		return idCargo;
 	}
-
+	
 	public String getNomeCargo() {
 		return nomeCargo;
 	}
@@ -22,7 +25,8 @@ public class CargoModel {
 		this.nomeCargo = nomeCargo;
 	}
 	
+	@Override
 	public String toString() {
-		return getNomeCargo();
+		return nomeCargo;
 	}
 }

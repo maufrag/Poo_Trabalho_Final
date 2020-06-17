@@ -14,4 +14,8 @@ public class VeiculoController {
 	public static void obterListaVeiculos(JTable table) {
 		VeiculoRepository.obterVeiculos(table);
 	}
+	
+	public static void removerVeiculo(int idVeiculo) {
+		
+	}
 }

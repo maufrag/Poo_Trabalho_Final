@@ -1,9 +1,12 @@
 package controller;
 
+import java.util.List;
+
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import Repository.CargoRepository;
 import Repository.FuncionarioRepository;
 import metodosGerais.MetodosGerais;
 import model.CargoModel;
@@ -22,11 +25,14 @@ public class CadastroController {
 	}
 
 	public static JComboBox<CargoModel> preencherComboBox() {
-
+		
+		List<CargoModel> modelList = CargoRepository.obterListaCargos();
 		JComboBox<CargoModel> comboBox = new JComboBox<CargoModel>();
-		comboBox.addItem(new CargoModel(0, "--Selecione--"));
-		comboBox.addItem(new CargoModel(1, "Vendedor"));
-		comboBox.addItem(new CargoModel(2, "Gerente"));
+		comboBox.addItem(new CargoModel(0, "-Selecione-"));
+		
+		for(CargoModel model : modelList) {
+			comboBox.addItem(model);
+		}
 
 		return comboBox;
 	}
