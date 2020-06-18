@@ -7,7 +7,7 @@ import model.VeiculoModel;
 
 public class VeiculoController {
 
-	public static void cadastrarVeiculo(VeiculoModel model) {
+	public static void cadastrarVeiculo(VeiculoModel model, JTable edicaoTable) {
 		VeiculoRepository.insertInto(model);
 	}
 	
@@ -16,6 +16,10 @@ public class VeiculoController {
 	}
 	
 	public static void removerVeiculo(int idVeiculo) {
-		
+		VeiculoRepository.removerVeiculo(idVeiculo);
+	}
+	
+	public static void editarVeiculo(VeiculoModel model, JTable edicaoTable) {
+		VeiculoRepository.atualizarVeiculo(model);
 	}
 }

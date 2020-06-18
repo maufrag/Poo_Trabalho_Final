@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import ConexaoDB.ConnectionFactory;
 import metodosGerais.MetodosGerais;
@@ -17,7 +19,7 @@ public class VeiculoRepository {
 		Connection con = ConnectionFactory.getConnection();
 
 		try {
-			String query = "insert into veiculo (fabricante, modelo, anoLancemento, precoAluguel, estaDisponivel)"
+			String query = "insert into veiculo (fabricante, modelo, anoLancamento, precoAluguel, estaDisponivel)"
 					+ "values (?, ?, ?, ?, ?)";
 
 			PreparedStatement statement = con.prepareStatement(query);
@@ -28,7 +30,9 @@ public class VeiculoRepository {
 			statement.setBoolean(5, model.getEstaDisponivel());
 
 			statement.execute();
+			
 			con.close();
+			JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,8 +63,31 @@ public class VeiculoRepository {
 			statement.setInt(1, idVeiculo);
 			statement.execute();
 			con.close();
+			JOptionPane.showMessageDialog(null, "Dados removidos com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	public static void atualizarVeiculo(VeiculoModel model) {
+		Connection con = ConnectionFactory.getConnection();
+
+		try {
+			String query = "update veiculo set fabricante = ?, modelo = ?, anoLancamento = ?, precoAluguel = ?, estaDisponivel = ? where idVeiculo = ?";
+
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setString(1, model.getFabricante());
+			statement.setString(2, model.getModelo());
+			statement.setInt(3, model.getAnoLancamento());
+			statement.setDouble(4, model.getPrecoAluguel());
+			statement.setBoolean(5, model.getEstaDisponivel());
+			statement.setInt(6, model.getIdVeiculo());
+			statement.executeUpdate();
+			con.close();
+			JOptionPane.showMessageDialog(null, "Veiculo atualizado com sucesso.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Deu Merda.");
 		}
 	}
 }

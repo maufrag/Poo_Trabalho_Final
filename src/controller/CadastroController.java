@@ -25,12 +25,12 @@ public class CadastroController {
 	}
 
 	public static JComboBox<CargoModel> preencherComboBox() {
-		
+
 		List<CargoModel> modelList = CargoRepository.obterListaCargos();
 		JComboBox<CargoModel> comboBox = new JComboBox<CargoModel>();
 		comboBox.addItem(new CargoModel(0, "-Selecione-"));
-		
-		for(CargoModel model : modelList) {
+
+		for (CargoModel model : modelList) {
 			comboBox.addItem(model);
 		}
 

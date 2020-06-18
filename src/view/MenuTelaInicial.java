@@ -54,7 +54,8 @@ public class MenuTelaInicial extends JPanel {
 	private JTextField anoVeiculoTF;
 	private JTextField precoVeiculoTF;
 	private JCheckBox veiculoChkBox;
-	JCheckBox disponibilidadeChkBox;
+	private JButton atualizarVeiculoBtn;
+	private JCheckBox disponibilidadeChkBox;
 	private JTable table;
 	private JTable edicaoTable;
 	private JTextField fabricanteEdicaoTF;
@@ -68,6 +69,9 @@ public class MenuTelaInicial extends JPanel {
 	private JTextField textField_13;
 	private JTextField textField_14;
 	private JTextField precoEdicaoTF;
+	private JButton voltarParaAlocacaoTelaInicialBtn;
+	private JButton removerVeiculoBtn;
+	private JButton cadastrarVeiculoBtn;
 
 	/**
 	 * Create the panel.
@@ -79,37 +83,37 @@ public class MenuTelaInicial extends JPanel {
 		JSplitPane splitPane = new JSplitPane();
 		add(splitPane);
 		splitPane.setDividerSize(0);
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLACK);
-		splitPane.setLeftComponent(panel);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 0, 0 };
-		gbl_panel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_panel.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				0.0, 0.0, Double.MIN_VALUE };
-		panel.setLayout(gbl_panel);
+		JPanel panelBotoes = new JPanel();
+		panelBotoes.setBackground(Color.BLACK);
+		splitPane.setLeftComponent(panelBotoes);
+		GridBagLayout gbl_panelBotoes = new GridBagLayout();
+		gbl_panelBotoes.columnWidths = new int[] { 0, 0 };
+		gbl_panelBotoes.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_panelBotoes.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gbl_panelBotoes.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		panelBotoes.setLayout(gbl_panelBotoes);
 
 		Component rigidArea = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea = new GridBagConstraints();
 		gbc_rigidArea.insets = new Insets(0, 0, 5, 0);
 		gbc_rigidArea.gridx = 0;
 		gbc_rigidArea.gridy = 0;
-		panel.add(rigidArea, gbc_rigidArea);
+		panelBotoes.add(rigidArea, gbc_rigidArea);
 
 		Component rigidArea_1 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_1 = new GridBagConstraints();
 		gbc_rigidArea_1.insets = new Insets(0, 0, 5, 0);
 		gbc_rigidArea_1.gridx = 0;
 		gbc_rigidArea_1.gridy = 1;
-		panel.add(rigidArea_1, gbc_rigidArea_1);
+		panelBotoes.add(rigidArea_1, gbc_rigidArea_1);
 
 		Component rigidArea_8 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_8 = new GridBagConstraints();
 		gbc_rigidArea_8.insets = new Insets(0, 0, 5, 0);
 		gbc_rigidArea_8.gridx = 0;
 		gbc_rigidArea_8.gridy = 2;
-		panel.add(rigidArea_8, gbc_rigidArea_8);
+		panelBotoes.add(rigidArea_8, gbc_rigidArea_8);
 
 		JButton botaoAlocacoes = new JButton("Aloca\u00E7\u00F5es");
 		GridBagConstraints gbc_botaoAlocacoes = new GridBagConstraints();
@@ -117,14 +121,14 @@ public class MenuTelaInicial extends JPanel {
 		gbc_botaoAlocacoes.insets = new Insets(0, 0, 5, 0);
 		gbc_botaoAlocacoes.gridx = 0;
 		gbc_botaoAlocacoes.gridy = 3;
-		panel.add(botaoAlocacoes, gbc_botaoAlocacoes);
+		panelBotoes.add(botaoAlocacoes, gbc_botaoAlocacoes);
 
 		Component rigidArea_7 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_7 = new GridBagConstraints();
 		gbc_rigidArea_7.insets = new Insets(0, 0, 5, 0);
 		gbc_rigidArea_7.gridx = 0;
 		gbc_rigidArea_7.gridy = 4;
-		panel.add(rigidArea_7, gbc_rigidArea_7);
+		panelBotoes.add(rigidArea_7, gbc_rigidArea_7);
 
 		JButton botaoVeiculos = new JButton("Ve\u00EDculos");
 		GridBagConstraints gbc_botaoVeiculos = new GridBagConstraints();
@@ -132,14 +136,14 @@ public class MenuTelaInicial extends JPanel {
 		gbc_botaoVeiculos.insets = new Insets(0, 0, 5, 0);
 		gbc_botaoVeiculos.gridx = 0;
 		gbc_botaoVeiculos.gridy = 5;
-		panel.add(botaoVeiculos, gbc_botaoVeiculos);
+		panelBotoes.add(botaoVeiculos, gbc_botaoVeiculos);
 
 		Component rigidArea_5 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_5 = new GridBagConstraints();
 		gbc_rigidArea_5.insets = new Insets(0, 0, 5, 0);
 		gbc_rigidArea_5.gridx = 0;
 		gbc_rigidArea_5.gridy = 6;
-		panel.add(rigidArea_5, gbc_rigidArea_5);
+		panelBotoes.add(rigidArea_5, gbc_rigidArea_5);
 
 		JButton btnNewButton = new JButton("Clientes");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
@@ -147,14 +151,14 @@ public class MenuTelaInicial extends JPanel {
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton.gridx = 0;
 		gbc_btnNewButton.gridy = 7;
-		panel.add(btnNewButton, gbc_btnNewButton);
+		panelBotoes.add(btnNewButton, gbc_btnNewButton);
 
 		Component rigidArea_4 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_4 = new GridBagConstraints();
 		gbc_rigidArea_4.insets = new Insets(0, 0, 5, 0);
 		gbc_rigidArea_4.gridx = 0;
 		gbc_rigidArea_4.gridy = 8;
-		panel.add(rigidArea_4, gbc_rigidArea_4);
+		panelBotoes.add(rigidArea_4, gbc_rigidArea_4);
 
 		JButton btnNewButton_2 = new JButton("Administrativo");
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
@@ -162,21 +166,21 @@ public class MenuTelaInicial extends JPanel {
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_2.gridx = 0;
 		gbc_btnNewButton_2.gridy = 9;
-		panel.add(btnNewButton_2, gbc_btnNewButton_2);
+		panelBotoes.add(btnNewButton_2, gbc_btnNewButton_2);
 
 		Component rigidArea_2 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_2 = new GridBagConstraints();
 		gbc_rigidArea_2.insets = new Insets(0, 0, 5, 0);
 		gbc_rigidArea_2.gridx = 0;
 		gbc_rigidArea_2.gridy = 11;
-		panel.add(rigidArea_2, gbc_rigidArea_2);
+		panelBotoes.add(rigidArea_2, gbc_rigidArea_2);
 
 		Component rigidArea_3 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_3 = new GridBagConstraints();
 		gbc_rigidArea_3.insets = new Insets(0, 0, 5, 0);
 		gbc_rigidArea_3.gridx = 0;
 		gbc_rigidArea_3.gridy = 12;
-		panel.add(rigidArea_3, gbc_rigidArea_3);
+		panelBotoes.add(rigidArea_3, gbc_rigidArea_3);
 
 		JLayeredPane layeredPane = new JLayeredPane();
 		splitPane.setRightComponent(layeredPane);
@@ -215,9 +219,9 @@ public class MenuTelaInicial extends JPanel {
 		obterDadosPanel.add(obterDadosVeiculosForm, BorderLayout.CENTER);
 		GridBagLayout gbl_obterDadosVeiculosForm = new GridBagLayout();
 		gbl_obterDadosVeiculosForm.columnWidths = new int[] { 0, 0, 84, 134, 0, 0, 0 };
-		gbl_obterDadosVeiculosForm.rowHeights = new int[] { 36, 20, 20, 20, 20, 23, 19, 0, 0, 0 };
+		gbl_obterDadosVeiculosForm.rowHeights = new int[] { 36, 20, 20, 20, 20, 23, 19, 0, 0, 0, 0 };
 		gbl_obterDadosVeiculosForm.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_obterDadosVeiculosForm.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+		gbl_obterDadosVeiculosForm.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				Double.MIN_VALUE };
 		obterDadosVeiculosForm.setLayout(gbl_obterDadosVeiculosForm);
 
@@ -242,23 +246,23 @@ public class MenuTelaInicial extends JPanel {
 		gbc_rigidArea_37.gridy = 1;
 		obterDadosVeiculosForm.add(rigidArea_37, gbc_rigidArea_37);
 
-		JLabel lblNewLabel_1 = new JLabel("Modelo:");
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 2;
-		gbc_lblNewLabel_1.gridy = 1;
-		obterDadosVeiculosForm.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		JLabel lblNewLabel_3 = new JLabel("Fabricante:");
+		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+		gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_3.gridx = 2;
+		gbc_lblNewLabel_3.gridy = 1;
+		obterDadosVeiculosForm.add(lblNewLabel_3, gbc_lblNewLabel_3);
 
-		modeloVeiculoTF = new JTextField();
-		modeloVeiculoTF.setColumns(10);
-		GridBagConstraints gbc_modeloVeiculoTF = new GridBagConstraints();
-		gbc_modeloVeiculoTF.anchor = GridBagConstraints.NORTH;
-		gbc_modeloVeiculoTF.fill = GridBagConstraints.HORIZONTAL;
-		gbc_modeloVeiculoTF.insets = new Insets(0, 0, 5, 5);
-		gbc_modeloVeiculoTF.gridx = 3;
-		gbc_modeloVeiculoTF.gridy = 1;
-		obterDadosVeiculosForm.add(modeloVeiculoTF, gbc_modeloVeiculoTF);
+		fabricanteVeiculoTF = new JTextField();
+		fabricanteVeiculoTF.setColumns(10);
+		GridBagConstraints gbc_fabricanteVeiculoTF = new GridBagConstraints();
+		gbc_fabricanteVeiculoTF.anchor = GridBagConstraints.NORTH;
+		gbc_fabricanteVeiculoTF.fill = GridBagConstraints.HORIZONTAL;
+		gbc_fabricanteVeiculoTF.insets = new Insets(0, 0, 5, 5);
+		gbc_fabricanteVeiculoTF.gridx = 3;
+		gbc_fabricanteVeiculoTF.gridy = 1;
+		obterDadosVeiculosForm.add(fabricanteVeiculoTF, gbc_fabricanteVeiculoTF);
 
 		Component rigidArea_33 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_33 = new GridBagConstraints();
@@ -274,23 +278,23 @@ public class MenuTelaInicial extends JPanel {
 		gbc_rigidArea_36.gridy = 1;
 		obterDadosVeiculosForm.add(rigidArea_36, gbc_rigidArea_36);
 
-		JLabel lblNewLabel_3 = new JLabel("Fabricante:");
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 2;
-		gbc_lblNewLabel_3.gridy = 2;
-		obterDadosVeiculosForm.add(lblNewLabel_3, gbc_lblNewLabel_3);
+		JLabel lblNewLabel_1 = new JLabel("Modelo:");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 2;
+		gbc_lblNewLabel_1.gridy = 2;
+		obterDadosVeiculosForm.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
-		fabricanteVeiculoTF = new JTextField();
-		fabricanteVeiculoTF.setColumns(10);
-		GridBagConstraints gbc_fabricanteVeiculoTF = new GridBagConstraints();
-		gbc_fabricanteVeiculoTF.anchor = GridBagConstraints.NORTH;
-		gbc_fabricanteVeiculoTF.fill = GridBagConstraints.HORIZONTAL;
-		gbc_fabricanteVeiculoTF.insets = new Insets(0, 0, 5, 5);
-		gbc_fabricanteVeiculoTF.gridx = 3;
-		gbc_fabricanteVeiculoTF.gridy = 2;
-		obterDadosVeiculosForm.add(fabricanteVeiculoTF, gbc_fabricanteVeiculoTF);
+		modeloVeiculoTF = new JTextField();
+		modeloVeiculoTF.setColumns(10);
+		GridBagConstraints gbc_modeloVeiculoTF = new GridBagConstraints();
+		gbc_modeloVeiculoTF.anchor = GridBagConstraints.NORTH;
+		gbc_modeloVeiculoTF.fill = GridBagConstraints.HORIZONTAL;
+		gbc_modeloVeiculoTF.insets = new Insets(0, 0, 5, 5);
+		gbc_modeloVeiculoTF.gridx = 3;
+		gbc_modeloVeiculoTF.gridy = 2;
+		obterDadosVeiculosForm.add(modeloVeiculoTF, gbc_modeloVeiculoTF);
 
 		JLabel lblNewLabel_4 = new JLabel("Ano Lan\u00E7amento:");
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
@@ -337,7 +341,7 @@ public class MenuTelaInicial extends JPanel {
 		gbc_veiculoChkBox.gridy = 5;
 		obterDadosVeiculosForm.add(veiculoChkBox, gbc_veiculoChkBox);
 
-		JButton cadastrarVeiculoBtn = new JButton("Cadastrar");
+		cadastrarVeiculoBtn = new JButton("Cadastrar");
 		cadastrarVeiculoBtn.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		GridBagConstraints gbc_cadastrarVeiculoBtn = new GridBagConstraints();
 		gbc_cadastrarVeiculoBtn.anchor = GridBagConstraints.NORTH;
@@ -365,7 +369,7 @@ public class MenuTelaInicial extends JPanel {
 
 		Component rigidArea_35 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_35 = new GridBagConstraints();
-		gbc_rigidArea_35.insets = new Insets(0, 0, 0, 5);
+		gbc_rigidArea_35.insets = new Insets(0, 0, 5, 5);
 		gbc_rigidArea_35.gridx = 3;
 		gbc_rigidArea_35.gridy = 8;
 		obterDadosVeiculosForm.add(rigidArea_35, gbc_rigidArea_35);
@@ -391,37 +395,8 @@ public class MenuTelaInicial extends JPanel {
 
 		JScrollPane scrollPane = new JScrollPane();
 		consultarDadosPanel.add(scrollPane, BorderLayout.CENTER);
-		// TODO remover columnNames e data
-		String[] columnNames = { "First Name", "Last Name", "Sport", "# of Years", "Vegetarian" };
 
-		Object[][] data = { { "Kathy", "Smith", "Snowboarding", new Integer(5), new Boolean(false) },
-				{ "John", "Doe", "Rowing", new Integer(3), new Boolean(true) },
-				{ "Sue", "Black", "Knitting", new Integer(2), new Boolean(false) },
-				{ "Jane", "White", "Speed reading", new Integer(20), new Boolean(true) },
-				{ "John", "Doe", "Rowing", new Integer(3), new Boolean(true) },
-				{ "Sue", "Black", "Knitting", new Integer(2), new Boolean(false) },
-				{ "Jane", "White", "Speed reading", new Integer(20), new Boolean(true) },
-				{ "John", "Doe", "Rowing", new Integer(3), new Boolean(true) },
-				{ "Sue", "Black", "Knitting", new Integer(2), new Boolean(false) },
-				{ "Jane", "White", "Speed reading", new Integer(20), new Boolean(true) },
-				{ "John", "Doe", "Rowing", new Integer(3), new Boolean(true) },
-				{ "Sue", "Black", "Knitting", new Integer(2), new Boolean(false) },
-				{ "Jane", "White", "Speed reading", new Integer(20), new Boolean(true) },
-				{ "John", "Doe", "Rowing", new Integer(3), new Boolean(true) },
-				{ "Sue", "Black", "Knitting", new Integer(2), new Boolean(false) },
-				{ "Jane", "White", "Speed reading", new Integer(20), new Boolean(true) },
-				{ "John", "Doe", "Rowing", new Integer(3), new Boolean(true) },
-				{ "Sue", "Black", "Knitting", new Integer(2), new Boolean(false) },
-				{ "Jane", "White", "Speed reading", new Integer(20), new Boolean(true) },
-				{ "John", "Doe", "Rowing", new Integer(3), new Boolean(true) },
-				{ "Sue", "Black", "Knitting", new Integer(2), new Boolean(false) },
-				{ "Jane", "White", "Speed reading", new Integer(20), new Boolean(true) },
-				{ "John", "Doe", "Rowing", new Integer(3), new Boolean(true) },
-				{ "Sue", "Black", "Knitting", new Integer(2), new Boolean(false) },
-				{ "Jane", "White", "Speed reading", new Integer(20), new Boolean(true) },
-				{ "Joe", "Brown", "Pool", new Integer(10), new Boolean(false) } };
-		table = new JTable(data, columnNames);
-
+		table = new JTable();
 		scrollPane.setViewportView(table);
 		veiculosTabbedPane.addTab("Editar", editarVeiculoPanel);
 		editarVeiculoPanel.setLayout(new BorderLayout(0, 0));
@@ -551,7 +526,7 @@ public class MenuTelaInicial extends JPanel {
 		edicaoPanel.add(anoEdicaoTF, gbc_anoEdicaoTF);
 		anoEdicaoTF.setColumns(10);
 
-		JButton atualizarVeiculoBtn = new JButton("Atualizar");
+		atualizarVeiculoBtn = new JButton("Atualizar");
 		atualizarVeiculoBtn.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		GridBagConstraints gbc_atualizarVeiculoBtn = new GridBagConstraints();
 		gbc_atualizarVeiculoBtn.insets = new Insets(0, 0, 5, 5);
@@ -576,7 +551,7 @@ public class MenuTelaInicial extends JPanel {
 		edicaoPanel.add(precoEdicaoTF, gbc_precoEdicaoTF);
 		precoEdicaoTF.setColumns(10);
 
-		JButton removerVeiculoBtn = new JButton("Remover");
+		removerVeiculoBtn = new JButton("Remover");
 		removerVeiculoBtn.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		GridBagConstraints gbc_removerVeiculoBtn = new GridBagConstraints();
 		gbc_removerVeiculoBtn.insets = new Insets(0, 0, 5, 5);
@@ -601,14 +576,14 @@ public class MenuTelaInicial extends JPanel {
 		gbc_btnNewButton_8.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_8.gridx = 0;
 		gbc_btnNewButton_8.gridy = 14;
-		panel.add(btnNewButton_8, gbc_btnNewButton_8);
+		panelBotoes.add(btnNewButton_8, gbc_btnNewButton_8);
 
 		JButton btnNewButton_7 = new JButton("Sair");
 		GridBagConstraints gbc_btnNewButton_7 = new GridBagConstraints();
 		gbc_btnNewButton_7.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton_7.gridx = 0;
 		gbc_btnNewButton_7.gridy = 16;
-		panel.add(btnNewButton_7, gbc_btnNewButton_7);
+		panelBotoes.add(btnNewButton_7, gbc_btnNewButton_7);
 
 		JPanel alocacoesPanel = new JPanel();
 		layeredPane.add(alocacoesPanel, "name_132767050113700");
@@ -748,8 +723,6 @@ public class MenuTelaInicial extends JPanel {
 
 		JButton realizarAlocacaoButton = new JButton("Alocar");
 		cadastrarAluguelPanel.add(realizarAlocacaoButton, "cell 2 9");
-		// layeredPane_1.setLayout(new FormLayout(new ColumnSpec[] {},
-		// new RowSpec[] {}));
 		alocacoesTabbedPane.addTab("Consultar Alocação", consultarAluguelPanel);
 		consultarAluguelPanel.setLayout(new BorderLayout(0, 0));
 
@@ -961,108 +934,124 @@ public class MenuTelaInicial extends JPanel {
 		Component rigidArea_54 = Box.createRigidArea(new Dimension(20, 20));
 		informativoPanel.add(rigidArea_54, "cell 4 10 2 1");
 		cadastrarClientePanel.setLayout(new MigLayout("", "[][49.00,trailing][49.00,trailing][111.00][111.00][][][][]",
-				"[][][][][][][][][][][][][]"));
+				"[][][][][][][][][][][][]"));
 
-		JButton btnNewButton_12 = new JButton("<");
-		btnNewButton_12.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		cadastrarClientePanel.add(btnNewButton_12, "cell 0 0");
-
-		Component rigidArea_47 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_47, "cell 3 0 2 1");
+		voltarParaAlocacaoTelaInicialBtn = new JButton("<");
+		voltarParaAlocacaoTelaInicialBtn.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		cadastrarClientePanel.add(voltarParaAlocacaoTelaInicialBtn, "cell 0 0");
 
 		Component rigidArea_46 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_46, "cell 3 1 2 1");
+		cadastrarClientePanel.add(rigidArea_46, "cell 3 0 2 1");
 
 		Component rigidArea_45 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_45, "cell 0 2");
+		cadastrarClientePanel.add(rigidArea_45, "cell 0 1");
 
 		JLabel lblNewLabel_2 = new JLabel("Nome completo:");
-		cadastrarClientePanel.add(lblNewLabel_2, "cell 1 2,alignx trailing");
+		cadastrarClientePanel.add(lblNewLabel_2, "cell 1 1,alignx trailing");
 
 		textField_8 = new JTextField();
-		cadastrarClientePanel.add(textField_8, "cell 2 2 3 1,growx");
+		cadastrarClientePanel.add(textField_8, "cell 2 1 3 1,growx");
 		textField_8.setColumns(10);
 
 		Component rigidArea_44 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_44, "cell 5 2");
+		cadastrarClientePanel.add(rigidArea_44, "cell 5 1");
 
 		Component rigidArea_40 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_40, "cell 6 2");
+		cadastrarClientePanel.add(rigidArea_40, "cell 6 1");
 
 		Component rigidArea_50 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_50, "cell 7 2");
+		cadastrarClientePanel.add(rigidArea_50, "cell 7 1");
 
 		Component rigidArea_51 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_51, "cell 8 2");
+		cadastrarClientePanel.add(rigidArea_51, "cell 8 1");
 
 		JLabel lblNewLabel_10 = new JLabel("CPF:");
-		cadastrarClientePanel.add(lblNewLabel_10, "cell 1 3,alignx trailing");
+		cadastrarClientePanel.add(lblNewLabel_10, "cell 1 2,alignx trailing");
 
 		textField_9 = new JTextField();
-		cadastrarClientePanel.add(textField_9, "cell 2 3 3 1,growx");
+		cadastrarClientePanel.add(textField_9, "cell 2 2 3 1,growx");
 		textField_9.setColumns(10);
 
 		JLabel lblNewLabel_11 = new JLabel("Telefone:");
-		cadastrarClientePanel.add(lblNewLabel_11, "cell 1 4,alignx trailing");
+		cadastrarClientePanel.add(lblNewLabel_11, "cell 1 3,alignx trailing");
 
 		textField_10 = new JTextField();
-		cadastrarClientePanel.add(textField_10, "cell 2 4 3 1,growx");
+		cadastrarClientePanel.add(textField_10, "cell 2 3 3 1,growx");
 		textField_10.setColumns(10);
 
 		JLabel lblNewLabel_12 = new JLabel("CNH:");
-		cadastrarClientePanel.add(lblNewLabel_12, "cell 1 5,alignx trailing");
+		cadastrarClientePanel.add(lblNewLabel_12, "cell 1 4,alignx trailing");
 
 		textField_11 = new JTextField();
-		cadastrarClientePanel.add(textField_11, "cell 2 5 3 1,growx");
+		cadastrarClientePanel.add(textField_11, "cell 2 4 3 1,growx");
 		textField_11.setColumns(10);
 
 		JLabel lblNewLabel_13 = new JLabel("Data nascimento:");
-		cadastrarClientePanel.add(lblNewLabel_13, "cell 1 6,alignx trailing");
+		cadastrarClientePanel.add(lblNewLabel_13, "cell 1 5,alignx trailing");
 
 		textField_12 = new JTextField();
-		cadastrarClientePanel.add(textField_12, "cell 2 6 3 1,growx");
+		cadastrarClientePanel.add(textField_12, "cell 2 5 3 1,growx");
 		textField_12.setColumns(10);
 
 		Component rigidArea_48 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_48, "cell 3 7 2 1");
+		cadastrarClientePanel.add(rigidArea_48, "cell 3 6 2 1");
 
 		Component rigidArea_49 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_49, "cell 3 8 2 1");
+		cadastrarClientePanel.add(rigidArea_49, "cell 3 7 2 1");
 
 		JButton btnNewButton_10 = new JButton("Cadastrar e Prosseguir");
 		btnNewButton_10.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		cadastrarClientePanel.add(btnNewButton_10, "cell 1 9 2 1");
+		cadastrarClientePanel.add(btnNewButton_10, "cell 1 8 2 1");
 
 		Component rigidArea_56 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_56, "flowx,cell 3 9 2 1");
+		cadastrarClientePanel.add(rigidArea_56, "flowx,cell 3 8 2 1");
 
 		Component rigidArea_55 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_55, "cell 3 9 2 1,alignx right");
+		cadastrarClientePanel.add(rigidArea_55, "cell 3 8 2 1,alignx right");
 
 		JButton btnNewButton_11 = new JButton("Limpar");
 		btnNewButton_11.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		cadastrarClientePanel.add(btnNewButton_11, "cell 3 9 2 1,alignx right");
+		cadastrarClientePanel.add(btnNewButton_11, "cell 3 8 2 1,alignx right");
 
 		Component rigidArea_57 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_57, "cell 2 10");
+		cadastrarClientePanel.add(rigidArea_57, "cell 2 9");
 
 		Component rigidArea_58 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_58, "cell 2 11");
+		cadastrarClientePanel.add(rigidArea_58, "cell 2 10");
 
 		Component rigidArea_59 = Box.createRigidArea(new Dimension(20, 20));
-		cadastrarClientePanel.add(rigidArea_59, "cell 2 12");
+		cadastrarClientePanel.add(rigidArea_59, "cell 2 11");
 
 		alternarTela(btnNewButton_10, alocarLayeredPane, cadastrarAluguelPanel);
 
 		JButton LimparContratoButton = new JButton("Limpar");
 		cadastrarAluguelPanel.add(LimparContratoButton, "cell 5 9");
 		VeiculoController.obterListaVeiculos(edicaoTable);
-
+		VeiculoController.obterListaVeiculos(table);
 		limparVeiculoBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limparCadastro();
 			}
 		});
+
+		atualizarVeiculoBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				atualizarVeiculo();
+			}
+		});
+		cadastrarVeiculoBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				obterDadosParaCadastroDeVeiculos();
+			}
+		});
+		
+		removerVeiculoBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				removerVeiculo();
+			}
+		});
+		alternarTela(voltarParaAlocacaoTelaInicialBtn, alocarLayeredPane, informativoPanel);
+
 	}
 
 	private void limparCadastro() {
@@ -1086,27 +1075,33 @@ public class MenuTelaInicial extends JPanel {
 	private Boolean validarDadosParaCadastroDeVeiculo() {
 		Boolean valido = true;
 
-		if (!MetodosGerais.StringIsNullOrWhiteSpace(modeloVeiculoTF.getText())) {
+		if (MetodosGerais.StringIsNullOrWhiteSpace(modeloVeiculoTF.getText())) {
 			valido = false;
-		} else if (!MetodosGerais.StringIsNullOrWhiteSpace(fabricanteVeiculoTF.getText())) {
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(fabricanteVeiculoTF.getText())) {
 			valido = false;
-		} else if (!MetodosGerais.StringIsNullOrWhiteSpace(anoVeiculoTF.getText())) {
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(anoVeiculoTF.getText())) {
 			valido = false;
-		} else if (!MetodosGerais.StringIsNullOrWhiteSpace(precoVeiculoTF.getText())) {
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(precoVeiculoTF.getText())) {
 			valido = false;
 		}
-		JOptionPane.showMessageDialog(null, "Não podem haver campos vazios.");
+		if (!valido) {
+			JOptionPane.showMessageDialog(null, "Não podem haver campos vazios.");
+		}
 		return valido;
 	}
 
 	public void selecionarVeiculo() {
-		DefaultTableModel dtm = (DefaultTableModel) edicaoTable.getModel();
-		int linhaSelecinhada = edicaoTable.getSelectedRow();
-		fabricanteEdicaoTF.setText(dtm.getValueAt(linhaSelecinhada, 1).toString());
-		modeloEdicaoTF.setText(dtm.getValueAt(linhaSelecinhada, 2).toString());
-		anoEdicaoTF.setText(dtm.getValueAt(linhaSelecinhada, 3).toString());
-		precoEdicaoTF.setText(dtm.getValueAt(linhaSelecinhada, 4).toString());
-		disponibilidadeChkBox.setSelected(dtm.getValueAt(linhaSelecinhada, 5).toString().equals("true"));
+		if (edicaoTable.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(null, "Por favor selecione uma linha.");
+		} else {
+			DefaultTableModel dtm = (DefaultTableModel) edicaoTable.getModel();
+			int linhaSelecionada = edicaoTable.getSelectedRow();
+			fabricanteEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 1).toString());
+			modeloEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 2).toString());
+			anoEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 3).toString());
+			precoEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 4).toString());
+			disponibilidadeChkBox.setSelected(dtm.getValueAt(linhaSelecionada, 5).toString().equals("true"));
+		}
 	}
 
 	public void obterDadosParaCadastroDeVeiculos() {
@@ -1116,8 +1111,40 @@ public class MenuTelaInicial extends JPanel {
 			model.setFabricante(fabricanteVeiculoTF.getText());
 			model.setAnoLancamento(Integer.parseInt(anoVeiculoTF.getText()));
 			model.setEstaDisponivel(veiculoChkBox.isSelected());
-			VeiculoController.cadastrarVeiculo(model);
+			model.setPrecoAluguel(Double.parseDouble(precoVeiculoTF.getText()));
+			VeiculoController.cadastrarVeiculo(model, edicaoTable);
+			VeiculoController.obterListaVeiculos(edicaoTable);
+			VeiculoController.obterListaVeiculos(table);
+
 		}
 	}
 
+	public void removerVeiculo() {
+		if (edicaoTable.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(null, "Por favor selecione uma linha.");
+		} else {
+			DefaultTableModel dtm = (DefaultTableModel) edicaoTable.getModel();
+			int linhaSelecionada = edicaoTable.getSelectedRow();
+			int idVeiculo = Integer.parseInt(dtm.getValueAt(linhaSelecionada, 0).toString());
+			VeiculoController.removerVeiculo(idVeiculo);
+			VeiculoController.obterListaVeiculos(edicaoTable);
+			VeiculoController.obterListaVeiculos(table);
+		}
+	}
+
+	public void atualizarVeiculo() {
+		VeiculoModel model = new VeiculoModel();
+		DefaultTableModel dtm = (DefaultTableModel) edicaoTable.getModel();
+		int linhaSelecinhada = edicaoTable.getSelectedRow();
+		model.setIdVeiculo(Integer.parseInt(dtm.getValueAt(linhaSelecinhada, 0).toString()));
+		model.setFabricante(fabricanteEdicaoTF.getText());
+		model.setModelo(modeloEdicaoTF.getText());
+		model.setAnoLancamento(Integer.parseInt(anoEdicaoTF.getText()));
+		model.setPrecoAluguel(Double.parseDouble(precoEdicaoTF.getText()));
+		model.setEstaDisponivel(disponibilidadeChkBox.isSelected());
+		VeiculoController.editarVeiculo(model, edicaoTable);
+		VeiculoController.obterListaVeiculos(edicaoTable);
+		VeiculoController.obterListaVeiculos(table);
+
+	}
 }
