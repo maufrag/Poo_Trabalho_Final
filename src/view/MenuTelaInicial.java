@@ -38,10 +38,12 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controller.ClienteController;
 import controller.VeiculoController;
 import metodosGerais.AnoTextField;
 import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
+import model.ClienteModel;
 import model.VeiculoModel;
 
 import javax.swing.JComboBox;
@@ -62,17 +64,19 @@ public class MenuTelaInicial extends JPanel {
 	private JTextField fabricanteEdicaoTF;
 	private JTextField modeloEdicaoTF;
 	private JTextField anoEdicaoTF;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
+	private JTextField nomeClienteTF;
+	private JTextField cpfClienteTF;
+	private JTextField telefoneClienteTF;
+	private JTextField cnhClienteTF;
+	private JTextField dataNascimenteClientoTF;
 	private JTextField textField_13;
 	private JTextField textField_14;
 	private JTextField precoEdicaoTF;
 	private JButton voltarParaAlocacaoTelaInicialBtn;
 	private JButton removerVeiculoBtn;
 	private JButton cadastrarVeiculoBtn;
+	private JButton cadEProsseguirBtn;
+	private JComboBox<ClienteModel> clienteCadastradoComboBox;
 
 	/**
 	 * Create the panel.
@@ -694,8 +698,8 @@ public class MenuTelaInicial extends JPanel {
 		JLabel lblNewLabel_14 = new JLabel("Cliente:");
 		cadastrarAluguelPanel.add(lblNewLabel_14, "cell 2 2,alignx trailing");
 
-		JComboBox comboBox = new JComboBox();
-		cadastrarAluguelPanel.add(comboBox, "cell 3 2 3 1,growx");
+		clienteCadastradoComboBox = new JComboBox<ClienteModel>();
+		cadastrarAluguelPanel.add(clienteCadastradoComboBox, "cell 3 2 3 1,growx");
 
 		Component rigidArea_63 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarAluguelPanel.add(rigidArea_63, "cell 8 2");
@@ -954,9 +958,9 @@ public class MenuTelaInicial extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("Nome completo:");
 		cadastrarClientePanel.add(lblNewLabel_2, "cell 1 1,alignx trailing");
 
-		textField_8 = new JTextField();
-		cadastrarClientePanel.add(textField_8, "cell 2 1 3 1,growx");
-		textField_8.setColumns(10);
+		nomeClienteTF = new JTextField();
+		cadastrarClientePanel.add(nomeClienteTF, "cell 2 1 3 1,growx");
+		nomeClienteTF.setColumns(10);
 
 		Component rigidArea_44 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarClientePanel.add(rigidArea_44, "cell 5 1");
@@ -973,30 +977,30 @@ public class MenuTelaInicial extends JPanel {
 		JLabel lblNewLabel_10 = new JLabel("CPF:");
 		cadastrarClientePanel.add(lblNewLabel_10, "cell 1 2,alignx trailing");
 
-		textField_9 = new JTextField();
-		cadastrarClientePanel.add(textField_9, "cell 2 2 3 1,growx");
-		textField_9.setColumns(10);
+		cpfClienteTF = new JTextField();
+		cadastrarClientePanel.add(cpfClienteTF, "cell 2 2 3 1,growx");
+		cpfClienteTF.setColumns(10);
 
 		JLabel lblNewLabel_11 = new JLabel("Telefone:");
 		cadastrarClientePanel.add(lblNewLabel_11, "cell 1 3,alignx trailing");
 
-		textField_10 = new JTextField();
-		cadastrarClientePanel.add(textField_10, "cell 2 3 3 1,growx");
-		textField_10.setColumns(10);
+		telefoneClienteTF = new JTextField();
+		cadastrarClientePanel.add(telefoneClienteTF, "cell 2 3 3 1,growx");
+		telefoneClienteTF.setColumns(10);
 
 		JLabel lblNewLabel_12 = new JLabel("CNH:");
 		cadastrarClientePanel.add(lblNewLabel_12, "cell 1 4,alignx trailing");
 
-		textField_11 = new JTextField();
-		cadastrarClientePanel.add(textField_11, "cell 2 4 3 1,growx");
-		textField_11.setColumns(10);
+		cnhClienteTF = new JTextField();
+		cadastrarClientePanel.add(cnhClienteTF, "cell 2 4 3 1,growx");
+		cnhClienteTF.setColumns(10);
 
 		JLabel lblNewLabel_13 = new JLabel("Data nascimento:");
 		cadastrarClientePanel.add(lblNewLabel_13, "cell 1 5,alignx trailing");
 
-		textField_12 = new JTextField();
-		cadastrarClientePanel.add(textField_12, "cell 2 5 3 1,growx");
-		textField_12.setColumns(10);
+		dataNascimenteClientoTF = new JTextField();
+		cadastrarClientePanel.add(dataNascimenteClientoTF, "cell 2 5 3 1,growx");
+		dataNascimenteClientoTF.setColumns(10);
 
 		Component rigidArea_48 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarClientePanel.add(rigidArea_48, "cell 3 6 2 1");
@@ -1004,9 +1008,9 @@ public class MenuTelaInicial extends JPanel {
 		Component rigidArea_49 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarClientePanel.add(rigidArea_49, "cell 3 7 2 1");
 
-		JButton btnNewButton_10 = new JButton("Cadastrar e Prosseguir");
-		btnNewButton_10.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		cadastrarClientePanel.add(btnNewButton_10, "cell 1 8 2 1");
+		cadEProsseguirBtn = new JButton("Cadastrar e Prosseguir");
+		cadEProsseguirBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		cadastrarClientePanel.add(cadEProsseguirBtn, "cell 1 8 2 1");
 
 		Component rigidArea_56 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarClientePanel.add(rigidArea_56, "flowx,cell 3 8 2 1");
@@ -1014,9 +1018,9 @@ public class MenuTelaInicial extends JPanel {
 		Component rigidArea_55 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarClientePanel.add(rigidArea_55, "cell 3 8 2 1,alignx right");
 
-		JButton btnNewButton_11 = new JButton("Limpar");
-		btnNewButton_11.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		cadastrarClientePanel.add(btnNewButton_11, "cell 3 8 2 1,alignx right");
+		JButton limparClienteTF = new JButton("Limpar");
+		limparClienteTF.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		cadastrarClientePanel.add(limparClienteTF, "cell 3 8 2 1,alignx right");
 
 		Component rigidArea_57 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarClientePanel.add(rigidArea_57, "cell 2 9");
@@ -1027,7 +1031,7 @@ public class MenuTelaInicial extends JPanel {
 		Component rigidArea_59 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarClientePanel.add(rigidArea_59, "cell 2 11");
 
-		alternarTela(btnNewButton_10, alocarLayeredPane, cadastrarAluguelPanel);
+		alternarTela(cadEProsseguirBtn, alocarLayeredPane, cadastrarAluguelPanel);
 
 		JButton LimparContratoButton = new JButton("Limpar");
 		cadastrarAluguelPanel.add(LimparContratoButton, "cell 5 9");
@@ -1049,14 +1053,24 @@ public class MenuTelaInicial extends JPanel {
 				obterDadosParaCadastroDeVeiculos();
 			}
 		});
-		
+
 		removerVeiculoBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removerVeiculo();
 			}
 		});
+		
+		cadEProsseguirBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ClienteModel model = cadastrarEObterCliente();
+				if(model != null) {
+					clienteCadastradoComboBox.addItem(ClienteController.preencherComboBoxComClienteCadastrado(model));
+				}
+			}
+		});
+		
 		alternarTela(voltarParaAlocacaoTelaInicialBtn, alocarLayeredPane, informativoPanel);
-
+		
 	}
 
 	private void limparCadastro() {
@@ -1151,5 +1165,42 @@ public class MenuTelaInicial extends JPanel {
 		VeiculoController.obterListaVeiculos(edicaoTable);
 		VeiculoController.obterListaVeiculos(table);
 
+	}
+
+	public Boolean validarCadastroCliente() {
+		Boolean valido = true;
+
+		if (MetodosGerais.StringIsNullOrWhiteSpace(nomeClienteTF.getText())) {
+			valido = false;
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(cpfClienteTF.getText())) {
+			valido = false;
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(telefoneClienteTF.getText())) {
+			valido = false;
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(cnhClienteTF.getText())) {
+			valido = false;
+		} // else if (MetodosGerais.StringIsNullOrWhiteSpace(nomeClienteTF.getText())) {
+
+		// }
+		if (!valido) {
+			JOptionPane.showMessageDialog(null, "Não podem haver campos vazios");
+		}
+		return valido;
+	}
+
+	public ClienteModel cadastrarEObterCliente() {
+		ClienteModel model = new ClienteModel();
+
+		if (validarCadastroCliente()) {
+			model.setNomeCompleto(nomeClienteTF.getText());
+			model.setCpf(cpfClienteTF.getText());
+			model.setTelefone(telefoneClienteTF.getText());
+			model.setCnh(cnhClienteTF.getText());
+			model.setDataNascimento(null);
+			// dataNascimenteClientoTF.getText());
+			ClienteController.cadastrarCliente(model);
+			
+			return model;
+		}
+		return null;
 	}
 }

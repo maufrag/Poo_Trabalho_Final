@@ -61,5 +61,9 @@ public class ClienteModel {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-
+	
+	@Override
+	public String toString() {
+		return getNomeCompleto();
+	}
 }
