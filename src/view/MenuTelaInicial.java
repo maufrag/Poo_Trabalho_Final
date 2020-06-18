@@ -15,6 +15,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import metodosGerais.*;
 import java.awt.CardLayout;
 import java.awt.Color;
 
@@ -40,9 +41,6 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.ClienteController;
 import controller.VeiculoController;
-import metodosGerais.AnoTextField;
-import metodosGerais.LimiteTextField;
-import metodosGerais.MetodosGerais;
 import model.ClienteModel;
 import model.VeiculoModel;
 
@@ -959,6 +957,7 @@ public class MenuTelaInicial extends JPanel {
 		cadastrarClientePanel.add(lblNewLabel_2, "cell 1 1,alignx trailing");
 
 		nomeClienteTF = new JTextField();
+		nomeClienteTF.setDocument(new LimiteTextField(50));
 		cadastrarClientePanel.add(nomeClienteTF, "cell 2 1 3 1,growx");
 		nomeClienteTF.setColumns(10);
 
@@ -977,14 +976,14 @@ public class MenuTelaInicial extends JPanel {
 		JLabel lblNewLabel_10 = new JLabel("CPF:");
 		cadastrarClientePanel.add(lblNewLabel_10, "cell 1 2,alignx trailing");
 
-		cpfClienteTF = new JTextField();
+		cpfClienteTF = new CpfTextField();
 		cadastrarClientePanel.add(cpfClienteTF, "cell 2 2 3 1,growx");
 		cpfClienteTF.setColumns(10);
 
 		JLabel lblNewLabel_11 = new JLabel("Telefone:");
 		cadastrarClientePanel.add(lblNewLabel_11, "cell 1 3,alignx trailing");
 
-		telefoneClienteTF = new JTextField();
+		telefoneClienteTF = new TelefoneTextField();
 		cadastrarClientePanel.add(telefoneClienteTF, "cell 2 3 3 1,growx");
 		telefoneClienteTF.setColumns(10);
 
@@ -1035,8 +1034,10 @@ public class MenuTelaInicial extends JPanel {
 
 		JButton LimparContratoButton = new JButton("Limpar");
 		cadastrarAluguelPanel.add(LimparContratoButton, "cell 5 9");
+		
 		VeiculoController.obterListaVeiculos(edicaoTable);
 		VeiculoController.obterListaVeiculos(table);
+
 		limparVeiculoBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limparCadastro();
@@ -1134,7 +1135,6 @@ public class MenuTelaInicial extends JPanel {
 			VeiculoController.cadastrarVeiculo(model, edicaoTable);
 			VeiculoController.obterListaVeiculos(edicaoTable);
 			VeiculoController.obterListaVeiculos(table);
-
 		}
 	}
 

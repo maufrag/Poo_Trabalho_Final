@@ -701,7 +701,7 @@ public class MainView extends JFrame {
 
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (logar()) {
+				if (autenticarLogin()) {
 					layeredPane.removeAll();
 					layeredPane.add(new MenuTelaInicial());
 					layeredPane.repaint();
@@ -726,9 +726,9 @@ public class MainView extends JFrame {
 
 	private Boolean validarCadastro() {
 		Boolean valido = true;
-		if (MetodosGerais.StringIsNullOrWhiteSpace(nomeCompletoTextField.getText())) {
-			JOptionPane.showMessageDialog(null, "Nome do cliente não pode ser vazio.");
-			valido = false;
+		if (MetodosGerais.StringIsNullOrWhiteSpace(nomeCompletoTextField.getText()) || !MetodosGerais.validarNome(nomeCompletoTextField.getText())) {
+				JOptionPane.showMessageDialog(null, "Nome deve ser composto de nome e sobrenome.");
+				valido = false;
 		} else if (MetodosGerais.StringIsNullOrWhiteSpace(cpfTextField.getText())) {
 			JOptionPane.showMessageDialog(null, "CPF precisa estar preenchido.");
 			valido = false;
@@ -742,7 +742,7 @@ public class MainView extends JFrame {
 		return valido;
 	}
 
-	private Boolean logar() {
+	private Boolean autenticarLogin() {
 		if (validarLogin()) {
 			if(loginTextField.getText().equals("admin") && String.valueOf(passwordTextField.getPassword()).equals("admin")) {
 				return true;

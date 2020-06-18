@@ -126,5 +126,18 @@ public class MetodosGerais {
 			return null;
 		}
 	}
+	
+	public static boolean validarNome(String nome) {
+		try {
+			String[] nomes;
+			nomes = nome.split(" ");
+			if(nomes.length > 1 && nomes[1] != null && !MetodosGerais.StringIsNullOrWhiteSpace(nomes[1])) {
+				return true;				
+			}		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }
