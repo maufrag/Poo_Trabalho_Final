@@ -40,6 +40,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.VeiculoController;
 import metodosGerais.AnoTextField;
+import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
 import model.VeiculoModel;
 
@@ -256,6 +257,7 @@ public class MenuTelaInicial extends JPanel {
 
 		fabricanteVeiculoTF = new JTextField();
 		fabricanteVeiculoTF.setColumns(10);
+		fabricanteVeiculoTF.setDocument(new LimiteTextField(20));
 		GridBagConstraints gbc_fabricanteVeiculoTF = new GridBagConstraints();
 		gbc_fabricanteVeiculoTF.anchor = GridBagConstraints.NORTH;
 		gbc_fabricanteVeiculoTF.fill = GridBagConstraints.HORIZONTAL;
@@ -288,6 +290,7 @@ public class MenuTelaInicial extends JPanel {
 
 		modeloVeiculoTF = new JTextField();
 		modeloVeiculoTF.setColumns(10);
+		modeloVeiculoTF.setDocument(new LimiteTextField(20));
 		GridBagConstraints gbc_modeloVeiculoTF = new GridBagConstraints();
 		gbc_modeloVeiculoTF.anchor = GridBagConstraints.NORTH;
 		gbc_modeloVeiculoTF.fill = GridBagConstraints.HORIZONTAL;
@@ -470,6 +473,7 @@ public class MenuTelaInicial extends JPanel {
 		edicaoPanel.add(frabricanteVeiculoLabel, gbc_frabricanteVeiculoLabel);
 
 		fabricanteEdicaoTF = new JTextField();
+		fabricanteEdicaoTF.setDocument(new LimiteTextField(20));
 		GridBagConstraints gbc_fabricanteEdicaoTF = new GridBagConstraints();
 		gbc_fabricanteEdicaoTF.insets = new Insets(0, 0, 5, 5);
 		gbc_fabricanteEdicaoTF.fill = GridBagConstraints.HORIZONTAL;
@@ -487,6 +491,7 @@ public class MenuTelaInicial extends JPanel {
 		edicaoPanel.add(modeloVeiculoLabel, gbc_modeloVeiculoLabel);
 
 		modeloEdicaoTF = new JTextField();
+		modeloEdicaoTF.setDocument(new LimiteTextField(20));
 		GridBagConstraints gbc_modeloEdicaoTF = new GridBagConstraints();
 		gbc_modeloEdicaoTF.insets = new Insets(0, 0, 5, 5);
 		gbc_modeloEdicaoTF.fill = GridBagConstraints.HORIZONTAL;

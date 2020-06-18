@@ -11,6 +11,7 @@ import javax.swing.text.MaskFormatter;
 import controller.CadastroController;
 import controller.LoginController;
 import metodosGerais.CpfTextField;
+import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
 import metodosGerais.TelefoneTextField;
 import model.CargoModel;
@@ -236,6 +237,7 @@ public class MainView extends JFrame {
 		panel.add(lblNewLabel, gbc_lblNewLabel);
 
 		loginTextField = new JTextField();
+		loginTextField.setDocument(new LimiteTextField(50));
 		GridBagConstraints gbc_loginTextField = new GridBagConstraints();
 		gbc_loginTextField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_loginTextField.insets = new Insets(0, 0, 5, 5);
@@ -253,6 +255,7 @@ public class MainView extends JFrame {
 		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
 		passwordTextField = new JPasswordField();
+		passwordTextField.setDocument(new LimiteTextField(8));
 		GridBagConstraints gbc_passwordTextField = new GridBagConstraints();
 		gbc_passwordTextField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_passwordTextField.insets = new Insets(0, 0, 5, 5);
@@ -488,6 +491,7 @@ public class MainView extends JFrame {
 		panel_1.add(nomeCompletoLabel, gbc_nomeCompletoLabel);
 
 		nomeCompletoTextField = new JTextField();
+		nomeCompletoTextField.setDocument(new LimiteTextField(50));
 		GridBagConstraints gbc_nomeCompletoTextField = new GridBagConstraints();
 		gbc_nomeCompletoTextField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_nomeCompletoTextField.gridwidth = 2;
