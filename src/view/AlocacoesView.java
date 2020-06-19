@@ -65,7 +65,7 @@ public class AlocacoesView extends JPanel {
 		add(alocacoesPanel, "name_132767050113700");
 
 		JTabbedPane alocacoesTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		add(alocacoesTabbedPane);
+		alocacoesPanel.add(alocacoesTabbedPane);
 		JPanel realizarAluguelPanel = new JPanel();
 		JPanel consultarAluguelPanel = new JPanel();
 
@@ -393,7 +393,7 @@ public class AlocacoesView extends JPanel {
 		gbc_rigidArea_83.gridy = 6;
 		filtrosContratosPanel.add(rigidArea_83, gbc_rigidArea_83);
 		consultarContratosPanel.setLayout(gl_consultarContratosPanel);
-		alocacoesPanel.add(alocacoesTabbedPane);
+		//alocacoesPanel.add(alocacoesTabbedPane);
 
 		Component rigidArea_39 = Box.createRigidArea(new Dimension(20, 20));
 		informativoPanel.add(rigidArea_39, "cell 4 8 2 1,alignx trailing");
