@@ -12,8 +12,6 @@ import java.awt.Insets;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-
 import javax.swing.Box;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -30,13 +28,10 @@ import javax.swing.UIManager;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
-
-import controller.ClienteController;
 import controller.VeiculoController;
 import metodosGerais.AnoTextField;
 import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
-import model.ClienteModel;
 import model.VeiculoModel;
 
 public class VeiculosView extends JPanel {
@@ -55,6 +50,7 @@ public class VeiculosView extends JPanel {
 	private JTextField precoEdicaoTF;
 	private JButton removerVeiculoBtn;
 	private JButton cadastrarVeiculoBtn;
+
 	/**
 	 * Create the panel.
 	 */
@@ -63,7 +59,7 @@ public class VeiculosView extends JPanel {
 		JPanel veiculosPanel = new JPanel();
 		add(veiculosPanel, "name_5290351763300");
 		veiculosPanel.setLayout(new GridLayout(1, 0, 0, 0));
-		add(veiculosPanel);
+		//add(veiculosPanel);
 
 		JTabbedPane veiculosTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		JPanel cadastrarVeiculoPanel = new JPanel();
@@ -446,7 +442,7 @@ public class VeiculosView extends JPanel {
 		edicaoPanel.add(disponibilidadeChkBox, gbc_disponibilidadeChkBox);
 		panel_2.setLayout(gl_panel_2);
 		veiculosPanel.add(veiculosTabbedPane);
-		
+
 		limparVeiculoBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limparCadastro();
@@ -469,7 +465,7 @@ public class VeiculosView extends JPanel {
 				removerVeiculo();
 			}
 		});
-		
+
 		VeiculoController.obterListaVeiculos(edicaoTable);
 		VeiculoController.obterListaVeiculos(table);
 
@@ -481,7 +477,7 @@ public class VeiculosView extends JPanel {
 		anoVeiculoTF.setText("");
 		precoVeiculoTF.setText("");
 	}
-	
+
 	private void limparSelecao() {
 		fabricanteEdicaoTF.setText("");
 		modeloEdicaoTF.setText("");
@@ -574,5 +570,5 @@ public class VeiculosView extends JPanel {
 		VeiculoController.obterListaVeiculos(edicaoTable);
 		VeiculoController.obterListaVeiculos(table);
 		limparSelecao();
-	}	
+	}
 }

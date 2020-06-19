@@ -1,10 +1,7 @@
 package controller;
 
 import java.util.List;
-
 import javax.swing.JTable;
-
-import Repository.ClienteRepository;
 import Repository.VeiculoRepository;
 import model.VeiculoModel;
 
@@ -13,7 +10,6 @@ public class VeiculoController {
 	public static void cadastrarVeiculo(VeiculoModel model, JTable edicaoTable) {
 		VeiculoRepository.insertInto(model);
 	}
-
 	
 	public static void removerVeiculo(int idVeiculo) {
 		VeiculoRepository.removerVeiculo(idVeiculo);
