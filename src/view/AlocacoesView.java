@@ -37,10 +37,15 @@ import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
 import metodosGerais.TelefoneTextField;
 import model.ClienteModel;
+import model.FuncionarioModel;
 import model.VeiculoModel;
 import net.miginfocom.swing.MigLayout;
 
 public class AlocacoesView extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6789645981297454386L;
 	private JTextField nomeClienteTF;
 	private JTextField cpfClienteTF;
 	private JTextField telefoneClienteTF;
@@ -54,6 +59,8 @@ public class AlocacoesView extends JPanel {
 	private JComboBox<ClienteModel> clienteCadastradoComboBox;
 	private JComboBox<VeiculoModel> veiculosCadastradosComboBox;
 	private JButton voltarParaInformativoBtn;
+	private JComboBox<ClienteModel> comboBoxClientes;
+	private JComboBox<FuncionarioModel> comboBoxFuncionario;
 
 	/**
 	 * Create the panel.
@@ -265,7 +272,7 @@ public class AlocacoesView extends JPanel {
 		gbc_lblNewLabel_18.gridy = 1;
 		filtrosContratosPanel.add(lblNewLabel_18, gbc_lblNewLabel_18);
 
-		JComboBox comboBoxClientes = new JComboBox();
+		comboBoxClientes = new JComboBox<ClienteModel>();
 		GridBagConstraints gbc_comboBoxClientes = new GridBagConstraints();
 		gbc_comboBoxClientes.gridwidth = 2;
 		gbc_comboBoxClientes.insets = new Insets(0, 0, 5, 5);
@@ -296,7 +303,7 @@ public class AlocacoesView extends JPanel {
 		gbc_lblNewLabel_19.gridy = 2;
 		filtrosContratosPanel.add(lblNewLabel_19, gbc_lblNewLabel_19);
 
-		JComboBox comboBoxFuncionario = new JComboBox();
+		comboBoxFuncionario = new JComboBox<FuncionarioModel>();
 		GridBagConstraints gbc_comboBoxFuncionario = new GridBagConstraints();
 		gbc_comboBoxFuncionario.gridwidth = 2;
 		gbc_comboBoxFuncionario.insets = new Insets(0, 0, 5, 5);
@@ -393,7 +400,6 @@ public class AlocacoesView extends JPanel {
 		gbc_rigidArea_83.gridy = 6;
 		filtrosContratosPanel.add(rigidArea_83, gbc_rigidArea_83);
 		consultarContratosPanel.setLayout(gl_consultarContratosPanel);
-		//alocacoesPanel.add(alocacoesTabbedPane);
 
 		Component rigidArea_39 = Box.createRigidArea(new Dimension(20, 20));
 		informativoPanel.add(rigidArea_39, "cell 4 8 2 1,alignx trailing");

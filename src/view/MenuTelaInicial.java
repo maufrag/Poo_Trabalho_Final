@@ -4,8 +4,12 @@ import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.GridLayout;
 import javax.swing.JSplitPane;
+import javax.swing.SwingUtilities;
+
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,13 +97,13 @@ public class MenuTelaInicial extends JPanel {
 		gbc_rigidArea_5.gridy = 6;
 		panelBotoes.add(rigidArea_5, gbc_rigidArea_5);
 
-		JButton btnNewButton = new JButton("Clientes");
+		JButton botaoClientes = new JButton("Clientes");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton.gridx = 0;
 		gbc_btnNewButton.gridy = 7;
-		panelBotoes.add(btnNewButton, gbc_btnNewButton);
+		panelBotoes.add(botaoClientes, gbc_btnNewButton);
 
 		Component rigidArea_4 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_4 = new GridBagConstraints();
@@ -108,13 +112,13 @@ public class MenuTelaInicial extends JPanel {
 		gbc_rigidArea_4.gridy = 8;
 		panelBotoes.add(rigidArea_4, gbc_rigidArea_4);
 
-		JButton btnNewButton_2 = new JButton("Administrativo");
+		JButton botaoAdministrativo = new JButton("Administrativo");
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
 		gbc_btnNewButton_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_2.gridx = 0;
 		gbc_btnNewButton_2.gridy = 9;
-		panelBotoes.add(btnNewButton_2, gbc_btnNewButton_2);
+		panelBotoes.add(botaoAdministrativo, gbc_btnNewButton_2);
 
 		Component rigidArea_2 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_2 = new GridBagConstraints();
@@ -141,13 +145,13 @@ public class MenuTelaInicial extends JPanel {
 		layeredPane.add(veiculosPanel, "name_5290351763300");
 		veiculosPanel.setLayout(new GridLayout(1, 0, 0, 0));
 
-		JButton btnNewButton_8 = new JButton("Logout");
+		JButton logoutBtn = new JButton("Logout");
 		GridBagConstraints gbc_btnNewButton_8 = new GridBagConstraints();
 		gbc_btnNewButton_8.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton_8.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_8.gridx = 0;
 		gbc_btnNewButton_8.gridy = 14;
-		panelBotoes.add(btnNewButton_8, gbc_btnNewButton_8);
+		panelBotoes.add(logoutBtn, gbc_btnNewButton_8);
 
 		sairBtn = new JButton("Sair");
 		GridBagConstraints gbc_sairBtn = new GridBagConstraints();
@@ -159,10 +163,23 @@ public class MenuTelaInicial extends JPanel {
 		JPanel alocacoesPanel = new AlocacoesView();
 		layeredPane.add(alocacoesPanel, "name_132767050113700");
 		alocacoesPanel.setLayout(new GridLayout(1, 0, 0, 0));
-
+		
+		JPanel administracaoPanel = new JPanel();
+		layeredPane.add(administracaoPanel, "name_31180988744600");
+		
+		JPanel clientesPanel = new JPanel();
+		layeredPane.add(clientesPanel, "name_31198873394700");
+		
 		alternarTela(botaoVeiculos, layeredPane, veiculosPanel);
 		alternarTela(botaoAlocacoes, layeredPane, alocacoesPanel);
-
+		alternarTela(botaoAdministrativo, layeredPane, administracaoPanel);
+		alternarTela(botaoClientes , layeredPane, clientesPanel);
+		
+		logoutBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 	}
 
 	public void alternarTela(JButton button, JLayeredPane layeredPane, JPanel panel) {
@@ -174,6 +191,10 @@ public class MenuTelaInicial extends JPanel {
 				layeredPane.revalidate();
 			}
 		});
+	}
+	
+	public void logout() {
+		System.exit(0);
 	}
 
 }

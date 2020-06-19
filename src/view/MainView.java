@@ -39,7 +39,7 @@ import javax.swing.JPasswordField;
 
 public class MainView extends JFrame {
 
-	private JPanel contentPane;
+	public JPanel contentPane;
 	private JTextField nomeCompletoTextField;
 	private JTextField telefoneTextField;
 	private JTextField cpfTextField;
@@ -722,9 +722,9 @@ public class MainView extends JFrame {
 			CargoModel cargo = (CargoModel) comboBoxFuncionarios.getSelectedItem();
 			model.setIdCargo(cargo.getIdCargo());
 			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		    Calendar calendar = Calendar.getInstance();
-		   
-		    try {
+			Calendar calendar = Calendar.getInstance();
+
+			try {
 				calendar.setTime(format.parse(dataNascimentoTextField.getText()));
 				model.setDataNascimento(new java.sql.Date(calendar.getTimeInMillis()));
 			} catch (ParseException e) {

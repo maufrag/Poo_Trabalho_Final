@@ -35,6 +35,10 @@ import metodosGerais.MetodosGerais;
 import model.VeiculoModel;
 
 public class VeiculosView extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 127153050053954327L;
 	private JTextField modeloVeiculoTF;
 	private JTextField fabricanteVeiculoTF;
 	private JTextField anoVeiculoTF;
@@ -59,7 +63,6 @@ public class VeiculosView extends JPanel {
 		JPanel veiculosPanel = new JPanel();
 		add(veiculosPanel, "name_5290351763300");
 		veiculosPanel.setLayout(new GridLayout(1, 0, 0, 0));
-		//add(veiculosPanel);
 
 		JTabbedPane veiculosTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		JPanel cadastrarVeiculoPanel = new JPanel();
