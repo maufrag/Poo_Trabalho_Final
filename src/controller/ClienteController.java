@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.swing.JComboBox;
 
 import Repository.ClienteRepository;
@@ -15,9 +17,11 @@ public class ClienteController {
 	
 	public static ClienteModel preencherComboBoxComClienteCadastrado(ClienteModel model){
 		ClienteModel modelCompleta = ClienteRepository.obterPorCpfParaAlocacao(model);
-//		JComboBox<ClienteModel> comboBox = new JComboBox<ClienteModel>();
-	//	comboBox.addItem(modelCompleta);
 		
 		return modelCompleta;
+	}
+
+	public static List<ClienteModel> obterListaCliente() {
+		return ClienteRepository.obterListaCliente();		
 	}
 }

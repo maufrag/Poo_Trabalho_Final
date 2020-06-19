@@ -6,6 +6,12 @@ public class VeiculoModel {
 
 	}
 
+	public VeiculoModel(int idVeiculo, String modelo, String fabricante) {
+		this.idVeiculo = idVeiculo;
+		this.modelo = modelo;
+		this.fabricante = fabricante;
+	}
+
 	private int idVeiculo;
 	private String fabricante;
 	private String modelo;
@@ -59,6 +65,11 @@ public class VeiculoModel {
 
 	public void setAnoLancamento(int anoLancamento) {
 		this.anoLancamento = anoLancamento;
+	}
+	
+	@Override
+	public String toString() {
+		return getFabricante() + " " + getModelo();
 	}
 
 }

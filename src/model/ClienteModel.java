@@ -6,6 +6,11 @@ public class ClienteModel {
 	public ClienteModel() {
 
 	}
+	
+	public ClienteModel(int idCliente, String nomeCompleto) {
+		this.idCliente = idCliente;
+		this.nomeCompleto = nomeCompleto;
+	}
 
 	private int idCliente;
 	private String nomeCompleto;

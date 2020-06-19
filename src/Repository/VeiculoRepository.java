@@ -3,6 +3,8 @@ package Repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -30,7 +32,7 @@ public class VeiculoRepository {
 			statement.setBoolean(5, model.getEstaDisponivel());
 
 			statement.execute();
-			
+
 			con.close();
 			JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
 		} catch (Exception e) {
@@ -51,6 +53,33 @@ public class VeiculoRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static List<VeiculoModel> obterVeiculos() {
+		Connection con = ConnectionFactory.getConnection();
+		List<VeiculoModel> modelList = new ArrayList<>();
+		try {
+			String query = "select * from veiculo order by fabricante, modelo";
+
+			PreparedStatement statement = con.prepareStatement(query);
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				VeiculoModel model = new VeiculoModel();
+				model.setIdVeiculo(rs.getInt("idVeiculo"));
+				model.setFabricante(rs.getString("fabricante"));
+				model.setModelo(rs.getString("modelo"));
+				model.setAnoLancamento(rs.getInt("anoLancamento"));
+				model.setPrecoAluguel(rs.getDouble("precoAluguel"));
+				model.setEstaDisponivel(rs.getBoolean("estaDisponivel"));
+				modelList.add(model);
+			}
+			
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return modelList;
 	}
 
 	public static void removerVeiculo(int idVeiculo) {

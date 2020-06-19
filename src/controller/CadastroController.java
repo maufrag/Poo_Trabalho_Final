@@ -17,9 +17,12 @@ public class CadastroController {
 	public static void cadastrarFuncionario(ContaModel model) {
 		model.setTelefoneContato(MetodosGerais.somenteDigitos(model.getTelefoneContato()));
 		String cpf = model.getCpf();
+		// TODO adicionar validaçaoo de data
+
 		if (!MetodosGerais.cpfIsValid(cpf)) {
 			JOptionPane.showMessageDialog(new JFrame(), "CPF Inválido.");
 		} else {
+			JOptionPane.showMessageDialog(null, "deu merda");
 			FuncionarioRepository.insertInto(model);
 		}
 	}
