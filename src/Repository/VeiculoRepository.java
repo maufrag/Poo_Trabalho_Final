@@ -53,11 +53,13 @@ public class VeiculoRepository {
 		}
 	}
 
-	public static List<VeiculoModel> obterVeiculos() {
+	public static List<VeiculoModel> obterVeiculos(Boolean ordenada, Boolean apenasAtivos) {
 		Connection con = ConnectionFactory.getConnection();
 		List<VeiculoModel> modelList = new ArrayList<>();
 		try {
-			String query = "select * from veiculo order by fabricante, modelo";
+			String query = "select * from veiculo" + 
+		(apenasAtivos ? " where estaDisponivel = 1 " : "") + 
+		(ordenada ? " order by fabricante, modelo" : "");
 
 			PreparedStatement statement = con.prepareStatement(query);
 			ResultSet rs = statement.executeQuery();
@@ -72,7 +74,7 @@ public class VeiculoRepository {
 				model.setEstaDisponivel(rs.getBoolean("estaDisponivel"));
 				modelList.add(model);
 			}
-			
+
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();

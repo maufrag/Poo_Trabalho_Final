@@ -4,6 +4,15 @@ import java.sql.Date;
 
 public class FuncionarioModel {
 
+	public FuncionarioModel(int idFuncionario, String nomeCompleto) {
+		this.idFuncionario = idFuncionario;
+		this.nomeCompleto = nomeCompleto;
+	}
+
+	public FuncionarioModel() {
+
+	}
+
 	private int idFuncionario;
 	private String nomeCompleto;
 	private String cpf;
@@ -12,10 +21,13 @@ public class FuncionarioModel {
 	private Boolean ativo;
 	private int idCargo;
 	private int idConta;
-	
 
 	public int getIdFuncionario() {
 		return idFuncionario;
+	}
+
+	public void setIdFuncionario(int idFuncionario) {
+		this.idFuncionario = idFuncionario;
 	}
 
 	public String getNomeCompleto() {
@@ -72,6 +84,11 @@ public class FuncionarioModel {
 
 	public void setTelefoneContato(String telefoneContato) {
 		this.telefoneContato = telefoneContato;
+	}
+	
+	@Override
+	public String toString() {
+		return getNomeCompleto();
 	}
 
 }

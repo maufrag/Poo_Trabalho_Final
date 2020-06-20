@@ -2,7 +2,6 @@ package Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
 import javax.swing.JOptionPane;
 
 import ConexaoDB.ConnectionFactory;
@@ -12,8 +11,9 @@ public class ContratoLocacaoRepository {
 
 	public static void insertInto(ContratoLocacaoModel model) {
 		Connection con = ConnectionFactory.getConnection();
-
+		model.setIdStatusContrato(1);
 		try {
+			
 			String query = "Insert into "
 					+ "contratolocacao (idCliente, idFuncionario, idVeiculo, dataDeAlocacao, dataDeDevolucao, idStatusContrato)"
 					+ "values(?, ?, ?, ?, ?, ?)";

@@ -23,7 +23,7 @@ public class VeiculoController {
 		VeiculoRepository.obterVeiculos(table);
 	}
 	
-	public static List<VeiculoModel> obterListaVeiculos() {
-		return VeiculoRepository.obterVeiculos();
+	public static List<VeiculoModel> obterListaVeiculos(Boolean ordenada, Boolean apenasAtivos) {
+		return VeiculoRepository.obterVeiculos(ordenada, apenasAtivos);
 	}
 }

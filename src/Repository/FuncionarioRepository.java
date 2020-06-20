@@ -4,12 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import ConexaoDB.ConnectionFactory;
 import model.ContaModel;
+import model.FuncionarioModel;
 
 public class FuncionarioRepository {
 
@@ -65,7 +68,7 @@ public class FuncionarioRepository {
 				// ContaModel retorno = new ContaModel(rs.getString("login"),
 				// rs.getString("senha"));
 				existe = true;
-				
+
 			}
 			con.close();
 		} catch (Exception e) {
@@ -74,4 +77,32 @@ public class FuncionarioRepository {
 		return existe;
 	}
 
+	public static List<FuncionarioModel> obterListaFuncionario(Boolean apenasAtivos) {
+		Connection con = ConnectionFactory.getConnection();
+
+		try {
+			String query = "select * from funcionario " + (apenasAtivos ? "where ativo = 1" : "");
+			PreparedStatement statement = con.prepareStatement(query);
+			ResultSet rs = statement.executeQuery();
+			List<FuncionarioModel> modelList = new ArrayList<FuncionarioModel>();
+			
+			while (rs.next()) {
+				FuncionarioModel model = new FuncionarioModel();
+				model.setIdFuncionario(rs.getInt("idFuncionario"));
+				model.setNomeCompleto(rs.getString("nomeCompleto"));
+				model.setCpf(rs.getString("cpf"));
+				model.setAtivo(rs.getBoolean("ativo"));
+				model.setDataNascimento(rs.getDate("dataNascimento"));
+				model.setTelefoneContato("telefoneContato");
+				model.setIdCargo(rs.getInt("idCargo"));
+				model.setIdConta(rs.getInt("idConta"));
+				modelList.add(model);
+			}
+			con.close();
+			return modelList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
