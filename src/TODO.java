@@ -1,7 +1,6 @@
 
 public class TODO {
 	//Adicionar Enums
-	//Alterar datas para trabalhar com operações em geral (validar todos os campos de data)
 	//Ajustar tamanho de todas as comboBox
 	//Tabelas do Consultar
 	//Filtros da tela de consultar
@@ -10,4 +9,6 @@ public class TODO {
 	//adicionar front
 	//telas do Administrativo (apenas Gerente)
 	//botoes limpar
+	//procurar formato de cnh
+	//adicionar campo apenas numeros para cnh
 }

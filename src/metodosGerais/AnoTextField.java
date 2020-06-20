@@ -7,10 +7,14 @@ import javax.swing.text.PlainDocument;
 
 public class AnoTextField extends JTextField {
 
+	private static final long serialVersionUID = -8840899571916751289L;
+
 	public AnoTextField() {
 		  setDocument(new PlainDocument() {
+	          
+			private static final long serialVersionUID = 4399334585755975432L;
 
-	            @Override
+				@Override
 	            public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
 
 	                if (str == null || !Character.isDigit(str.charAt(0))) {

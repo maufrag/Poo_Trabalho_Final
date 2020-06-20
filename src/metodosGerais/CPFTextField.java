@@ -7,11 +7,21 @@ import javax.swing.text.PlainDocument;
 
 public class CpfTextField extends JTextField {
 
-    public CpfTextField() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8320548872032139016L;
+
+	public CpfTextField() {
 
         setDocument(new PlainDocument() {
 
-            @Override
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 4704768169776855105L;
+
+			@Override
             public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
 
                 if (str == null || !Character.isDigit(str.charAt(0))) {

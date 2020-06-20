@@ -4,12 +4,8 @@ import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-
 import java.awt.GridLayout;
 import javax.swing.JSplitPane;
-import javax.swing.SwingUtilities;
-
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,9 +16,15 @@ import javax.swing.JLayeredPane;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
+import javax.swing.JTabbedPane;
+import java.awt.BorderLayout;
 
 public class MenuTelaInicial extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6331793467680155838L;
 	private JButton sairBtn;
 
 	/**
@@ -173,7 +175,20 @@ public class MenuTelaInicial extends JPanel {
 		alternarTela(botaoVeiculos, layeredPane, veiculosPanel);
 		alternarTela(botaoAlocacoes, layeredPane, alocacoesPanel);
 		alternarTela(botaoAdministrativo, layeredPane, administracaoPanel);
+		administracaoPanel.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		administracaoPanel.add(tabbedPane);
 		alternarTela(botaoClientes , layeredPane, clientesPanel);
+		JPanel relatoriosPanel = new JPanel();
+		JPanel importacaoPanel = new JPanel();
+		JPanel exportacaoPanel = new JPanel();
+		tabbedPane.addTab("Relatórios", relatoriosPanel);
+		relatoriosPanel.setLayout(new BorderLayout(0, 0));
+		tabbedPane.addTab("Importações", importacaoPanel);
+		importacaoPanel.setLayout(new BorderLayout(0, 0));
+		tabbedPane.addTab("Exportações", exportacaoPanel);
+		exportacaoPanel.setLayout(new BorderLayout(0, 0));
 		
 		logoutBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

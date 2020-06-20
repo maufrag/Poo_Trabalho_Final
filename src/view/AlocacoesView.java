@@ -31,12 +31,15 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import controller.ClienteController;
+import controller.ContratoLocacaoController;
 import controller.VeiculoController;
 import metodosGerais.CpfTextField;
+import metodosGerais.DataTextField;
 import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
 import metodosGerais.TelefoneTextField;
 import model.ClienteModel;
+import model.ContratoLocacaoModel;
 import model.FuncionarioModel;
 import model.VeiculoModel;
 import net.miginfocom.swing.MigLayout;
@@ -50,17 +53,18 @@ public class AlocacoesView extends JPanel {
 	private JTextField cpfClienteTF;
 	private JTextField telefoneClienteTF;
 	private JTextField cnhClienteTF;
-	private JTextField dataNascimenteClientoTF;
-	private JTextField textField_13;
-	private JTextField textField_14;
+	private JTextField dataNascimentoClienteTF;
+	private JTextField dataAlocacaoTF;
+	private JTextField dataDevolucaoTF;
 	private JButton voltarParaAlocacaoTelaInicialBtn;
 	private JButton cadEProsseguirBtn;
 	private JButton prosseguirBtn;
-	private JComboBox<ClienteModel> clienteCadastradoComboBox;
+	private JComboBox<ClienteModel> clientesComboBox;
 	private JComboBox<VeiculoModel> veiculosCadastradosComboBox;
 	private JButton voltarParaInformativoBtn;
 	private JComboBox<ClienteModel> comboBoxClientes;
 	private JComboBox<FuncionarioModel> comboBoxFuncionario;
+	private JComboBox<FuncionarioModel> funcionarioComboBox;
 
 	/**
 	 * Create the panel.
@@ -155,6 +159,12 @@ public class AlocacoesView extends JPanel {
 		Component rigidArea_62 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarAluguelPanel.add(rigidArea_62, "cell 4 0");
 
+		JLabel lblNewLabel_1 = new JLabel("Funcionario:");
+		cadastrarAluguelPanel.add(lblNewLabel_1, "cell 1 1,alignx right");
+
+		funcionarioComboBox = new JComboBox<FuncionarioModel>();
+		cadastrarAluguelPanel.add(funcionarioComboBox, "cell 2 1 2 1,growx");
+
 		Component rigidArea_64 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarAluguelPanel.add(rigidArea_64, "cell 5 1");
 
@@ -173,8 +183,8 @@ public class AlocacoesView extends JPanel {
 		JLabel lblNewLabel_14 = new JLabel("Cliente:");
 		cadastrarAluguelPanel.add(lblNewLabel_14, "cell 1 2,alignx trailing");
 
-		clienteCadastradoComboBox = new JComboBox<ClienteModel>();
-		cadastrarAluguelPanel.add(clienteCadastradoComboBox, "cell 2 2 2 1,growx");
+		clientesComboBox = new JComboBox<ClienteModel>();
+		cadastrarAluguelPanel.add(clientesComboBox, "cell 2 2 2 1,growx");
 
 		Component rigidArea_73 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarAluguelPanel.add(rigidArea_73, "cell 4 2,aligny baseline");
@@ -188,16 +198,16 @@ public class AlocacoesView extends JPanel {
 		JLabel lblNewLabel_16 = new JLabel("Data da aloca\u00E7\u00E3o:");
 		cadastrarAluguelPanel.add(lblNewLabel_16, "cell 1 4,alignx trailing");
 
-		textField_13 = new JTextField();
-		cadastrarAluguelPanel.add(textField_13, "cell 2 4 2 1,growx");
-		textField_13.setColumns(5);
+		dataAlocacaoTF = new DataTextField();
+		cadastrarAluguelPanel.add(dataAlocacaoTF, "cell 2 4 2 1,growx");
+		dataAlocacaoTF.setColumns(5);
 
 		JLabel lblNewLabel_17 = new JLabel("Data devolu\u00E7\u00E3o:");
 		cadastrarAluguelPanel.add(lblNewLabel_17, "cell 1 5,alignx trailing");
 
-		textField_14 = new JTextField();
-		cadastrarAluguelPanel.add(textField_14, "cell 2 5 2 1,growx");
-		textField_14.setColumns(5);
+		dataDevolucaoTF = new DataTextField();
+		cadastrarAluguelPanel.add(dataDevolucaoTF, "cell 2 5 2 1,growx");
+		dataDevolucaoTF.setColumns(5);
 
 		Component rigidArea_68 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarAluguelPanel.add(rigidArea_68, "cell 3 6");
@@ -472,9 +482,9 @@ public class AlocacoesView extends JPanel {
 		JLabel lblNewLabel_13 = new JLabel("Data nascimento:");
 		cadastrarClientePanel.add(lblNewLabel_13, "cell 1 5,alignx trailing");
 
-		dataNascimenteClientoTF = new JTextField();
-		cadastrarClientePanel.add(dataNascimenteClientoTF, "cell 2 5 3 1,growx");
-		dataNascimenteClientoTF.setColumns(10);
+		dataNascimentoClienteTF = new DataTextField();
+		cadastrarClientePanel.add(dataNascimentoClienteTF, "cell 2 5 3 1,growx");
+		dataNascimentoClienteTF.setColumns(10);
 
 		Component rigidArea_48 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarClientePanel.add(rigidArea_48, "cell 3 6 2 1");
@@ -505,8 +515,6 @@ public class AlocacoesView extends JPanel {
 		Component rigidArea_59 = Box.createRigidArea(new Dimension(20, 20));
 		cadastrarClientePanel.add(rigidArea_59, "cell 2 11");
 
-		alternarTela(cadEProsseguirBtn, alocarLayeredPane, cadastrarAluguelPanel);
-
 		JButton LimparContratoButton = new JButton("Limpar");
 		cadastrarAluguelPanel.add(LimparContratoButton, "cell 3 9");
 
@@ -514,7 +522,11 @@ public class AlocacoesView extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				ClienteModel model = cadastrarEObterCliente();
 				if (model != null) {
-					clienteCadastradoComboBox.addItem(ClienteController.preencherComboBoxComClienteCadastrado(model));
+					clientesComboBox.addItem(ClienteController.preencherComboBoxComClienteCadastrado(model));
+					alocarLayeredPane.removeAll();
+					alocarLayeredPane.add(cadastrarAluguelPanel);
+					alocarLayeredPane.repaint();
+					alocarLayeredPane.revalidate();
 				}
 				popularComboBoxComTodosOsVeiculos();
 			}
@@ -548,17 +560,21 @@ public class AlocacoesView extends JPanel {
 	public Boolean validarCadastroCliente() {
 		Boolean valido = true;
 
-		if (MetodosGerais.StringIsNullOrWhiteSpace(nomeClienteTF.getText())) {
-			valido = false;
+		if (MetodosGerais.StringIsNullOrWhiteSpace(nomeClienteTF.getText())
+				|| !MetodosGerais.validarNome(nomeClienteTF.getText())) {
+			JOptionPane.showMessageDialog(null, "Nome não pode ser vazio e deve ser composto de nome e sobrenome.");
+			return false;
 		} else if (MetodosGerais.StringIsNullOrWhiteSpace(cpfClienteTF.getText())) {
 			valido = false;
 		} else if (MetodosGerais.StringIsNullOrWhiteSpace(telefoneClienteTF.getText())) {
 			valido = false;
 		} else if (MetodosGerais.StringIsNullOrWhiteSpace(cnhClienteTF.getText())) {
 			valido = false;
-		} // else if (MetodosGerais.StringIsNullOrWhiteSpace(nomeClienteTF.getText())) {
-
-		// }
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(dataNascimentoClienteTF.getText())
+				|| !MetodosGerais.validarData(dataNascimentoClienteTF.getText())) {
+			JOptionPane.showMessageDialog(null, "Data inválida");
+			return false;
+		}
 		if (!valido) {
 			JOptionPane.showMessageDialog(null, "Não podem haver campos vazios");
 		}
@@ -573,13 +589,45 @@ public class AlocacoesView extends JPanel {
 			model.setCpf(cpfClienteTF.getText());
 			model.setTelefone(telefoneClienteTF.getText());
 			model.setCnh(cnhClienteTF.getText());
-			model.setDataNascimento(null);
-			// dataNascimenteClientoTF.getText());
+			model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoClienteTF.getText()));
 			ClienteController.cadastrarCliente(model);
-
 			return model;
 		}
 		return null;
+	}
+
+	public void cadastrarAlocacaoVeiculo() {
+		if (validarContratoAlocacao()) {
+			ContratoLocacaoModel model = new ContratoLocacaoModel();
+			model.setFuncionario((FuncionarioModel) funcionarioComboBox.getSelectedItem());
+			model.setCliente((ClienteModel) clientesComboBox.getSelectedItem());
+			model.setVeiculo((VeiculoModel) veiculosCadastradosComboBox.getSelectedItem());
+			model.setDataDeAlocacao(MetodosGerais.transformarEmDate(dataAlocacaoTF.getText()));
+			model.setDataDeDevolucao(MetodosGerais.transformarEmDate(dataDevolucaoTF.getText()));
+			ContratoLocacaoController.cadastrarContrato(model);
+		}
+	}
+
+	public Boolean validarContratoAlocacao() {
+		Boolean valido = true;
+		ClienteModel model = (ClienteModel) clientesComboBox.getSelectedItem();
+
+		if (funcionarioComboBox.getSelectedIndex() == 0) {
+			valido = false;
+		} else if (model.getNomeCompleto().equals("--Selecione--")) {
+			valido = false;
+		} else if (veiculosCadastradosComboBox.getSelectedIndex() == 0) {
+			valido = false;
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(dataAlocacaoTF.getText())
+				|| MetodosGerais.StringIsNullOrWhiteSpace(dataDevolucaoTF.getText())) {
+			valido = false;
+		} else if (!MetodosGerais.validarData(dataAlocacaoTF.getText())
+				|| !MetodosGerais.validarData(dataDevolucaoTF.getText())) {
+			JOptionPane.showMessageDialog(null, "Data de alocação ou devolução datas está incorreta");
+			return false;
+		}
+		JOptionPane.showMessageDialog(null, "Não podem haver campos vazios");
+		return valido;
 	}
 
 	public void popularComboBoxComTodosOsVeiculos() {
@@ -592,9 +640,9 @@ public class AlocacoesView extends JPanel {
 
 	public void popularComboBoxComTodosOsClientes() {
 		List<ClienteModel> modelList = ClienteController.obterListaCliente();
-		clienteCadastradoComboBox.addItem(new ClienteModel(0, "--Selecione--"));
+		clientesComboBox.addItem(new ClienteModel(0, "--Selecione--"));
 		for (ClienteModel model : modelList) {
-			clienteCadastradoComboBox.addItem(model);
+			clientesComboBox.addItem(model);
 		}
 	}
 }

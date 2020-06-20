@@ -17,9 +17,12 @@ public class CadastroController {
 	public static void cadastrarFuncionario(ContaModel model) {
 		model.setTelefoneContato(MetodosGerais.somenteDigitos(model.getTelefoneContato()));
 		String cpf = model.getCpf();
-		// TODO adicionar validaçaoo de data
-
-		if (!MetodosGerais.cpfIsValid(cpf)) {
+		
+		java.sql.Date dataMinima = MetodosGerais.obterDataMinimaParaValidacao(-18);
+				
+		if(model.getDataNascimento().after(dataMinima)) {
+			JOptionPane.showMessageDialog(new JFrame(), "Funcionario precisa ter mais de 18 anos.");
+		} else if (!MetodosGerais.cpfIsValid(cpf)) {
 			JOptionPane.showMessageDialog(new JFrame(), "CPF Inválido.");
 		} else {
 			JOptionPane.showMessageDialog(null, "deu merda");

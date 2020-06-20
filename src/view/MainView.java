@@ -21,11 +21,6 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Component;
@@ -39,6 +34,10 @@ import javax.swing.JPasswordField;
 
 public class MainView extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8249069283384768352L;
 	public JPanel contentPane;
 	private JTextField nomeCompletoTextField;
 	private JTextField telefoneTextField;
@@ -572,6 +571,7 @@ public class MainView extends JFrame {
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		dataNascimentoTextField = new DataTextField();
+		
 		GridBagConstraints gbc_dataNascimentoTextField = new GridBagConstraints();
 		gbc_dataNascimentoTextField.gridwidth = 2;
 		gbc_dataNascimentoTextField.insets = new Insets(0, 0, 5, 5);
@@ -721,13 +721,10 @@ public class MainView extends JFrame {
 			model.setTelefoneContato(telefoneTextField.getText());
 			CargoModel cargo = (CargoModel) comboBoxFuncionarios.getSelectedItem();
 			model.setIdCargo(cargo.getIdCargo());
-			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-			Calendar calendar = Calendar.getInstance();
-
+			
 			try {
-				calendar.setTime(format.parse(dataNascimentoTextField.getText()));
-				model.setDataNascimento(new java.sql.Date(calendar.getTimeInMillis()));
-			} catch (ParseException e) {
+				model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoTextField.getText()));
+			} catch (Exception e) {
 				model.setDataNascimento(null);
 				e.printStackTrace();
 			}
@@ -751,7 +748,9 @@ public class MainView extends JFrame {
 		} else if (comboBoxFuncionarios.getSelectedIndex() == 0) {
 			JOptionPane.showMessageDialog(null, "Cargo precisa estar selecionado.");
 			valido = false;
-		} else if (MetodosGerais.StringIsNullOrWhiteSpace(dataNascimentoTextField.getText())) {
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(dataNascimentoTextField.getText()) ||
+				!MetodosGerais.validarData(dataNascimentoTextField.getText())) {
+			JOptionPane.showMessageDialog(null, "A data de nascimento deve ser uma data valida.");
 			valido = false;
 		}
 		return valido;
@@ -785,8 +784,7 @@ public class MainView extends JFrame {
 		nomeCompletoTextField.setText("");
 		telefoneTextField.setText("");
 		cpfTextField.setText("");
+		comboBoxFuncionarios.setSelectedIndex(0);
+		dataNascimentoTextField.setText("");
 	}
-
-	// TODO - aplicar mascara para telefone
-	// TODO - aplicar o JDatePicker
 }
