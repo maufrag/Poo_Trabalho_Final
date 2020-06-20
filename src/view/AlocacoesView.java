@@ -44,6 +44,9 @@ import model.ContratoLocacaoModel;
 import model.FuncionarioModel;
 import model.VeiculoModel;
 import net.miginfocom.swing.MigLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class AlocacoesView extends JPanel {
 	/**
@@ -66,15 +69,17 @@ public class AlocacoesView extends JPanel {
 	private JComboBox<ClienteModel> comboBoxClientes;
 	private JComboBox<FuncionarioModel> comboBoxFuncionario;
 	private JComboBox<FuncionarioModel> funcionarioComboBox;
+	private JTable tabelaContratos;
 
 	/**
 	 * Create the panel.
 	 */
 	public AlocacoesView() {
 		setBounds(150, 150, 708, 532);
+		setLayout(new GridLayout(0, 1, 0, 0));
 		JPanel alocacoesPanel = new JPanel();
 		alocacoesPanel.setLayout(new GridLayout(1, 0, 0, 0));
-		add(alocacoesPanel, "name_132767050113700");
+		add(alocacoesPanel);
 
 		JTabbedPane alocacoesTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		alocacoesPanel.add(alocacoesTabbedPane);
@@ -227,10 +232,10 @@ public class AlocacoesView extends JPanel {
 		Component rigidArea_69 = Box.createRigidArea(new Dimension(20, 20));
 		consultarAluguelPanel.add(rigidArea_69, BorderLayout.NORTH);
 
-		Component rigidArea_70 = Box.createRigidArea(new Dimension(20, 20));
+		Component rigidArea_70 = Box.createRigidArea(new Dimension(15, 464));
 		consultarAluguelPanel.add(rigidArea_70, BorderLayout.WEST);
 
-		Component rigidArea_71 = Box.createRigidArea(new Dimension(20, 20));
+		Component rigidArea_71 = Box.createRigidArea(new Dimension(14, 464));
 		consultarAluguelPanel.add(rigidArea_71, BorderLayout.EAST);
 
 		JPanel consultarContratosPanel = new JPanel();
@@ -249,6 +254,13 @@ public class AlocacoesView extends JPanel {
 								.addComponent(visualizarContratosPanel, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)));
+		visualizarContratosPanel.setLayout(new BoxLayout(visualizarContratosPanel, BoxLayout.X_AXIS));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		visualizarContratosPanel.add(scrollPane);
+		
+		tabelaContratos = new JTable();
+		scrollPane.setViewportView(tabelaContratos);
 		panel_5.setLayout(new BorderLayout(0, 0));
 
 		Component rigidArea_74 = Box.createRigidArea(new Dimension(20, 20));
@@ -560,6 +572,9 @@ public class AlocacoesView extends JPanel {
 		alternarTela(voltarParaAlocacaoTelaInicialBtn, alocarLayeredPane, informativoPanel);
 		alternarTela(prosseguirBtn, alocarLayeredPane, cadastrarAluguelPanel);
 		alternarTela(voltarParaInformativoBtn, alocarLayeredPane, informativoPanel);
+		
+		
+		ContratoLocacaoController.popularJTable(tabelaContratos);
 	}
 
 	public void alternarTela(JButton button, JLayeredPane layeredPane, JPanel panel) {

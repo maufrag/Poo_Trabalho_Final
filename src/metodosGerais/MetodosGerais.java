@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Vector;
 
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -248,6 +249,12 @@ public class MetodosGerais {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static void alterarNomeColuna(JTable table, int tamanhoMaximo, String[] novosNomes) {
+		for (int i = 0; i < tamanhoMaximo; i++) {
+			table.getColumnModel().getColumn(i).setHeaderValue(novosNomes[i]);
+		}
 	}
 
 }

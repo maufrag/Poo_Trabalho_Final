@@ -47,6 +47,8 @@ public class VeiculoRepository {
 			PreparedStatement statement = con.prepareStatement(query);
 			ResultSet rs = statement.executeQuery();
 			table.setModel(MetodosGerais.resultSetToTableModel(rs));
+			String[] nomesColunas = {"Código", "Fabricante", "Modelo", "Ano Lançamento", "Preço Diária", "Disponível"};
+			MetodosGerais.alterarNomeColuna(table, nomesColunas.length, nomesColunas);
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
