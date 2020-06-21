@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import Repository.ClienteRepository;
 import metodosGerais.MetodosGerais;
@@ -23,6 +24,10 @@ public class ClienteController {
 		} else {
 			ClienteRepository.insertInto(model);
 		}
+	}
+	
+	public static void preencherTabela(JTable table) {
+		ClienteRepository.preencherTableComClientes(table);
 	}
 
 	public static ClienteModel preencherComboBoxComClienteCadastrado(ClienteModel model) {

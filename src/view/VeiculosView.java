@@ -60,7 +60,7 @@ public class VeiculosView extends JPanel {
 	 * Create the panel.
 	 */
 	public VeiculosView() {
-		setBounds(150, 150, 708, 532);
+		setBounds(150, 150, 675, 470);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		JPanel veiculosPanel = new JPanel();
 		add(veiculosPanel);

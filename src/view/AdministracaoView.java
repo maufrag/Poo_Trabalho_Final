@@ -8,8 +8,7 @@ public class AdministracaoView extends JPanel {
 
 
 	public AdministracaoView() {
-		setBounds(150, 150, 708, 532);
-
+		setBounds(150, 150, 675, 470);
 	}
 
 }

@@ -76,7 +76,7 @@ public class AlocacoesView extends JPanel {
 	 * Create the panel.
 	 */
 	public AlocacoesView() {
-		setBounds(150, 150, 708, 532);
+		setBounds(150, 150, 675, 470);
 		setLayout(new GridLayout(0, 1, 0, 0));
 		JPanel alocacoesPanel = new JPanel();
 		alocacoesPanel.setLayout(new GridLayout(1, 0, 0, 0));

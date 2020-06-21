@@ -73,7 +73,7 @@ public class MainView extends JFrame {
 	public MainView() {
 		setTitle("LoCar");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(150, 150, 708, 532);
+		setBounds(150, 150, 675, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

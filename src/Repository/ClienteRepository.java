@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import ConexaoDB.ConnectionFactory;
+import metodosGerais.MetodosGerais;
 import model.ClienteModel;
 
 public class ClienteRepository {
@@ -84,5 +86,22 @@ public class ClienteRepository {
 			e.printStackTrace();
 		}
 		return modelList;
+	}
+
+	public static void preencherTableComClientes(JTable table) {
+		
+		Connection con = ConnectionFactory.getConnection();
+
+		try {
+			String query = "select * from cliente";
+
+			PreparedStatement statement = con.prepareStatement(query);
+			ResultSet rs = statement.executeQuery();
+			table.setModel(MetodosGerais.resultSetToTableModel(rs));
+			
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

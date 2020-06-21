@@ -38,6 +38,11 @@ import javax.swing.JTextField;
 import controller.ClienteController;
 
 import java.awt.Font;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class MenuTelaInicial extends JPanel {
 
@@ -46,18 +51,12 @@ public class MenuTelaInicial extends JPanel {
 	 */
 	private static final long serialVersionUID = -6331793467680155838L;
 	private JButton sairBtn;
-	private JTextField nomeCompletoTextField;
-	private JTextField cpfTextField;
-	private JTextField telefoneTextField;
-	private JTextField cnhTextField;
-	private JTextField dataNascimentoTextField;
-
 	/**
 	 * Create the panel.
 	 */
 	public MenuTelaInicial() {
 		setLayout(new GridLayout(1, 0, 0, 0));
-		setBounds(150, 150, 708, 532);
+		setBounds(150, 150, 675, 470);
 
 		JSplitPane splitPane = new JSplitPane();
 		add(splitPane);
@@ -194,7 +193,7 @@ public class MenuTelaInicial extends JPanel {
 		JPanel administracaoPanel = new JPanel();
 		layeredPane.add(administracaoPanel, "name_31180988744600");
 
-		JPanel clientesPanel = new JPanel();
+		JPanel clientesPanel = new ClienteView();
 		layeredPane.add(clientesPanel, "name_31198873394700");
 
 		alternarTela(botaoVeiculos, layeredPane, veiculosPanel);
@@ -205,101 +204,6 @@ public class MenuTelaInicial extends JPanel {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		administracaoPanel.add(tabbedPane);
 		alternarTela(botaoClientes, layeredPane, clientesPanel);
-		clientesPanel.setLayout(new GridLayout(1, 0, 0, 0));
-
-		JTabbedPane clienteTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		clientesPanel.add(clienteTabbedPane);
-		JPanel vizualizarEEditarClientesPanel = new JPanel();
-		JPanel cadastrarClientePanel = new JPanel();
-		cadastrarClientePanel.setBackground(Color.WHITE);
-		clienteTabbedPane.addTab("Cadastrar Cliente", cadastrarClientePanel);
-		cadastrarClientePanel.setLayout(new BorderLayout(0, 0));
-
-		Component rigidArea_6 = Box.createRigidArea(new Dimension(120, 462));
-		cadastrarClientePanel.add(rigidArea_6, BorderLayout.WEST);
-
-		Component rigidArea_9 = Box.createRigidArea(new Dimension(120, 462));
-		cadastrarClientePanel.add(rigidArea_9, BorderLayout.EAST);
-
-		Component rigidArea_10 = Box.createRigidArea(new Dimension(600, 72));
-		cadastrarClientePanel.add(rigidArea_10, BorderLayout.NORTH);
-
-		Component rigidArea_11 = Box.createRigidArea(new Dimension(600, 54));
-		cadastrarClientePanel.add(rigidArea_11, BorderLayout.SOUTH);
-
-		JPanel panel = new JPanel();
-		cadastrarClientePanel.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[][grow]", "[][][][][][][][][][][][]"));
-
-		Component rigidArea_14 = Box.createRigidArea(new Dimension(20, 20));
-		panel.add(rigidArea_14, "cell 1 0");
-
-		Component rigidArea_13 = Box.createRigidArea(new Dimension(20, 20));
-		panel.add(rigidArea_13, "cell 1 1");
-
-		JLabel lblNewLabel = new JLabel("Nome Cliente:");
-		panel.add(lblNewLabel, "cell 0 3,alignx trailing");
-
-		nomeCompletoTextField = new JTextField();
-		panel.add(nomeCompletoTextField, "cell 1 3,growx");
-		nomeCompletoTextField.setColumns(10);
-		nomeCompletoTextField.setDocument(new LimiteTextField(50));
-
-		JLabel lblNewLabel_1 = new JLabel("CPF:");
-		panel.add(lblNewLabel_1, "cell 0 4,alignx trailing");
-
-		cpfTextField = new CpfTextField();
-		panel.add(cpfTextField, "cell 1 4,growx");
-		cpfTextField.setColumns(10);
-
-		JLabel lblNewLabel_2 = new JLabel("Telefone:");
-		panel.add(lblNewLabel_2, "cell 0 5,alignx trailing");
-
-		telefoneTextField = new TelefoneTextField();
-		panel.add(telefoneTextField, "cell 1 5,growx");
-		telefoneTextField.setColumns(10);
-
-		JLabel lblNewLabel_3 = new JLabel("Cnh:");
-		panel.add(lblNewLabel_3, "cell 0 6,alignx trailing");
-
-		cnhTextField = new CnhTextField();
-		panel.add(cnhTextField, "cell 1 6,growx");
-		cnhTextField.setColumns(10);
-
-		JLabel lblNewLabel_4 = new JLabel("Data de Nascimento:");
-		panel.add(lblNewLabel_4, "cell 0 7,alignx trailing");
-
-		dataNascimentoTextField = new DataTextField();
-		panel.add(dataNascimentoTextField, "cell 1 7,growx");
-		dataNascimentoTextField.setColumns(10);
-
-		Component rigidArea_15 = Box.createRigidArea(new Dimension(20, 20));
-		panel.add(rigidArea_15, "cell 0 8");
-
-		Component rigidArea_16 = Box.createRigidArea(new Dimension(20, 20));
-		panel.add(rigidArea_16, "cell 0 9");
-
-		JButton cadastrarClienteBtn = new JButton("Cadastrar");
-		cadastrarClienteBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		panel.add(cadastrarClienteBtn, "cell 0 11");
-
-		JButton btnLimpar = new JButton("Limpar");
-		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		panel.add(btnLimpar, "cell 1 11,alignx right");
-		clienteTabbedPane.addTab("Vizualizar e Editar", vizualizarEEditarClientesPanel);
-
-		btnLimpar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limpar();
-			}
-		});
-
-		cadastrarClienteBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cadastrarEObterCliente();
-				limpar();
-			}
-		});
 
 		// adm panel
 		JPanel relatoriosPanel = new JPanel();
@@ -319,53 +223,6 @@ public class MenuTelaInicial extends JPanel {
 		});
 	}
 
-	public void limpar() {
-		nomeCompletoTextField.setText("");
-		cpfTextField.setText("");
-		telefoneTextField.setText("");
-		cnhTextField.setText("");
-		dataNascimentoTextField.setText("");
-	}
-
-	public Boolean validarCadastroCliente() {
-		Boolean valido = true;
-
-		if (MetodosGerais.StringIsNullOrWhiteSpace(nomeCompletoTextField.getText())
-				|| !MetodosGerais.validarNome(nomeCompletoTextField.getText())) {
-			JOptionPane.showMessageDialog(null, "Nome não pode ser vazio e deve ser composto de nome e sobrenome.");
-			return false;
-		} else if (MetodosGerais.StringIsNullOrWhiteSpace(cpfTextField.getText())) {
-			valido = false;
-		} else if (MetodosGerais.StringIsNullOrWhiteSpace(telefoneTextField.getText())) {
-			valido = false;
-		} else if (MetodosGerais.StringIsNullOrWhiteSpace(cnhTextField.getText())) {
-			valido = false;
-		} else if (MetodosGerais.StringIsNullOrWhiteSpace(dataNascimentoTextField.getText())
-				|| !MetodosGerais.validarData(dataNascimentoTextField.getText())) {
-			JOptionPane.showMessageDialog(null, "Data inválida");
-			return false;
-		}
-		if (!valido) {
-			JOptionPane.showMessageDialog(null, "Não podem haver campos vazios");
-		}
-		return valido;
-	}
-
-	public ClienteModel cadastrarEObterCliente() {
-		ClienteModel model = new ClienteModel();
-
-		if (validarCadastroCliente()) {
-			model.setNomeCompleto(nomeCompletoTextField.getText());
-			model.setCpf(cpfTextField.getText());
-			model.setTelefone(telefoneTextField.getText());
-			model.setCnh(cnhTextField.getText());
-			model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoTextField.getText()));
-			ClienteController.cadastrarCliente(model);
-			return model;
-		}
-		return null;
-	}
-
 	public void alternarTela(JButton button, JLayeredPane layeredPane, JPanel panel) {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -380,5 +237,4 @@ public class MenuTelaInicial extends JPanel {
 	public void logout() {
 		System.exit(0);
 	}
-
 }
