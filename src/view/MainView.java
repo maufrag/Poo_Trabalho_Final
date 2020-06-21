@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Repository.ContratoLocacaoRepository;
 import controller.CadastroController;
 import controller.LoginController;
 import metodosGerais.*;
@@ -571,7 +573,7 @@ public class MainView extends JFrame {
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		dataNascimentoTextField = new DataTextField();
-		
+
 		GridBagConstraints gbc_dataNascimentoTextField = new GridBagConstraints();
 		gbc_dataNascimentoTextField.gridwidth = 2;
 		gbc_dataNascimentoTextField.insets = new Insets(0, 0, 5, 5);
@@ -694,6 +696,7 @@ public class MainView extends JFrame {
 
 		botaoCadastrar1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Relatorios.gerarRelatorio();
 				layeredPane.removeAll();
 				layeredPane.add(CadastroPanel);
 				layeredPane.repaint();
@@ -721,7 +724,7 @@ public class MainView extends JFrame {
 			model.setTelefoneContato(telefoneTextField.getText());
 			CargoModel cargo = (CargoModel) comboBoxFuncionarios.getSelectedItem();
 			model.setIdCargo(cargo.getIdCargo());
-			
+
 			try {
 				model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoTextField.getText()));
 			} catch (Exception e) {
@@ -748,8 +751,8 @@ public class MainView extends JFrame {
 		} else if (comboBoxFuncionarios.getSelectedIndex() == 0) {
 			JOptionPane.showMessageDialog(null, "Cargo precisa estar selecionado.");
 			valido = false;
-		} else if (MetodosGerais.StringIsNullOrWhiteSpace(dataNascimentoTextField.getText()) ||
-				!MetodosGerais.validarData(dataNascimentoTextField.getText())) {
+		} else if (MetodosGerais.StringIsNullOrWhiteSpace(dataNascimentoTextField.getText())
+				|| !MetodosGerais.validarData(dataNascimentoTextField.getText())) {
 			JOptionPane.showMessageDialog(null, "A data de nascimento deve ser uma data valida.");
 			valido = false;
 		}

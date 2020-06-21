@@ -6,10 +6,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -34,6 +31,7 @@ import controller.ClienteController;
 import controller.ContratoLocacaoController;
 import controller.FuncionarioController;
 import controller.VeiculoController;
+import metodosGerais.CnhTextField;
 import metodosGerais.CpfTextField;
 import metodosGerais.DataTextField;
 import metodosGerais.LimiteTextField;
@@ -41,7 +39,9 @@ import metodosGerais.MetodosGerais;
 import metodosGerais.TelefoneTextField;
 import model.ClienteModel;
 import model.ContratoLocacaoModel;
+import model.FiltroModel;
 import model.FuncionarioModel;
+import model.OrdenacaoModel;
 import model.VeiculoModel;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.BoxLayout;
@@ -70,6 +70,7 @@ public class AlocacoesView extends JPanel {
 	private JComboBox<FuncionarioModel> comboBoxFuncionario;
 	private JComboBox<FuncionarioModel> funcionarioComboBox;
 	private JTable tabelaContratos;
+	private JComboBox<OrdenacaoModel> ordenacaoComboBox;
 
 	/**
 	 * Create the panel.
@@ -232,10 +233,10 @@ public class AlocacoesView extends JPanel {
 		Component rigidArea_69 = Box.createRigidArea(new Dimension(20, 20));
 		consultarAluguelPanel.add(rigidArea_69, BorderLayout.NORTH);
 
-		Component rigidArea_70 = Box.createRigidArea(new Dimension(15, 464));
+		Component rigidArea_70 = Box.createRigidArea(new Dimension(10, 464));
 		consultarAluguelPanel.add(rigidArea_70, BorderLayout.WEST);
 
-		Component rigidArea_71 = Box.createRigidArea(new Dimension(14, 464));
+		Component rigidArea_71 = Box.createRigidArea(new Dimension(10, 464));
 		consultarAluguelPanel.add(rigidArea_71, BorderLayout.EAST);
 
 		JPanel consultarContratosPanel = new JPanel();
@@ -255,173 +256,76 @@ public class AlocacoesView extends JPanel {
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)));
 		visualizarContratosPanel.setLayout(new BoxLayout(visualizarContratosPanel, BoxLayout.X_AXIS));
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		visualizarContratosPanel.add(scrollPane);
-		
+
 		tabelaContratos = new JTable();
 		scrollPane.setViewportView(tabelaContratos);
 		panel_5.setLayout(new BorderLayout(0, 0));
 
-		Component rigidArea_74 = Box.createRigidArea(new Dimension(20, 20));
+		Component rigidArea_74 = Box.createRigidArea(new Dimension(15, 177));
 		panel_5.add(rigidArea_74, BorderLayout.WEST);
 
-		Component rigidArea_75 = Box.createRigidArea(new Dimension(20, 20));
+		Component rigidArea_75 = Box.createRigidArea(new Dimension(15, 177));
 		panel_5.add(rigidArea_75, BorderLayout.EAST);
 
 		JPanel filtrosContratosPanel = new JPanel();
 		filtrosContratosPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_5.add(filtrosContratosPanel, BorderLayout.CENTER);
-		GridBagLayout gbl_filtrosContratosPanel = new GridBagLayout();
-		gbl_filtrosContratosPanel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_filtrosContratosPanel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_filtrosContratosPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				0.0, Double.MIN_VALUE };
-		gbl_filtrosContratosPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		filtrosContratosPanel.setLayout(gbl_filtrosContratosPanel);
+		filtrosContratosPanel.setLayout(new MigLayout("", "[29px][20px][63px][123px][20px][20px][20px][20px][63px]",
+				"[14px][22px][23px][14px][23px][23px][20px]"));
 
 		JLabel lblNewLabel_22 = new JLabel("Filtros");
-		GridBagConstraints gbc_lblNewLabel_22 = new GridBagConstraints();
-		gbc_lblNewLabel_22.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_22.gridx = 0;
-		gbc_lblNewLabel_22.gridy = 0;
-		filtrosContratosPanel.add(lblNewLabel_22, gbc_lblNewLabel_22);
+		filtrosContratosPanel.add(lblNewLabel_22, "cell 0 0,alignx center,aligny center");
 
 		JLabel lblNewLabel_18 = new JLabel("Cliente:");
-		GridBagConstraints gbc_lblNewLabel_18 = new GridBagConstraints();
-		gbc_lblNewLabel_18.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_18.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_18.gridx = 2;
-		gbc_lblNewLabel_18.gridy = 1;
-		filtrosContratosPanel.add(lblNewLabel_18, gbc_lblNewLabel_18);
+		filtrosContratosPanel.add(lblNewLabel_18, "cell 2 1,alignx right,aligny center");
 
 		comboBoxClientes = new JComboBox<ClienteModel>();
-		GridBagConstraints gbc_comboBoxClientes = new GridBagConstraints();
-		gbc_comboBoxClientes.gridwidth = 2;
-		gbc_comboBoxClientes.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxClientes.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxClientes.gridx = 3;
-		gbc_comboBoxClientes.gridy = 1;
-		filtrosContratosPanel.add(comboBoxClientes, gbc_comboBoxClientes);
+		filtrosContratosPanel.add(comboBoxClientes, "cell 3 1,growx,aligny center");
 
 		Component rigidArea_76 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_76 = new GridBagConstraints();
-		gbc_rigidArea_76.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_76.gridx = 0;
-		gbc_rigidArea_76.gridy = 2;
-		filtrosContratosPanel.add(rigidArea_76, gbc_rigidArea_76);
+		filtrosContratosPanel.add(rigidArea_76, "cell 0 2,alignx center,aligny center");
 
 		Component rigidArea_77 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_77 = new GridBagConstraints();
-		gbc_rigidArea_77.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_77.gridx = 1;
-		gbc_rigidArea_77.gridy = 2;
-		filtrosContratosPanel.add(rigidArea_77, gbc_rigidArea_77);
+		filtrosContratosPanel.add(rigidArea_77, "cell 1 2,alignx center,aligny center");
 
 		JLabel lblNewLabel_19 = new JLabel("Funcionario:");
-		GridBagConstraints gbc_lblNewLabel_19 = new GridBagConstraints();
-		gbc_lblNewLabel_19.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_19.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_19.gridx = 2;
-		gbc_lblNewLabel_19.gridy = 2;
-		filtrosContratosPanel.add(lblNewLabel_19, gbc_lblNewLabel_19);
+		filtrosContratosPanel.add(lblNewLabel_19, "cell 2 2,alignx right,aligny center");
 
 		comboBoxFuncionario = new JComboBox<FuncionarioModel>();
-		GridBagConstraints gbc_comboBoxFuncionario = new GridBagConstraints();
-		gbc_comboBoxFuncionario.gridwidth = 2;
-		gbc_comboBoxFuncionario.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxFuncionario.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxFuncionario.gridx = 3;
-		gbc_comboBoxFuncionario.gridy = 2;
-		filtrosContratosPanel.add(comboBoxFuncionario, gbc_comboBoxFuncionario);
+		filtrosContratosPanel.add(comboBoxFuncionario, "cell 3 2,growx,aligny center");
 
 		Component rigidArea_78 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_78 = new GridBagConstraints();
-		gbc_rigidArea_78.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_78.gridx = 5;
-		gbc_rigidArea_78.gridy = 2;
-		filtrosContratosPanel.add(rigidArea_78, gbc_rigidArea_78);
+		filtrosContratosPanel.add(rigidArea_78, "cell 4 2,alignx center,aligny center");
 
 		Component rigidArea_79 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_79 = new GridBagConstraints();
-		gbc_rigidArea_79.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_79.gridx = 6;
-		gbc_rigidArea_79.gridy = 2;
-		filtrosContratosPanel.add(rigidArea_79, gbc_rigidArea_79);
+		filtrosContratosPanel.add(rigidArea_79, "cell 5 2,alignx center,aligny center");
 
 		Component rigidArea_80 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_80 = new GridBagConstraints();
-		gbc_rigidArea_80.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_80.gridx = 7;
-		gbc_rigidArea_80.gridy = 2;
-		filtrosContratosPanel.add(rigidArea_80, gbc_rigidArea_80);
+		filtrosContratosPanel.add(rigidArea_80, "cell 6 2,alignx center,aligny center");
 
 		Component rigidArea_81 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_81 = new GridBagConstraints();
-		gbc_rigidArea_81.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_81.gridx = 8;
-		gbc_rigidArea_81.gridy = 2;
-		filtrosContratosPanel.add(rigidArea_81, gbc_rigidArea_81);
-
-		Component rigidArea_82 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_82 = new GridBagConstraints();
-		gbc_rigidArea_82.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea_82.gridx = 9;
-		gbc_rigidArea_82.gridy = 2;
-		filtrosContratosPanel.add(rigidArea_82, gbc_rigidArea_82);
+		filtrosContratosPanel.add(rigidArea_81, "cell 7 2,alignx center,aligny center");
 
 		JButton filtrarButton = new JButton("Filtrar");
-		GridBagConstraints gbc_filtrarButton = new GridBagConstraints();
-		gbc_filtrarButton.insets = new Insets(0, 0, 5, 5);
-		gbc_filtrarButton.gridx = 10;
-		gbc_filtrarButton.gridy = 2;
-		filtrosContratosPanel.add(filtrarButton, gbc_filtrarButton);
-
-		JLabel lblNewLabel_20 = new JLabel("New label");
-		GridBagConstraints gbc_lblNewLabel_20 = new GridBagConstraints();
-		gbc_lblNewLabel_20.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_20.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_20.gridx = 2;
-		gbc_lblNewLabel_20.gridy = 3;
-		filtrosContratosPanel.add(lblNewLabel_20, gbc_lblNewLabel_20);
+		filtrosContratosPanel.add(filtrarButton, "cell 8 2,alignx center,aligny center");
 
 		JLabel lblNewLabel_21 = new JLabel("Ordenar por:");
-		GridBagConstraints gbc_lblNewLabel_21 = new GridBagConstraints();
-		gbc_lblNewLabel_21.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_21.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_21.gridx = 2;
-		gbc_lblNewLabel_21.gridy = 4;
-		filtrosContratosPanel.add(lblNewLabel_21, gbc_lblNewLabel_21);
+		filtrosContratosPanel.add(lblNewLabel_21, "cell 2 4,alignx right,aligny center");
 
-		JComboBox comboBox_2 = new JComboBox();
-		GridBagConstraints gbc_comboBox_2 = new GridBagConstraints();
-		gbc_comboBox_2.gridwidth = 2;
-		gbc_comboBox_2.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_2.gridx = 3;
-		gbc_comboBox_2.gridy = 4;
-		filtrosContratosPanel.add(comboBox_2, gbc_comboBox_2);
+		ordenacaoComboBox = new JComboBox<OrdenacaoModel>();
+		filtrosContratosPanel.add(ordenacaoComboBox, "cell 3 4,growx,aligny center");
 
 		JButton limparFiltrosButton = new JButton("Limpar");
-		GridBagConstraints gbc_limparFiltrosButton = new GridBagConstraints();
-		gbc_limparFiltrosButton.insets = new Insets(0, 0, 5, 5);
-		gbc_limparFiltrosButton.gridx = 10;
-		gbc_limparFiltrosButton.gridy = 4;
-		filtrosContratosPanel.add(limparFiltrosButton, gbc_limparFiltrosButton);
+		filtrosContratosPanel.add(limparFiltrosButton, "cell 8 4,alignx center,aligny center");
 
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Apenas ativos");
-		GridBagConstraints gbc_chckbxNewCheckBox_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_1.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_1.gridx = 3;
-		gbc_chckbxNewCheckBox_1.gridy = 5;
-		filtrosContratosPanel.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
+		filtrosContratosPanel.add(chckbxNewCheckBox_1, "cell 3 5,alignx center,aligny center");
 
 		Component rigidArea_83 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_83 = new GridBagConstraints();
-		gbc_rigidArea_83.insets = new Insets(0, 0, 0, 5);
-		gbc_rigidArea_83.gridx = 3;
-		gbc_rigidArea_83.gridy = 6;
-		filtrosContratosPanel.add(rigidArea_83, gbc_rigidArea_83);
+		filtrosContratosPanel.add(rigidArea_83, "cell 3 6,alignx center,aligny center");
 		consultarContratosPanel.setLayout(gl_consultarContratosPanel);
 
 		Component rigidArea_39 = Box.createRigidArea(new Dimension(20, 20));
@@ -488,7 +392,7 @@ public class AlocacoesView extends JPanel {
 		JLabel lblNewLabel_12 = new JLabel("CNH:");
 		cadastrarClientePanel.add(lblNewLabel_12, "cell 1 4,alignx trailing");
 
-		cnhClienteTF = new JTextField();
+		cnhClienteTF = new CnhTextField();
 		cadastrarClientePanel.add(cnhClienteTF, "cell 2 4 3 1,growx");
 		cnhClienteTF.setColumns(10);
 
@@ -542,7 +446,7 @@ public class AlocacoesView extends JPanel {
 					alocarLayeredPane.revalidate();
 				}
 				popularComboBoxComTodosOsVeiculos();
-				popularComboBoxComFuncionariosAtivos();
+				popularComboBoxComFuncionarios(true, funcionarioComboBox);
 			}
 		});
 
@@ -554,9 +458,9 @@ public class AlocacoesView extends JPanel {
 
 		prosseguirBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				popularComboBoxComTodosOsClientes();
+				popularComboBoxComTodosOsClientes(clientesComboBox);
 				popularComboBoxComTodosOsVeiculos();
-				popularComboBoxComFuncionariosAtivos();
+				popularComboBoxComFuncionarios(true, funcionarioComboBox);
 			}
 		});
 
@@ -569,11 +473,23 @@ public class AlocacoesView extends JPanel {
 			}
 		});
 
+		filtrarButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				filtrar();
+			}
+		});
+
+		limparFiltrosButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limparFiltros();
+			}
+		});
+
 		alternarTela(voltarParaAlocacaoTelaInicialBtn, alocarLayeredPane, informativoPanel);
 		alternarTela(prosseguirBtn, alocarLayeredPane, cadastrarAluguelPanel);
 		alternarTela(voltarParaInformativoBtn, alocarLayeredPane, informativoPanel);
-		
-		
+
+		popularComboBoxConsultas();
 		ContratoLocacaoController.popularJTable(tabelaContratos);
 	}
 
@@ -636,6 +552,7 @@ public class AlocacoesView extends JPanel {
 			model.setDataDeAlocacao(MetodosGerais.transformarEmDate(dataAlocacaoTF.getText()));
 			model.setDataDeDevolucao(MetodosGerais.transformarEmDate(dataDevolucaoTF.getText()));
 			ContratoLocacaoController.cadastrarContrato(model);
+			limparContrato();
 		}
 	}
 
@@ -671,19 +588,19 @@ public class AlocacoesView extends JPanel {
 		}
 	}
 
-	public void popularComboBoxComTodosOsClientes() {
+	public void popularComboBoxComTodosOsClientes(JComboBox<ClienteModel> comboBox) {
 		List<ClienteModel> modelList = ClienteController.obterListaCliente();
-		clientesComboBox.addItem(new ClienteModel(0, "--Selecione--"));
+		comboBox.addItem(new ClienteModel(0, "--Selecione--"));
 		for (ClienteModel model : modelList) {
-			clientesComboBox.addItem(model);
+			comboBox.addItem(model);
 		}
 	}
 
-	public void popularComboBoxComFuncionariosAtivos() {
-		List<FuncionarioModel> modelList = FuncionarioController.obterListaFuncionario(true);
-		funcionarioComboBox.addItem(new FuncionarioModel(0, "--Selecione--"));
+	public void popularComboBoxComFuncionarios(Boolean apenasAtivos, JComboBox<FuncionarioModel> comboBox) {
+		List<FuncionarioModel> modelList = FuncionarioController.obterListaFuncionario(apenasAtivos);
+		comboBox.addItem(new FuncionarioModel(0, "--Selecione--"));
 		for (FuncionarioModel model : modelList) {
-			funcionarioComboBox.addItem(model);
+			comboBox.addItem(model);
 		}
 	}
 
@@ -693,5 +610,35 @@ public class AlocacoesView extends JPanel {
 		veiculosCadastradosComboBox.setSelectedIndex(0);
 		dataAlocacaoTF.setText("");
 		dataDevolucaoTF.setText("");
+	}
+
+	public void popularComboBoxConsultas() {
+		popularComboBoxComTodosOsClientes(comboBoxClientes);
+		popularComboBoxComFuncionarios(false, comboBoxFuncionario);
+		popularCheckBoxFiltro();
+	}
+
+	public void popularCheckBoxFiltro() {
+		String[] nomesColunas = { "Código", "Cliente", "Funcionário", "Veículo", "Data Locação", "Data Devolução",
+				"Status Contrato" };
+
+		ordenacaoComboBox.addItem(new OrdenacaoModel(0, "--Selecione--"));
+		for (int i = 0; i < nomesColunas.length; i++) {
+			ordenacaoComboBox.addItem(new OrdenacaoModel((i + 1), nomesColunas[i]));
+		}
+	}
+
+	public void filtrar() {
+		FiltroModel model = new FiltroModel();
+		model.setCliente((ClienteModel) comboBoxClientes.getSelectedItem());
+		model.setFuncionario((FuncionarioModel) comboBoxFuncionario.getSelectedItem());
+		model.setIndexOrdenacao((OrdenacaoModel) ordenacaoComboBox.getSelectedItem());
+		ContratoLocacaoController.filtrarContratos(model, tabelaContratos);
+	}
+
+	private void limparFiltros() {
+		comboBoxClientes.setSelectedIndex(0);
+		comboBoxFuncionario.setSelectedIndex(0);
+		ordenacaoComboBox.setSelectedItem(0);
 	}
 }

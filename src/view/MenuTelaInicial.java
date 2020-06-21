@@ -181,12 +181,12 @@ public class MenuTelaInicial extends JPanel {
 		administracaoPanel.add(tabbedPane);
 		alternarTela(botaoClientes , layeredPane, clientesPanel);
 		JPanel relatoriosPanel = new JPanel();
-		JPanel importacaoPanel = new JPanel();
+		JPanel funcionariosPanel = new JPanel();
 		JPanel exportacaoPanel = new JPanel();
 		tabbedPane.addTab("Relatórios", relatoriosPanel);
 		relatoriosPanel.setLayout(new BorderLayout(0, 0));
-		tabbedPane.addTab("Importações", importacaoPanel);
-		importacaoPanel.setLayout(new BorderLayout(0, 0));
+		tabbedPane.addTab("Quadro Geral", funcionariosPanel);
+		funcionariosPanel.setLayout(new BorderLayout(0, 0));
 		tabbedPane.addTab("Exportações", exportacaoPanel);
 		exportacaoPanel.setLayout(new BorderLayout(0, 0));
 		

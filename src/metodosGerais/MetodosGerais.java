@@ -1,9 +1,5 @@
 package metodosGerais;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.text.DateFormat;
@@ -150,16 +146,7 @@ public class MetodosGerais {
 		return false;
 	}
 
-	public static void gerarArquivo() {
-		try (Writer writer = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream("C:\\Users\\mateu\\Downloads\\relatorio.txt"), "utf-8"))) {
-			// TODO adicionar linhas vindo do banco
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static java.sql.Date obterDataMinimaParaValidacao(int quantidadeEmAno){
+	public static java.sql.Date obterDataMinimaParaValidacao(int quantidadeEmAno) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.YEAR, quantidadeEmAno);
 		return new java.sql.Date(calendar.getTime().getTime());
@@ -245,16 +232,14 @@ public class MetodosGerais {
 			return new java.sql.Date(date.getTime());
 
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	public static void alterarNomeColuna(JTable table, int tamanhoMaximo, String[] novosNomes) {
 		for (int i = 0; i < tamanhoMaximo; i++) {
 			table.getColumnModel().getColumn(i).setHeaderValue(novosNomes[i]);
 		}
 	}
-
 }
