@@ -27,7 +27,7 @@ public class ClienteRepository {
 			statement.setString(2, model.getCpf());
 			statement.setString(3, model.getTelefone());
 			statement.setString(4, model.getCnh());
-			statement.setDate(5, null);
+			statement.setDate(5, model.getDataNascimento());
 			statement.execute();
 
 			con.close();
@@ -101,6 +101,29 @@ public class ClienteRepository {
 			
 			con.close();
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void editarCliente(ClienteModel model) {
+		Connection con = ConnectionFactory.getConnection();
+		
+		try {
+			String query = "update cliente set nomeCompleto = ?, cpf = ?, telefone = ?, cnh = ? where idCliente = ?";
+			
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setString(1, model.getNomeCompleto());
+			statement.setString(2, model.getCpf());
+			statement.setString(3, model.getTelefone());
+			statement.setString(4, model.getCnh());
+			//statement.setDate(5, model.getDataNascimento());
+			statement.setInt(5, model.getIdCliente());
+			
+			statement.executeUpdate();
+			
+			con.close();
+			
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class FuncionarioRepository {
 		String mensagemFinal;
 		Connection con = ConnectionFactory.getConnection();
 		try {
+			con.setAutoCommit(false);
 			String queryConta = "Insert into conta (login, senha, ativo) values (?, md5(?), 1)";
 			PreparedStatement statement1 = con.prepareStatement(queryConta);
 			contaModel.gerarUsuario();
@@ -39,19 +41,29 @@ public class FuncionarioRepository {
 			statement3.setString(1, contaModel.getNomeCompleto());
 			statement3.setString(2, contaModel.getCpf());
 			statement3.setString(3, contaModel.getTelefoneContato());
-			statement3.setDate(4, null);
+			statement3.setDate(4, contaModel.getDataNascimento());
 			statement3.setInt(5, idConta);
 			statement3.setInt(6, contaModel.getIdCargo());
 			statement3.execute();
+
+			con.commit();
 			con.close();
 			mensagemFinal = "Cadastro realizado com sucesso.";
 
 		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
-			mensagemFinal = "Houve algum erro ao cadastrar o funcionario e sua conta.";
+			mensagemFinal = "Houve um erro ao cadastrar o funcionario e sua conta.";
+
+			if (e instanceof SQLIntegrityConstraintViolationException) {
+				mensagemFinal += "\nCpf já cadastrado";
+			}
 		}
 		JOptionPane.showMessageDialog(new JFrame(), mensagemFinal);
-
 	}
 
 	public static Boolean obterConta(ContaModel model) {
@@ -85,7 +97,7 @@ public class FuncionarioRepository {
 			PreparedStatement statement = con.prepareStatement(query);
 			ResultSet rs = statement.executeQuery();
 			List<FuncionarioModel> modelList = new ArrayList<FuncionarioModel>();
-			
+
 			while (rs.next()) {
 				FuncionarioModel model = new FuncionarioModel();
 				model.setIdFuncionario(rs.getInt("idFuncionario"));

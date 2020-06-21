@@ -37,4 +37,8 @@ public class ClienteController {
 	public static List<ClienteModel> obterListaCliente() {
 		return ClienteRepository.obterListaCliente();
 	}
+
+	public static void editarCliente(ClienteModel model) {
+		ClienteRepository.editarCliente(model);
+	}
 }

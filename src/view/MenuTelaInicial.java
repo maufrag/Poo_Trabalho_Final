@@ -51,6 +51,7 @@ public class MenuTelaInicial extends JPanel {
 	 */
 	private static final long serialVersionUID = -6331793467680155838L;
 	private JButton sairBtn;
+
 	/**
 	 * Create the panel.
 	 */
@@ -218,7 +219,8 @@ public class MenuTelaInicial extends JPanel {
 
 		logoutBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				remove(layeredPane);
+				add(new MainView());
 			}
 		});
 	}

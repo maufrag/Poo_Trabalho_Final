@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -22,8 +21,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.table.DefaultTableModel;
 
 import controller.ClienteController;
+import controller.VeiculoController;
 import metodosGerais.CnhTextField;
 import metodosGerais.CpfTextField;
 import metodosGerais.DataTextField;
@@ -31,6 +32,7 @@ import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
 import metodosGerais.TelefoneTextField;
 import model.ClienteModel;
+import model.VeiculoModel;
 import net.miginfocom.swing.MigLayout;
 
 public class ClienteView extends JPanel {
@@ -176,7 +178,7 @@ public class ClienteView extends JPanel {
 
 		JPanel panel_4 = new JPanel();
 		panel_3.add(panel_4, BorderLayout.CENTER);
-		panel_4.setLayout(new MigLayout("", "[][][grow][][][][][][][][][][]", "[][][][][]"));
+		panel_4.setLayout(new MigLayout("", "[][][][][][][][][][][][][]", "[][][][][]"));
 
 		JLabel lblNewLabel_5 = new JLabel("Nome Cliente");
 		panel_4.add(lblNewLabel_5, "cell 1 0,alignx trailing");
@@ -184,13 +186,26 @@ public class ClienteView extends JPanel {
 		nomeEdicaoTF = new JTextField();
 		panel_4.add(nomeEdicaoTF, "cell 2 0,growx");
 		nomeEdicaoTF.setColumns(10);
+		nomeEdicaoTF.setDocument(new LimiteTextField(50));
 
 		JLabel lblNewLabel_6 = new JLabel("CPF:");
 		panel_4.add(lblNewLabel_6, "cell 1 1,alignx trailing");
 
-		cpfEdicaoTF = new JTextField();
+		cpfEdicaoTF = new CpfTextField();
 		panel_4.add(cpfEdicaoTF, "cell 2 1,growx");
 		cpfEdicaoTF.setColumns(10);
+
+		Component rigidArea = Box.createRigidArea(new Dimension(20, 20));
+		panel_4.add(rigidArea, "cell 3 1");
+
+		Component rigidArea_1 = Box.createRigidArea(new Dimension(20, 20));
+		panel_4.add(rigidArea_1, "cell 4 1");
+
+		Component rigidArea_2 = Box.createRigidArea(new Dimension(20, 20));
+		panel_4.add(rigidArea_2, "cell 5 1");
+
+		Component rigidArea_3 = Box.createRigidArea(new Dimension(20, 20));
+		panel_4.add(rigidArea_3, "cell 6 1");
 
 		JButton selecionarBtn = new JButton("Selecionar");
 		selecionarBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -199,29 +214,29 @@ public class ClienteView extends JPanel {
 		JLabel lblNewLabel_7 = new JLabel("Telefone:");
 		panel_4.add(lblNewLabel_7, "cell 1 2,alignx trailing");
 
-		telefoneEdicaoTF = new JTextField();
+		telefoneEdicaoTF = new TelefoneTextField();
 		panel_4.add(telefoneEdicaoTF, "cell 2 2,growx");
 		telefoneEdicaoTF.setColumns(10);
 
 		JButton atualizarBtn = new JButton("Atualizar");
 		atualizarBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		panel_4.add(atualizarBtn, "cell 12 2");
+		panel_4.add(atualizarBtn, "cell 12 2,alignx center");
 
 		JLabel lblNewLabel_8 = new JLabel("CNH:");
 		panel_4.add(lblNewLabel_8, "cell 1 3,alignx trailing");
 
-		cnhEdicaoTF = new JTextField();
+		cnhEdicaoTF = new CnhTextField();
 		panel_4.add(cnhEdicaoTF, "cell 2 3,growx");
 		cnhEdicaoTF.setColumns(10);
 
 		JButton removerBtn = new JButton("Remover");
 		removerBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		panel_4.add(removerBtn, "cell 12 3");
+		panel_4.add(removerBtn, "cell 12 3,alignx center");
 
 		JLabel lblNewLabel_9 = new JLabel("Data Nascimento:");
 		panel_4.add(lblNewLabel_9, "cell 1 4,alignx trailing");
 
-		dataNascimentoEdicaoTF = new JTextField();
+		dataNascimentoEdicaoTF = new DataTextField();
 		panel_4.add(dataNascimentoEdicaoTF, "cell 2 4,growx");
 		dataNascimentoEdicaoTF.setColumns(10);
 		panel_2.setLayout(new GridLayout(1, 0, 0, 0));
@@ -241,11 +256,24 @@ public class ClienteView extends JPanel {
 
 		cadastrarClienteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cadastrarEObterCliente();
+				cadastrarCliente();
+				ClienteController.preencherTabela(table);
 				limpar();
 			}
 		});
-		
+
+		selecionarBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				selecionar();
+			}
+		});
+
+		atualizarBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				atualizar();
+			}
+		});
+
 		ClienteController.preencherTabela(table);
 	}
 
@@ -281,7 +309,7 @@ public class ClienteView extends JPanel {
 		return valido;
 	}
 
-	public ClienteModel cadastrarEObterCliente() {
+	public void cadastrarCliente() {
 		ClienteModel model = new ClienteModel();
 
 		if (validarCadastroCliente()) {
@@ -291,8 +319,53 @@ public class ClienteView extends JPanel {
 			model.setCnh(cnhTextField.getText());
 			model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoTextField.getText()));
 			ClienteController.cadastrarCliente(model);
-			return model;
 		}
-		return null;
+	}
+
+	public void selecionar() {
+		if (table.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(null, "Por favor selecione uma linha.");
+		} else {
+			DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+			int linhaSelecionada = table.getSelectedRow();
+
+			nomeEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 1).toString());
+			cpfEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 2).toString());
+			telefoneEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 3).toString());
+			cnhEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 4).toString());
+			dataNascimentoEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 5).toString());
+		}
+	}
+
+	public void atualizar() {
+		if (table.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(null, "Por favor selecione uma linha.");
+		} else {
+			ClienteModel model = new ClienteModel();
+			DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+			int linhaSelecinhada = table.getSelectedRow();
+			model.setIdCliente(Integer.parseInt(dtm.getValueAt(linhaSelecinhada, 0).toString()));
+			model.setNomeCompleto(nomeEdicaoTF.getText());
+			model.setCpf(cpfEdicaoTF.getText());
+			model.setTelefone(telefoneEdicaoTF.getText());
+			model.setCnh(cnhEdicaoTF.getText());
+			// model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoEdicaoTF.getText()));
+			// //converter data para antigo formato e fazer validação
+			ClienteController.editarCliente(model);
+			ClienteController.preencherTabela(table);
+			limparSelecao();
+		}
+	}
+
+	public void remover() {
+
+	}
+
+	public void limparSelecao() {
+		nomeEdicaoTF.setText("");
+		cpfEdicaoTF.setText("");
+		telefoneEdicaoTF.setText("");
+		cnhEdicaoTF.setText("");
+		dataNascimentoEdicaoTF.setText("");
 	}
 }

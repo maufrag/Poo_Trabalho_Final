@@ -223,6 +223,7 @@ public class AlocacoesView extends JPanel {
 		cadastrarAluguelPanel.add(rigidArea_67, "cell 3 7");
 
 		JButton realizarAlocacaoButton = new JButton("Alocar");
+		realizarAlocacaoButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		cadastrarAluguelPanel.add(realizarAlocacaoButton, "cell 1 9");
 		alocacoesTabbedPane.addTab("Consultar Alocação", consultarAluguelPanel);
 		consultarAluguelPanel.setLayout(new BorderLayout(0, 0));
@@ -310,6 +311,7 @@ public class AlocacoesView extends JPanel {
 		filtrosContratosPanel.add(rigidArea_81, "cell 7 2,alignx center,aligny center");
 
 		JButton filtrarButton = new JButton("Filtrar");
+		filtrarButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		filtrosContratosPanel.add(filtrarButton, "cell 8 2,alignx center,aligny center");
 
 		JLabel lblNewLabel_21 = new JLabel("Ordenar por:");
@@ -319,10 +321,8 @@ public class AlocacoesView extends JPanel {
 		filtrosContratosPanel.add(ordenacaoComboBox, "cell 3 4,growx,aligny center");
 
 		JButton limparFiltrosButton = new JButton("Limpar");
+		limparFiltrosButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		filtrosContratosPanel.add(limparFiltrosButton, "cell 8 4,alignx center,aligny center");
-
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Apenas ativos");
-		filtrosContratosPanel.add(chckbxNewCheckBox_1, "cell 3 5,alignx center,aligny center");
 
 		Component rigidArea_83 = Box.createRigidArea(new Dimension(20, 20));
 		filtrosContratosPanel.add(rigidArea_83, "cell 3 6,alignx center,aligny center");
@@ -433,12 +433,13 @@ public class AlocacoesView extends JPanel {
 		cadastrarClientePanel.add(rigidArea_59, "cell 2 11");
 
 		JButton limparContratoButton = new JButton("Limpar");
+		limparContratoButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		cadastrarAluguelPanel.add(limparContratoButton, "cell 3 9");
 
 		cadEProsseguirBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClienteModel model = cadastrarEObterCliente();
-				if (model != null) {
+				if (model != null && model.getIdCliente() != 0) {
 					clientesComboBox.addItem(ClienteController.preencherComboBoxComClienteCadastrado(model));
 					alocarLayeredPane.removeAll();
 					alocarLayeredPane.add(cadastrarAluguelPanel);
@@ -470,6 +471,7 @@ public class AlocacoesView extends JPanel {
 		realizarAlocacaoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cadastrarAlocacaoVeiculo();
+				ContratoLocacaoController.popularJTable(tabelaContratos);
 			}
 		});
 
@@ -538,7 +540,8 @@ public class AlocacoesView extends JPanel {
 			model.setCnh(cnhClienteTF.getText());
 			model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoClienteTF.getText()));
 			ClienteController.cadastrarCliente(model);
-			return model;
+			limparCamposCliente();
+			return ClienteController.preencherComboBoxComClienteCadastrado(model);
 		}
 		return null;
 	}
@@ -581,6 +584,7 @@ public class AlocacoesView extends JPanel {
 	}
 
 	public void popularComboBoxComTodosOsVeiculos() {
+		veiculosCadastradosComboBox.removeAllItems();
 		List<VeiculoModel> modelList = VeiculoController.obterListaVeiculos(true, true);
 		veiculosCadastradosComboBox.addItem(new VeiculoModel(0, "", "--Selecione--"));
 		for (VeiculoModel model : modelList) {
@@ -589,6 +593,7 @@ public class AlocacoesView extends JPanel {
 	}
 
 	public void popularComboBoxComTodosOsClientes(JComboBox<ClienteModel> comboBox) {
+		comboBox.removeAllItems();
 		List<ClienteModel> modelList = ClienteController.obterListaCliente();
 		comboBox.addItem(new ClienteModel(0, "--Selecione--"));
 		for (ClienteModel model : modelList) {
@@ -597,6 +602,7 @@ public class AlocacoesView extends JPanel {
 	}
 
 	public void popularComboBoxComFuncionarios(Boolean apenasAtivos, JComboBox<FuncionarioModel> comboBox) {
+		comboBox.removeAllItems();
 		List<FuncionarioModel> modelList = FuncionarioController.obterListaFuncionario(apenasAtivos);
 		comboBox.addItem(new FuncionarioModel(0, "--Selecione--"));
 		for (FuncionarioModel model : modelList) {
@@ -640,5 +646,13 @@ public class AlocacoesView extends JPanel {
 		comboBoxClientes.setSelectedIndex(0);
 		comboBoxFuncionario.setSelectedIndex(0);
 		ordenacaoComboBox.setSelectedItem(0);
+	}
+	
+	private void limparCamposCliente() {
+		nomeClienteTF.setText("");
+		cpfClienteTF.setText("");
+		cnhClienteTF.setText("");
+		telefoneClienteTF.setText("");
+		dataNascimentoClienteTF.setText("");	
 	}
 }

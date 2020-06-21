@@ -32,6 +32,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.JPasswordField;
+import java.awt.Font;
 
 public class MainView extends JFrame {
 
@@ -277,6 +278,7 @@ public class MainView extends JFrame {
 		panel.add(rigidArea_34, gbc_rigidArea_34);
 
 		JButton loginButton = new JButton("Login");
+		loginButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_loginButton = new GridBagConstraints();
 		gbc_loginButton.anchor = GridBagConstraints.EAST;
 		gbc_loginButton.gridwidth = 2;
@@ -286,6 +288,7 @@ public class MainView extends JFrame {
 		panel.add(loginButton, gbc_loginButton);
 
 		JButton botaoCadastrar1 = new JButton("Cadastrar");
+		botaoCadastrar1.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_botaoCadastrar1 = new GridBagConstraints();
 		gbc_botaoCadastrar1.insets = new Insets(0, 0, 5, 5);
 		gbc_botaoCadastrar1.gridx = 2;
