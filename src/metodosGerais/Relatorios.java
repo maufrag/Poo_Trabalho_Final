@@ -12,11 +12,11 @@ import Repository.ContratoLocacaoRepository;
 import model.RelatorioContratosModel;
 
 public class Relatorios {
-	public static void gerarRelatorio() {
+	public static void gerarRelatorioContratos() {
 		List<RelatorioContratosModel> modelList = ContratoLocacaoRepository.obterView();
 		try {
 			String home = System.getProperty("user.home");
-			String fileName = "relatorio";
+			String fileName = "relatorio contratos";
 			File file = new File(home + "/Downloads/" + fileName + ".txt");
 
 			FileOutputStream is = new FileOutputStream(file);

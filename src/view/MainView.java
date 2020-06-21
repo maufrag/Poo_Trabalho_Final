@@ -698,7 +698,6 @@ public class MainView extends JFrame {
 
 		botaoCadastrar1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Relatorios.gerarRelatorio();
 				layeredPane.removeAll();
 				layeredPane.add(CadastroPanel);
 				layeredPane.repaint();

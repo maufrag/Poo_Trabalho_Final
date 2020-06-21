@@ -543,6 +543,7 @@ public class VeiculosView extends JPanel {
 			model.setEstaDisponivel(veiculoChkBox.isSelected());
 			model.setPrecoAluguel(Double.parseDouble(precoVeiculoTF.getText()));
 			VeiculoController.cadastrarVeiculo(model, edicaoTable);
+			limparCadastro();
 			VeiculoController.obterListaVeiculos(edicaoTable);
 			VeiculoController.obterListaVeiculos(table);
 		}
