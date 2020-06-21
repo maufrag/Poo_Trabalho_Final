@@ -47,6 +47,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 
 public class AlocacoesView extends JPanel {
 	/**
@@ -85,7 +86,9 @@ public class AlocacoesView extends JPanel {
 		JTabbedPane alocacoesTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		alocacoesPanel.add(alocacoesTabbedPane);
 		JPanel realizarAluguelPanel = new JPanel();
+		realizarAluguelPanel.setBackground(Color.WHITE);
 		JPanel consultarAluguelPanel = new JPanel();
+		consultarAluguelPanel.setBackground(Color.WHITE);
 
 		alocacoesTabbedPane.addTab("Realizar Alocação", realizarAluguelPanel);
 		realizarAluguelPanel.setLayout(new BorderLayout(0, 0));
@@ -103,6 +106,7 @@ public class AlocacoesView extends JPanel {
 		realizarAluguelPanel.add(rigidArea_26, BorderLayout.EAST);
 
 		JPanel obterDadosAlocacao = new JPanel();
+		obterDadosAlocacao.setBackground(Color.WHITE);
 		realizarAluguelPanel.add(obterDadosAlocacao, BorderLayout.CENTER);
 		obterDadosAlocacao.setLayout(new BorderLayout(0, 0));
 
@@ -119,7 +123,7 @@ public class AlocacoesView extends JPanel {
 		obterDadosAlocacao.add(rigidArea_30, BorderLayout.NORTH);
 
 		JLayeredPane alocarLayeredPane = new JLayeredPane();
-		alocarLayeredPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		alocarLayeredPane.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		obterDadosAlocacao.add(alocarLayeredPane, BorderLayout.CENTER);
 		alocarLayeredPane.setLayout(new CardLayout(0, 0));
 
@@ -241,11 +245,14 @@ public class AlocacoesView extends JPanel {
 		consultarAluguelPanel.add(rigidArea_71, BorderLayout.EAST);
 
 		JPanel consultarContratosPanel = new JPanel();
+		consultarContratosPanel.setBackground(Color.WHITE);
 		consultarAluguelPanel.add(consultarContratosPanel, BorderLayout.CENTER);
 
 		JPanel visualizarContratosPanel = new JPanel();
+		visualizarContratosPanel.setBorder(UIManager.getBorder("DesktopIcon.border"));
 
 		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(Color.WHITE);
 		GroupLayout gl_consultarContratosPanel = new GroupLayout(consultarContratosPanel);
 		gl_consultarContratosPanel.setHorizontalGroup(gl_consultarContratosPanel.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel_5, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
@@ -272,7 +279,7 @@ public class AlocacoesView extends JPanel {
 		panel_5.add(rigidArea_75, BorderLayout.EAST);
 
 		JPanel filtrosContratosPanel = new JPanel();
-		filtrosContratosPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		filtrosContratosPanel.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		panel_5.add(filtrosContratosPanel, BorderLayout.CENTER);
 		filtrosContratosPanel.setLayout(new MigLayout("", "[29px][20px][63px][123px][20px][20px][20px][20px][63px]",
 				"[14px][22px][23px][14px][23px][23px][20px]"));
