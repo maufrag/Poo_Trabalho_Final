@@ -32,7 +32,7 @@ public class CadastroController {
 
 		List<CargoModel> modelList = CargoRepository.obterListaCargos();
 		JComboBox<CargoModel> comboBox = new JComboBox<CargoModel>();
-		comboBox.addItem(new CargoModel(0, "-Selecione-"));
+		comboBox.addItem(new CargoModel(0, "--Selecione--"));
 
 		for (CargoModel model : modelList) {
 			comboBox.addItem(model);

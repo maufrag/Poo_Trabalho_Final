@@ -359,6 +359,7 @@ public class MainView extends JFrame {
 		loginPanel.add(rigidArea_25, gbc_rigidArea_25);
 
 		JPanel CadastroPanel = new JPanel();
+		CadastroPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		CadastroPanel.setBackground(Color.WHITE);
 		layeredPane.add(CadastroPanel, "name_131966069903300");
 		GridBagLayout gbl_CadastroPanel = new GridBagLayout();
@@ -460,6 +461,7 @@ public class MainView extends JFrame {
 		CadastroPanel.add(rigidArea_17, gbc_rigidArea_17);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.gridheight = 8;
 		gbc_panel_1.gridwidth = 4;
@@ -591,40 +593,42 @@ public class MainView extends JFrame {
 		gbc_rigidArea_33.gridx = 2;
 		gbc_rigidArea_33.gridy = 6;
 		panel_1.add(rigidArea_33, gbc_rigidArea_33);
-
-		botaoCadastrarFuncionario = new JButton("Cadastrar");
-		GridBagConstraints gbc_botaoCadastrarFuncionario = new GridBagConstraints();
-		gbc_botaoCadastrarFuncionario.insets = new Insets(0, 0, 5, 5);
-		gbc_botaoCadastrarFuncionario.gridwidth = 2;
-		gbc_botaoCadastrarFuncionario.gridx = 1;
-		gbc_botaoCadastrarFuncionario.gridy = 7;
-		panel_1.add(botaoCadastrarFuncionario, gbc_botaoCadastrarFuncionario);
-
-		botaoCadastrarFuncionario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cadastrarFuncionario();
-			}
-		});
-
-		JButton botaoLimpar = new JButton("Limpar");
-		GridBagConstraints gbc_botaoLimpar = new GridBagConstraints();
-		gbc_botaoLimpar.insets = new Insets(0, 0, 5, 5);
-		gbc_botaoLimpar.gridx = 3;
-		gbc_botaoLimpar.gridy = 7;
-		panel_1.add(botaoLimpar, gbc_botaoLimpar);
-
-		botaoLimpar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limparCampos();
-			}
-		});
-
-		Component rigidArea_50 = Box.createRigidArea(new Dimension(20, 20));
-		GridBagConstraints gbc_rigidArea_50 = new GridBagConstraints();
-		gbc_rigidArea_50.insets = new Insets(0, 0, 0, 5);
-		gbc_rigidArea_50.gridx = 2;
-		gbc_rigidArea_50.gridy = 8;
-		panel_1.add(rigidArea_50, gbc_rigidArea_50);
+				
+						JButton botaoLimpar = new JButton("Limpar");
+						botaoLimpar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+						GridBagConstraints gbc_botaoLimpar = new GridBagConstraints();
+						gbc_botaoLimpar.insets = new Insets(0, 0, 5, 5);
+						gbc_botaoLimpar.gridx = 1;
+						gbc_botaoLimpar.gridy = 7;
+						panel_1.add(botaoLimpar, gbc_botaoLimpar);
+						
+								botaoLimpar.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent e) {
+										limparCampos();
+									}
+								});
+				
+						botaoCadastrarFuncionario = new JButton("Cadastrar");
+						botaoCadastrarFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 10));
+						GridBagConstraints gbc_botaoCadastrarFuncionario = new GridBagConstraints();
+						gbc_botaoCadastrarFuncionario.insets = new Insets(0, 0, 5, 5);
+						gbc_botaoCadastrarFuncionario.anchor = GridBagConstraints.EAST;
+						gbc_botaoCadastrarFuncionario.gridx = 3;
+						gbc_botaoCadastrarFuncionario.gridy = 7;
+						panel_1.add(botaoCadastrarFuncionario, gbc_botaoCadastrarFuncionario);
+						
+								Component rigidArea_50 = Box.createRigidArea(new Dimension(20, 20));
+								GridBagConstraints gbc_rigidArea_50 = new GridBagConstraints();
+								gbc_rigidArea_50.insets = new Insets(0, 0, 0, 5);
+								gbc_rigidArea_50.gridx = 2;
+								gbc_rigidArea_50.gridy = 8;
+								panel_1.add(rigidArea_50, gbc_rigidArea_50);
+				
+						botaoCadastrarFuncionario.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								cadastrarFuncionario();
+							}
+						});
 
 		Component rigidArea_27 = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea_27 = new GridBagConstraints();

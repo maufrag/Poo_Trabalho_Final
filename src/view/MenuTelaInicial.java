@@ -4,8 +4,6 @@ import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-
 import java.awt.GridLayout;
 import javax.swing.JSplitPane;
 import java.awt.Insets;
@@ -15,34 +13,12 @@ import java.awt.CardLayout;
 import java.awt.Color;
 
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
-
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
 import javax.swing.JTabbedPane;
 
-import metodosGerais.CnhTextField;
-import metodosGerais.CpfTextField;
-import metodosGerais.DataTextField;
-import metodosGerais.LimiteTextField;
-import metodosGerais.MetodosGerais;
-import metodosGerais.TelefoneTextField;
-import model.ClienteModel;
-
 import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JTextField;
-
-import controller.ClienteController;
-
-import java.awt.Font;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 
 public class MenuTelaInicial extends JPanel {
 
