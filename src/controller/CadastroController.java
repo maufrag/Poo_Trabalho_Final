@@ -15,7 +15,6 @@ import model.ContaModel;
 public class CadastroController {
 
 	public static void cadastrarFuncionario(ContaModel model) {
-		model.setTelefoneContato(MetodosGerais.somenteDigitos(model.getTelefoneContato()));
 		String cpf = model.getCpf();
 
 		java.sql.Date dataMinima = MetodosGerais.obterDataMinimaParaValidacao(-18);

@@ -33,6 +33,7 @@ import metodosGerais.AnoTextField;
 import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
 import model.VeiculoModel;
+import java.awt.FlowLayout;
 
 public class VeiculosView extends JPanel {
 	/**
@@ -60,8 +61,9 @@ public class VeiculosView extends JPanel {
 	 */
 	public VeiculosView() {
 		setBounds(150, 150, 708, 532);
+		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		JPanel veiculosPanel = new JPanel();
-		add(veiculosPanel, "name_5290351763300");
+		add(veiculosPanel);
 		veiculosPanel.setLayout(new GridLayout(1, 0, 0, 0));
 
 		JTabbedPane veiculosTabbedPane = new JTabbedPane(JTabbedPane.TOP);

@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Repository.ContratoLocacaoRepository;
 import controller.CadastroController;
 import controller.LoginController;
 import metodosGerais.*;
