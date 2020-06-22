@@ -105,7 +105,7 @@ public class ContratoLocacaoRepository {
 	}
 
 	private static String obterQuerySelectContratos() {
-		return "Select idContrato, " + "c.nomeCompleto, " + "f.nomeCompleto, " + "CONCAT(v.fabricante, v.modelo), "
+		return "Select idContrato, " + "c.nomeCompleto, " + "f.nomeCompleto, " + "CONCAT(v.fabricante, ' ', v.modelo), "
 				+ "dataDeAlocacao, " + "dataDeDevolucao, " + "sc.nomeStatus " + "from contratolocacao cl "
 				+ "join cliente c on cl.idCliente = c.idCliente " + "join veiculo v on cl.idVeiculo = v.idVeiculo "
 				+ "join funcionario f on cl.idFuncionario = f.idFuncionario "

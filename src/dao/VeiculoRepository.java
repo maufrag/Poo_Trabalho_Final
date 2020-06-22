@@ -96,7 +96,7 @@ public class VeiculoRepository {
 			con.close();
 			JOptionPane.showMessageDialog(null, "Dados removidos com sucesso");
 		} catch (Exception e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Não é possível remover um veiculo que esteja relacionado a um contrato");
 		}
 	}
 

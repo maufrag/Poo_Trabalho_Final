@@ -31,7 +31,6 @@ public class Relatorios {
 				w.write("\"" + model.getSubTotal() + "\"; ");
 				w.write("\n");
 			}
-
 			w.close();
 		} catch (IOException e) {
 			e.printStackTrace();
