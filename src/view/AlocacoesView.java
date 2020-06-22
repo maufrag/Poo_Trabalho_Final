@@ -440,9 +440,9 @@ public class AlocacoesView extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				ClienteModel model = cadastrarEObterCliente();
 				if (model != null && model.getIdCliente() != 0) {
-					clientesComboBox.addItem(ClienteController.preencherComboBoxComClienteCadastrado(model));
 					alocarLayeredPane.removeAll();
 					alocarLayeredPane.add(cadastrarAluguelPanel);
+					clientesComboBox.addItem(ClienteController.preencherComboBoxComClienteCadastrado(model));
 					alocarLayeredPane.repaint();
 					alocarLayeredPane.revalidate();
 				}
