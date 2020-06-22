@@ -3,7 +3,7 @@ package controller;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import Repository.ContratoLocacaoRepository;
+import dao.ContratoLocacaoRepository;
 import model.ContratoLocacaoModel;
 import model.FiltroModel;
 

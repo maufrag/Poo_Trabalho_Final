@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import Repository.ClienteRepository;
+import dao.ClienteRepository;
 import metodosGerais.MetodosGerais;
 import model.ClienteModel;
 

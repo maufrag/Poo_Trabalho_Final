@@ -5,8 +5,8 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-import Repository.CargoRepository;
-import Repository.FuncionarioRepository;
+import dao.CargoRepository;
+import dao.FuncionarioRepository;
 import metodosGerais.MetodosGerais;
 import model.CargoModel;
 import model.ContaModel;

@@ -2,7 +2,7 @@ package controller;
 
 import javax.swing.JOptionPane;
 
-import Repository.FuncionarioRepository;
+import dao.FuncionarioRepository;
 import model.ContaModel;
 
 public class LoginController {

@@ -1,4 +1,4 @@
-package Repository;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,9 +57,9 @@ public class FuncionarioRepository {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 			mensagemFinal = "Houve um erro ao cadastrar o funcionario e sua conta.";
 
 			if (e instanceof SQLIntegrityConstraintViolationException) {

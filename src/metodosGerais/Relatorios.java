@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.List;
 
-import Repository.ContratoLocacaoRepository;
+import dao.ContratoLocacaoRepository;
 import model.RelatorioContratosModel;
 
 public class Relatorios {

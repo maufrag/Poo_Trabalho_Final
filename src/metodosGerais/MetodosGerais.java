@@ -181,11 +181,11 @@ public class MetodosGerais {
 					return true;
 				return false;
 			case 2:
-				if (ehAnoBisexto)
+				if (ehAnoBisexto) {
 					if (dia <= 29)
 						return true;
-					else if (dia <= 28)
-						return true;
+				} else if (dia <= 28)
+					return true;
 				return false;
 			case 3:
 				if (dia <= 31)

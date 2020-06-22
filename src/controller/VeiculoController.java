@@ -2,7 +2,8 @@ package controller;
 
 import java.util.List;
 import javax.swing.JTable;
-import Repository.VeiculoRepository;
+
+import dao.VeiculoRepository;
 import model.VeiculoModel;
 
 public class VeiculoController {

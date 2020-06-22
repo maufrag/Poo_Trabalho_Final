@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import Repository.FuncionarioRepository;
+import dao.FuncionarioRepository;
 import metodosGerais.MetodosGerais;
 import model.CargoModel;
 import model.FuncionarioModel;
