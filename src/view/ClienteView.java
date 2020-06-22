@@ -312,6 +312,7 @@ public class ClienteView extends JPanel {
 			model.setCnh(cnhTextField.getText());
 			model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoTextField.getText()));
 			ClienteController.cadastrarCliente(model);
+			ClienteController.preencherTabela(table);
 		}
 	}
 
@@ -344,7 +345,6 @@ public class ClienteView extends JPanel {
 			model.setCnh(cnhEdicaoTF.getText());
 			model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoEdicaoTF.getText()));
 			ClienteController.editarCliente(model);
-			ClienteController.preencherTabela(table);
 			limparSelecao();
 			ClienteController.preencherTabela(table);
 		}
