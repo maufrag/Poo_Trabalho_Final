@@ -192,6 +192,12 @@ public class MenuTelaInicial extends JPanel {
 				}
 			}
 		});
+		
+		sairBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sair();
+			}
+		});
 	}
 
 	protected void logout() {
@@ -210,5 +216,9 @@ public class MenuTelaInicial extends JPanel {
 				layeredPane.revalidate();
 			}
 		});
+	}
+	
+	public void sair() {
+		System.exit(0);
 	}
 }
