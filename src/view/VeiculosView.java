@@ -70,6 +70,7 @@ public class VeiculosView extends JPanel {
 		JPanel cadastrarVeiculoPanel = new JPanel();
 		JPanel consultarVeiculoPanel = new JPanel();
 		JPanel editarVeiculoPanel = new JPanel();
+		editarVeiculoPanel.setBackground(Color.WHITE);
 		veiculosTabbedPane.addTab("Cadastrar", cadastrarVeiculoPanel);
 		cadastrarVeiculoPanel.setLayout(new BorderLayout(0, 0));
 
@@ -91,7 +92,7 @@ public class VeiculosView extends JPanel {
 		obterDadosPanel.add(rigidArea_11, BorderLayout.SOUTH);
 
 		JPanel obterDadosVeiculosForm = new JPanel();
-		obterDadosVeiculosForm.setBorder(UIManager.getBorder("Table.focusCellHighlightBorder"));
+		obterDadosVeiculosForm.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		obterDadosPanel.add(obterDadosVeiculosForm, BorderLayout.CENTER);
 		GridBagLayout gbl_obterDadosVeiculosForm = new GridBagLayout();
 		gbl_obterDadosVeiculosForm.columnWidths = new int[] { 0, 0, 84, 134, 0, 0, 0 };
@@ -292,12 +293,14 @@ public class VeiculosView extends JPanel {
 		editarVeiculoPanel.add(rigidArea_19, BorderLayout.EAST);
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
 		editarVeiculoPanel.add(panel_2, BorderLayout.CENTER);
 
 		JPanel panelEdicaoTabela = new JPanel();
-		panelEdicaoTabela.setBackground(SystemColor.menu);
+		panelEdicaoTabela.setBackground(Color.WHITE);
 
 		JPanel panelTabelaParaEdicao = new JPanel();
+		panelTabelaParaEdicao.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		panelTabelaParaEdicao.setBackground(SystemColor.menu);
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -324,6 +327,7 @@ public class VeiculosView extends JPanel {
 		panelEdicaoTabela.add(rigidArea_21, BorderLayout.WEST);
 
 		JPanel edicaoPanel = new JPanel();
+		edicaoPanel.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		panelEdicaoTabela.add(edicaoPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_edicaoPanel = new GridBagLayout();
 		gbl_edicaoPanel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
