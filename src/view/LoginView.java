@@ -23,7 +23,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
 
 import controller.CadastroController;
 import controller.LoginController;

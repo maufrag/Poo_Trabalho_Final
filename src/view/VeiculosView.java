@@ -32,7 +32,6 @@ import metodosGerais.AnoTextField;
 import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
 import model.VeiculoModel;
-import java.awt.FlowLayout;
 
 public class VeiculosView extends JPanel {
 	/**

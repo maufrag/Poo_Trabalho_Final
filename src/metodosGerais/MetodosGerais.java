@@ -80,6 +80,21 @@ public class MetodosGerais {
 		return true;
 	}
 
+	public static String converterParaddMMyyyy(String data) {
+		try {
+
+			String[] dataArray = data.split("-");
+			String ano = dataArray[0];
+			String mes = dataArray[1];
+			String dia = dataArray[2];
+			return String.format("%s/%s/%s", dia, mes, ano);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+
 	public static boolean valueIsInteger(String strNum) {
 		if (strNum == null) {
 			return false;

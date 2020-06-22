@@ -22,9 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
-
 import controller.ClienteController;
-import controller.VeiculoController;
 import metodosGerais.CnhTextField;
 import metodosGerais.CpfTextField;
 import metodosGerais.DataTextField;
@@ -32,12 +30,12 @@ import metodosGerais.LimiteTextField;
 import metodosGerais.MetodosGerais;
 import metodosGerais.TelefoneTextField;
 import model.ClienteModel;
-import model.VeiculoModel;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.UIManager;
 
 public class ClienteView extends JPanel {
 
+	private static final long serialVersionUID = 4838218364221746704L;
 	private JTextField nomeCompletoTextField;
 	private JTextField cpfTextField;
 	private JTextField telefoneTextField;
@@ -50,9 +48,6 @@ public class ClienteView extends JPanel {
 	private JTextField cnhEdicaoTF;
 	private JTextField dataNascimentoEdicaoTF;
 
-	/**
-	 * Create the panel.
-	 */
 	public ClienteView() {
 		setBounds(150, 150, 675, 470);
 		setLayout(new GridLayout(0, 1, 0, 0));
@@ -85,9 +80,9 @@ public class ClienteView extends JPanel {
 		panel.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		cadastrarClientePanel.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new MigLayout("", "[][grow]", "[][][][][][][][]"));
-		
-				Component rigidArea_14 = Box.createRigidArea(new Dimension(20, 20));
-				panel.add(rigidArea_14, "cell 1 0");
+
+		Component rigidArea_14 = Box.createRigidArea(new Dimension(20, 20));
+		panel.add(rigidArea_14, "cell 1 0");
 
 		JLabel lblNewLabel = new JLabel("Nome Cliente:");
 		panel.add(lblNewLabel, "cell 0 1,alignx trailing");
@@ -127,28 +122,28 @@ public class ClienteView extends JPanel {
 
 		Component rigidArea_15 = Box.createRigidArea(new Dimension(20, 20));
 		panel.add(rigidArea_15, "cell 0 6");
-				
-						JButton cadastrarClienteBtn = new JButton("Cadastrar");
-						cadastrarClienteBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
-						panel.add(cadastrarClienteBtn, "cell 0 7");
-						
-								cadastrarClienteBtn.addActionListener(new ActionListener() {
-									public void actionPerformed(ActionEvent e) {
-										cadastrarCliente();
-										ClienteController.preencherTabela(table);
-										limpar();
-									}
-								});
-				
-						JButton btnLimpar = new JButton("Limpar");
-						btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 10));
-						panel.add(btnLimpar, "cell 1 7,alignx right");
-				
-						btnLimpar.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								limpar();
-							}
-						});
+
+		JButton cadastrarClienteBtn = new JButton("Cadastrar");
+		cadastrarClienteBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		panel.add(cadastrarClienteBtn, "cell 0 7");
+
+		cadastrarClienteBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cadastrarCliente();
+				ClienteController.preencherTabela(table);
+				limpar();
+			}
+		});
+
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		panel.add(btnLimpar, "cell 1 7,alignx right");
+
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpar();
+			}
+		});
 		clienteTabbedPane.addTab("Vizualizar e Editar", vizualizarEEditarClientesPanel);
 		vizualizarEEditarClientesPanel.setLayout(new BorderLayout(0, 0));
 

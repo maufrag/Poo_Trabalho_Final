@@ -14,6 +14,8 @@ import javax.swing.JTable;
 
 import ConexaoDB.ConnectionFactory;
 import metodosGerais.MetodosGerais;
+import model.CargoModel;
+import model.ClienteModel;
 import model.ContaModel;
 import model.FuncionarioModel;
 
@@ -138,6 +140,31 @@ public class FuncionarioRepository {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	public static List<CargoModel> obterCargos() {
+		Connection con = ConnectionFactory.getConnection();
+
+		try {
+			String query = "select * from cargo";
+			
+			List<CargoModel> modelList = new ArrayList<CargoModel>();
+			
+			PreparedStatement statement = con.prepareStatement(query);
+			ResultSet rs = statement.executeQuery();
+			
+			while(rs.next()) {
+				CargoModel model = new CargoModel(rs.getInt("idCargo"), rs.getString("nomeCargo"));
+				modelList.add(model);
+			}
+			
+			con.close();
+			return modelList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 
 	}

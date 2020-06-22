@@ -16,46 +16,12 @@ import javax.swing.JLayeredPane;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
-import javax.swing.JTabbedPane;
-
-import java.awt.BorderLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-
-import controller.FuncionarioController;
-import metodosGerais.CpfTextField;
-import metodosGerais.DataTextField;
-import metodosGerais.TelefoneTextField;
-import model.CargoModel;
-
-import javax.swing.JLabel;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JTextField;
-import java.awt.Font;
-import javax.swing.JComboBox;
-import javax.swing.JCheckBox;
 
 public class MenuTelaInicial extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6331793467680155838L;
 	private JButton sairBtn;
-	private JTable table;
-	private JTextField nomeTF;
-	private JTextField cpfTF;
-	private JTextField telefoneTF;
-	private JTextField dataNascimentoTF;
-	private JComboBox<CargoModel> cargoCB;
 
-	/**
-	 * Create the panel.
-	 */
 	public MenuTelaInicial() {
 		setLayout(new GridLayout(1, 0, 0, 0));
 		setBounds(150, 150, 675, 470);
