@@ -112,15 +112,15 @@ public class ClienteRepository {
 		Connection con = ConnectionFactory.getConnection();
 
 		try {
-			String query = "update cliente set nomeCompleto = ?, cpf = ?, telefone = ?, cnh = ? where idCliente = ?";
+			String query = "update cliente set nomeCompleto = ?, cpf = ?, telefone = ?, cnh = ?, dataNascimento = ? where idCliente = ?";
 
 			PreparedStatement statement = con.prepareStatement(query);
 			statement.setString(1, model.getNomeCompleto());
 			statement.setString(2, model.getCpf());
 			statement.setString(3, model.getTelefone());
 			statement.setString(4, model.getCnh());
-			// statement.setDate(5, model.getDataNascimento());
-			statement.setInt(5, model.getIdCliente());
+			statement.setDate(5, model.getDataNascimento());
+			statement.setInt(6, model.getIdCliente());
 
 			statement.executeUpdate();
 

@@ -102,7 +102,7 @@ public class ClienteView extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("Telefone:");
 		panel.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 
-		telefoneTextField = new JTextField();
+		telefoneTextField = new TelefoneTextField();
 		panel.add(telefoneTextField, "cell 1 3,growx");
 		telefoneTextField.setColumns(10);
 
@@ -343,7 +343,6 @@ public class ClienteView extends JPanel {
 			model.setTelefone(telefoneEdicaoTF.getText());
 			model.setCnh(cnhEdicaoTF.getText());
 			model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoEdicaoTF.getText()));
-			// //converter data para antigo formato e fazer validação
 			ClienteController.editarCliente(model);
 			ClienteController.preencherTabela(table);
 			limparSelecao();
