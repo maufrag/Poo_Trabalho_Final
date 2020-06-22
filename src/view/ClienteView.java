@@ -346,6 +346,7 @@ public class ClienteView extends JPanel {
 			ClienteController.editarCliente(model);
 			ClienteController.preencherTabela(table);
 			limparSelecao();
+			ClienteController.preencherTabela(table);
 		}
 	}
 
