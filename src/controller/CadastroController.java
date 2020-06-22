@@ -20,9 +20,9 @@ public class CadastroController {
 		java.sql.Date dataMinima = MetodosGerais.obterDataMinimaParaValidacao(-18);
 
 		if (model.getDataNascimento().after(dataMinima)) {
-			JOptionPane.showMessageDialog(new JFrame(), "Funcionario precisa ter mais de 18 anos.");
+			JOptionPane.showMessageDialog(null, "Funcionario precisa ter mais de 18 anos.");
 		} else if (!MetodosGerais.cpfIsValid(cpf)) {
-			JOptionPane.showMessageDialog(new JFrame(), "CPF Inválido.");
+			JOptionPane.showMessageDialog(null, "CPF Inválido.");
 		} else {
 			FuncionarioRepository.insertInto(model);
 		}

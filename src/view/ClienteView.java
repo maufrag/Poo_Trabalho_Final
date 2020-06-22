@@ -225,7 +225,7 @@ public class ClienteView extends JPanel {
 		JLabel lblNewLabel_7 = new JLabel("Telefone:");
 		panel_4.add(lblNewLabel_7, "cell 1 2,alignx trailing");
 
-		telefoneEdicaoTF = new TelefoneTextField();
+		telefoneEdicaoTF = new JTextField();
 		panel_4.add(telefoneEdicaoTF, "cell 2 2,growx");
 		telefoneEdicaoTF.setColumns(10);
 
@@ -326,9 +326,7 @@ public class ClienteView extends JPanel {
 			cpfEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 2).toString());
 			telefoneEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 3).toString());
 			cnhEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 4).toString());
-			dataNascimentoEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 5).toString());
-			System.out.println(telefoneEdicaoTF.getText());
-			System.out.println(dtm.getValueAt(linhaSelecionada, 3).toString());
+			dataNascimentoEdicaoTF.setText(MetodosGerais.converterParaddMMyyyy(dtm.getValueAt(linhaSelecionada, 5).toString()));
 		}
 	}
 
@@ -344,16 +342,12 @@ public class ClienteView extends JPanel {
 			model.setCpf(cpfEdicaoTF.getText());
 			model.setTelefone(telefoneEdicaoTF.getText());
 			model.setCnh(cnhEdicaoTF.getText());
-			// model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoEdicaoTF.getText()));
+			model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoEdicaoTF.getText()));
 			// //converter data para antigo formato e fazer validação
 			ClienteController.editarCliente(model);
 			ClienteController.preencherTabela(table);
 			limparSelecao();
 		}
-	}
-
-	public void remover() {
-
 	}
 
 	public void limparSelecao() {

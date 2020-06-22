@@ -25,7 +25,7 @@ public class ClienteController {
 			ClienteRepository.insertInto(model);
 		}
 	}
-	
+
 	public static void preencherTabela(JTable table) {
 		ClienteRepository.preencherTableComClientes(table);
 	}
@@ -39,6 +39,16 @@ public class ClienteController {
 	}
 
 	public static void editarCliente(ClienteModel model) {
-		ClienteRepository.editarCliente(model);
+		String cpf = model.getCpf();
+
+		java.sql.Date dataMinima = MetodosGerais.obterDataMinimaParaValidacao(-18);
+		
+		if (model.getDataNascimento().after(dataMinima)) {
+			JOptionPane.showMessageDialog(new JFrame(), "Cliente precisa ter mais de 18 anos.");
+		} else if (!MetodosGerais.cpfIsValid(cpf)) {
+			JOptionPane.showMessageDialog(new JFrame(), "CPF Inválido.");
+		} else {
+			ClienteRepository.editarCliente(model);
+		}
 	}
 }
