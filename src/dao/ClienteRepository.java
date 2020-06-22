@@ -38,9 +38,7 @@ public class ClienteRepository {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				//e1.printStackTrace();
 			}
-			//e.printStackTrace();
 			mensagemFinal = "Houve um erro ao cadastrar o funcionario e sua conta.";
 
 			if (e instanceof SQLIntegrityConstraintViolationException) {
@@ -116,6 +114,7 @@ public class ClienteRepository {
 			MetodosGerais.alterarNomeColuna(table, nomesColunas.length, nomesColunas);
 
 			con.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -138,9 +137,11 @@ public class ClienteRepository {
 			statement.executeUpdate();
 
 			con.close();
-
+			JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Houve um erro ao tentar atualizar o cliente");
+
 		}
 	}
 }

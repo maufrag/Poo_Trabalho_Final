@@ -313,6 +313,7 @@ public class AdministracaoView extends JPanel {
 			model.setIdCargo(cargo.getIdCargo());
 			FuncionarioController.atualizarFuncionario(model);
 			FuncionarioController.preencherTabela(table);
+			limpar();
 		}
 	}
 

@@ -556,6 +556,7 @@ public class AlocacoesView extends JPanel {
 			model.setDataDeDevolucao(MetodosGerais.transformarEmDate(dataDevolucaoTF.getText()));
 			ContratoLocacaoController.cadastrarContrato(model);
 			limparContrato();
+			
 		}
 	}
 

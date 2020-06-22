@@ -118,7 +118,7 @@ public class VeiculoRepository {
 			JOptionPane.showMessageDialog(null, "Veiculo atualizado com sucesso.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Deu Merda.");
+			JOptionPane.showMessageDialog(null, "Houve um erro ao atualizar o veículo.");
 		}
 	}
 }

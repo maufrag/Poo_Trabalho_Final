@@ -130,8 +130,6 @@ public class ContratoLocacaoRepository {
 				model.setSubTotal(rs.getString(5));
 				modelList.add(model);
 			}
-			
-
 			con.close();
 			return modelList;
 		} catch (Exception e) {
