@@ -336,6 +336,8 @@ public class ClienteView extends JPanel {
 			telefoneEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 3).toString());
 			cnhEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 4).toString());
 			dataNascimentoEdicaoTF.setText(dtm.getValueAt(linhaSelecionada, 5).toString());
+			System.out.println(telefoneEdicaoTF.getText());
+			System.out.println(dtm.getValueAt(linhaSelecionada, 3).toString());
 		}
 	}
 

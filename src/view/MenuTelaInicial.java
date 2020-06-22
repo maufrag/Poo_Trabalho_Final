@@ -19,6 +19,25 @@ import java.awt.Dimension;
 import javax.swing.JTabbedPane;
 
 import java.awt.BorderLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.UIManager;
+
+import controller.FuncionarioController;
+import metodosGerais.CpfTextField;
+import metodosGerais.DataTextField;
+import metodosGerais.TelefoneTextField;
+import model.CargoModel;
+
+import javax.swing.JLabel;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.JComboBox;
+import javax.swing.JCheckBox;
 
 public class MenuTelaInicial extends JPanel {
 
@@ -27,6 +46,12 @@ public class MenuTelaInicial extends JPanel {
 	 */
 	private static final long serialVersionUID = -6331793467680155838L;
 	private JButton sairBtn;
+	private JTable table;
+	private JTextField nomeTF;
+	private JTextField cpfTF;
+	private JTextField telefoneTF;
+	private JTextField dataNascimentoTF;
+	private JComboBox<CargoModel> cargoCB;
 
 	/**
 	 * Create the panel.
@@ -167,7 +192,7 @@ public class MenuTelaInicial extends JPanel {
 		layeredPane.add(alocacoesPanel, "name_132767050113700");
 		alocacoesPanel.setLayout(new GridLayout(1, 0, 0, 0));
 
-		JPanel administracaoPanel = new JPanel();
+		JPanel administracaoPanel = new AdministracaoView();
 		layeredPane.add(administracaoPanel, "name_31180988744600");
 
 		JPanel clientesPanel = new ClienteView();
@@ -176,29 +201,8 @@ public class MenuTelaInicial extends JPanel {
 		alternarTela(botaoVeiculos, layeredPane, veiculosPanel);
 		alternarTela(botaoAlocacoes, layeredPane, alocacoesPanel);
 		alternarTela(botaoAdministrativo, layeredPane, administracaoPanel);
-		administracaoPanel.setLayout(new GridLayout(1, 0, 0, 0));
-
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		administracaoPanel.add(tabbedPane);
 		alternarTela(botaoClientes, layeredPane, clientesPanel);
-
-		// adm panel
-		JPanel relatoriosPanel = new JPanel();
-		JPanel funcionariosPanel = new JPanel();
-		JPanel exportacaoPanel = new JPanel();
-		tabbedPane.addTab("Relatórios", relatoriosPanel);
-		relatoriosPanel.setLayout(new BorderLayout(0, 0));
-		tabbedPane.addTab("Quadro Geral", funcionariosPanel);
-		funcionariosPanel.setLayout(new BorderLayout(0, 0));
-		tabbedPane.addTab("Exportações", exportacaoPanel);
-		exportacaoPanel.setLayout(new BorderLayout(0, 0));
-
-		logoutBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				remove(layeredPane);
-				add(new MainView());
-			}
-		});
+		administracaoPanel.setLayout(new GridLayout(1, 0, 0, 0));
 	}
 
 	public void alternarTela(JButton button, JLayeredPane layeredPane, JPanel panel) {
@@ -210,9 +214,5 @@ public class MenuTelaInicial extends JPanel {
 				layeredPane.revalidate();
 			}
 		});
-	}
-
-	public void logout() {
-		System.exit(0);
 	}
 }

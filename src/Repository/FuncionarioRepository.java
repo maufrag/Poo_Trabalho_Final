@@ -10,8 +10,10 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import ConexaoDB.ConnectionFactory;
+import metodosGerais.MetodosGerais;
 import model.ContaModel;
 import model.FuncionarioModel;
 
@@ -116,5 +118,27 @@ public class FuncionarioRepository {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public static void obterFuncionarioLista(JTable table) {
+		Connection con = ConnectionFactory.getConnection();
+
+		try {
+			String query = "select " + "idFuncionario as 'Código', " + "nomeCompleto as 'Nome Completo', "
+					+ "cpf as 'CPF', " + "telefoneContato as 'Telefone', " + "ativo as 'Ativo', "
+					+ "dataNascimento as 'Data Nascimento', " + "c.nomeCargo as 'Função' " + "from funcionario f "
+					+ "join cargo c on f.idCargo = c.idCargo";
+
+			PreparedStatement statement = con.prepareStatement(query);
+			ResultSet rs = statement.executeQuery();
+
+			table.setModel(MetodosGerais.resultSetToTableModel(rs));
+
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 }

@@ -54,7 +54,6 @@ public class LoginView extends JPanel {
 	 */
 	public LoginView() {
 		setBounds(150, 150, 675, 470);
-		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(new BorderLayout(0, 0));
 
 		JLayeredPane layeredPane = new JLayeredPane();

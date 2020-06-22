@@ -89,7 +89,7 @@ public class ClienteRepository {
 	}
 
 	public static void preencherTableComClientes(JTable table) {
-		
+
 		Connection con = ConnectionFactory.getConnection();
 
 		try {
@@ -98,7 +98,10 @@ public class ClienteRepository {
 			PreparedStatement statement = con.prepareStatement(query);
 			ResultSet rs = statement.executeQuery();
 			table.setModel(MetodosGerais.resultSetToTableModel(rs));
-			
+
+			String[] nomesColunas = { "Código", "Nome Completo", "CPF", "Telefone", "CNH", "Data Nascimento" };
+			MetodosGerais.alterarNomeColuna(table, nomesColunas.length, nomesColunas);
+
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -107,23 +110,23 @@ public class ClienteRepository {
 
 	public static void editarCliente(ClienteModel model) {
 		Connection con = ConnectionFactory.getConnection();
-		
+
 		try {
 			String query = "update cliente set nomeCompleto = ?, cpf = ?, telefone = ?, cnh = ? where idCliente = ?";
-			
+
 			PreparedStatement statement = con.prepareStatement(query);
 			statement.setString(1, model.getNomeCompleto());
 			statement.setString(2, model.getCpf());
 			statement.setString(3, model.getTelefone());
 			statement.setString(4, model.getCnh());
-			//statement.setDate(5, model.getDataNascimento());
+			// statement.setDate(5, model.getDataNascimento());
 			statement.setInt(5, model.getIdCliente());
-			
+
 			statement.executeUpdate();
-			
+
 			con.close();
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
