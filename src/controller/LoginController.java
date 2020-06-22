@@ -6,11 +6,11 @@ import Repository.FuncionarioRepository;
 import model.ContaModel;
 
 public class LoginController {
-	public static Boolean logar(ContaModel model) {
-		Boolean existeConta = FuncionarioRepository.obterConta(model);
-		if (!existeConta) {
+	public static ContaModel logar(ContaModel model) {
+		ContaModel conta = FuncionarioRepository.obterConta(model);
+		if (conta == null) {
 			JOptionPane.showMessageDialog(null, "Usuario ou senha incorreto.");
 		}
-		return existeConta;
+		return conta;
 	}
 }

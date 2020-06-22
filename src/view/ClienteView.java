@@ -102,7 +102,7 @@ public class ClienteView extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("Telefone:");
 		panel.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 
-		telefoneTextField = new TelefoneTextField();
+		telefoneTextField = new JTextField();
 		panel.add(telefoneTextField, "cell 1 3,growx");
 		telefoneTextField.setColumns(10);
 

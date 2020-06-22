@@ -6,6 +6,9 @@ import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JSplitPane;
+
+import model.ContaModel;
+
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +16,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
@@ -22,7 +27,7 @@ public class MenuTelaInicial extends JPanel {
 	private static final long serialVersionUID = -6331793467680155838L;
 	private JButton sairBtn;
 
-	public MenuTelaInicial() {
+	public MenuTelaInicial(ContaModel conta) {
 		setLayout(new GridLayout(1, 0, 0, 0));
 		setBounds(150, 150, 675, 470);
 
@@ -166,9 +171,34 @@ public class MenuTelaInicial extends JPanel {
 
 		alternarTela(botaoVeiculos, layeredPane, veiculosPanel);
 		alternarTela(botaoAlocacoes, layeredPane, alocacoesPanel);
-		alternarTela(botaoAdministrativo, layeredPane, administracaoPanel);
 		alternarTela(botaoClientes, layeredPane, clientesPanel);
 		administracaoPanel.setLayout(new GridLayout(1, 0, 0, 0));
+
+		logoutBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				logout();
+			}
+		});
+
+		botaoAdministrativo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (conta.getIdCargo() == 2) {
+					layeredPane.removeAll();
+					layeredPane.add(administracaoPanel);
+					layeredPane.repaint();
+					layeredPane.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Esta area está disponível apenas para Gerentes");
+				}
+			}
+		});
+	}
+
+	protected void logout() {
+		removeAll();
+		add(new LoginView());
+		repaint();
+		revalidate();
 	}
 
 	public void alternarTela(JButton button, JLayeredPane layeredPane, JPanel panel) {

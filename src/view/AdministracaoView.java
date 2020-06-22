@@ -32,7 +32,6 @@ import metodosGerais.CpfTextField;
 import metodosGerais.DataTextField;
 import metodosGerais.MetodosGerais;
 import metodosGerais.Relatorios;
-import metodosGerais.TelefoneTextField;
 import model.CargoModel;
 import model.FuncionarioModel;
 import net.miginfocom.swing.MigLayout;
@@ -164,7 +163,7 @@ public class AdministracaoView extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("Telefone:");
 		panel_2.add(lblNewLabel_2, "cell 0 2,alignx trailing");
 
-		telefoneTF = new TelefoneTextField();
+		telefoneTF = new JTextField();
 		panel_2.add(telefoneTF, "cell 1 2,growx");
 		telefoneTF.setColumns(10);
 
@@ -215,7 +214,6 @@ public class AdministracaoView extends JPanel {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		panel.setLayout(gl_panel);
-		FuncionarioController.preencherTabela(table);
 
 		gerarRelatorio1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -234,6 +232,13 @@ public class AdministracaoView extends JPanel {
 				selecionar();
 			}
 		});
+		atualizarBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				atualizar();
+			}
+		});
+
+		FuncionarioController.preencherTabela(table);
 
 		preencherComboBox();
 	}
@@ -248,14 +253,22 @@ public class AdministracaoView extends JPanel {
 	}
 
 	public void selecionar() {
-		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-		int linhaSelecionada = table.getSelectedRow();
-		nomeTF.setText(dtm.getValueAt(linhaSelecionada, 1).toString());
-		cpfTF.setText(dtm.getValueAt(linhaSelecionada, 2).toString());
-		telefoneTF.setText(dtm.getValueAt(linhaSelecionada, 3).toString());
-		ativoCB.setSelected(dtm.getValueAt(linhaSelecionada, 4).toString().equals("true"));
-		dataNascimentoTF.setText(MetodosGerais.converterParaddMMyyyy(dtm.getValueAt(linhaSelecionada, 5).toString()));
-		// cargoCB.setSelectedIndex();
+		if (table.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(null, "Por favor selecione uma linha.");
+		} else {
+			DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+			int linhaSelecionada = table.getSelectedRow();
+			nomeTF.setText(dtm.getValueAt(linhaSelecionada, 1).toString());
+			cpfTF.setText(dtm.getValueAt(linhaSelecionada, 2).toString());
+			telefoneTF.setText(dtm.getValueAt(linhaSelecionada, 3).toString());
+			ativoCB.setSelected(dtm.getValueAt(linhaSelecionada, 4).toString().equals("true"));
+			if (dtm.getValueAt(linhaSelecionada, 5) != null) {
+				String data = MetodosGerais.converterParaddMMyyyy(dtm.getValueAt(linhaSelecionada, 5).toString());
+				dataNascimentoTF.setText(data);
+			} else {
+				dataNascimentoTF.setText("");
+			}
+		}
 	}
 
 	public Boolean validarDados() {
@@ -274,7 +287,7 @@ public class AdministracaoView extends JPanel {
 			return false;
 		} else if (cargoCB.getSelectedIndex() == 0) {
 			JOptionPane.showMessageDialog(null, "Selecione um cargo");
-			 return false;
+			return false;
 		}
 		if (!valido) {
 			JOptionPane.showMessageDialog(null, "Não podem haver campos vazios");
@@ -284,18 +297,22 @@ public class AdministracaoView extends JPanel {
 	}
 
 	public void atualizar() {
-		if (!validarDados()) {
-
+		if (table.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(null, "Por favor selecione uma linha.");
+		} else if (validarDados()) {
+			CargoModel cargo = (CargoModel) cargoCB.getSelectedItem();
 			FuncionarioModel model = new FuncionarioModel();
 			DefaultTableModel dtm = (DefaultTableModel) table.getModel();
 			int linhaSelecinhada = table.getSelectedRow();
-			model.setIdCargo(Integer.parseInt(dtm.getValueAt(linhaSelecinhada, 0).toString()));
+			model.setIdFuncionario(Integer.parseInt(dtm.getValueAt(linhaSelecinhada, 0).toString()));
 			model.setNomeCompleto(nomeTF.getText());
 			model.setCpf(cpfTF.getText());
 			model.setTelefoneContato(telefoneTF.getText());
 			model.setDataNascimento(MetodosGerais.transformarEmDate(dataNascimentoTF.getText()));
 			model.setAtivo(ativoCB.isSelected());
-			/// model.setC
+			model.setIdCargo(cargo.getIdCargo());
+			FuncionarioController.atualizarFuncionario(model);
+			FuncionarioController.preencherTabela(table);
 		}
 	}
 

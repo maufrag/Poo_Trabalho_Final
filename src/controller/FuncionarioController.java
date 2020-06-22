@@ -21,4 +21,8 @@ public class FuncionarioController {
 	public static List<CargoModel> obterCargos() {
 		return FuncionarioRepository.obterCargos();
 	}
+
+	public static void atualizarFuncionario(FuncionarioModel model) {
+		FuncionarioRepository.atualizarFuncionario(model);
+	}
 }

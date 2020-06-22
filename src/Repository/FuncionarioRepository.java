@@ -15,7 +15,6 @@ import javax.swing.JTable;
 import ConexaoDB.ConnectionFactory;
 import metodosGerais.MetodosGerais;
 import model.CargoModel;
-import model.ClienteModel;
 import model.ContaModel;
 import model.FuncionarioModel;
 
@@ -70,27 +69,26 @@ public class FuncionarioRepository {
 		JOptionPane.showMessageDialog(new JFrame(), mensagemFinal);
 	}
 
-	public static Boolean obterConta(ContaModel model) {
-		Boolean existe = false;
+	public static ContaModel obterConta(ContaModel model) {
+		Connection con = ConnectionFactory.getConnection();
 		try {
-			Connection con = ConnectionFactory.getConnection();
-			String query = "Select * from conta where login = ? and senha = md5(?)";
+			String query = "Select * from conta c join funcionario f on c.idConta = f.idConta"
+					+ " where login = ? and senha = md5(?)";
 			PreparedStatement statement = con.prepareStatement(query);
 			statement.setString(1, model.getLogin());
 			statement.setString(2, model.getPassword());
 
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
-				// ContaModel retorno = new ContaModel(rs.getString("login"),
-				// rs.getString("senha"));
-				existe = true;
-
+				model.setIdConta(rs.getInt("idConta"));
+				model.setIdCargo(rs.getInt("idCargo"));	
+				return model;
 			}
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return existe;
+		return null;
 	}
 
 	public static List<FuncionarioModel> obterListaFuncionario(Boolean apenasAtivos) {
@@ -149,17 +147,17 @@ public class FuncionarioRepository {
 
 		try {
 			String query = "select * from cargo";
-			
+
 			List<CargoModel> modelList = new ArrayList<CargoModel>();
-			
+
 			PreparedStatement statement = con.prepareStatement(query);
 			ResultSet rs = statement.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				CargoModel model = new CargoModel(rs.getInt("idCargo"), rs.getString("nomeCargo"));
 				modelList.add(model);
 			}
-			
+
 			con.close();
 			return modelList;
 		} catch (Exception e) {
@@ -167,5 +165,29 @@ public class FuncionarioRepository {
 			return null;
 		}
 
+	}
+
+	public static void atualizarFuncionario(FuncionarioModel model) {
+		Connection con = ConnectionFactory.getConnection();
+		try {
+			String query = "update funcionario set nomeCompleto = ?, cpf = ?, telefoneContato = ?, dataNascimento = ?, ativo = ?, idCargo = ? where idFuncionario = ?";
+
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setString(1, model.getNomeCompleto());
+			statement.setString(2, model.getCpf());
+			statement.setString(3, model.getTelefoneContato());
+			statement.setDate(4, model.getDataNascimento());
+			statement.setBoolean(5, model.getAtivo());
+			statement.setInt(6, model.getIdCargo());
+			statement.setInt(7, model.getIdFuncionario());
+
+			statement.execute();
+
+			con.close();
+			JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso");
+		} catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Houve um erro ao atualizar os dados");
+		}
 	}
 }
