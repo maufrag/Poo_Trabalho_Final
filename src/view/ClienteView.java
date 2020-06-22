@@ -240,10 +240,6 @@ public class ClienteView extends JPanel {
 		panel_4.add(cnhEdicaoTF, "cell 2 3,growx");
 		cnhEdicaoTF.setColumns(10);
 
-		JButton removerBtn = new JButton("Remover");
-		removerBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		panel_4.add(removerBtn, "cell 12 3,alignx center");
-
 		JLabel lblNewLabel_9 = new JLabel("Data Nascimento:");
 		panel_4.add(lblNewLabel_9, "cell 1 4,alignx trailing");
 
