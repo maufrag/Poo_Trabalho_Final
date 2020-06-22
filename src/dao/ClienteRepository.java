@@ -3,6 +3,8 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class ClienteRepository {
 
 	public static void insertInto(ClienteModel model) {
 		Connection con = ConnectionFactory.getConnection();
-
+		String mensagemFinal = "";
 		try {
 			String query = "Insert into cliente (nomeCompleto, cpf, telefone, cnh, dataNascimento) VALUES"
 					+ "(?, ?, ?, ?, ?)";
@@ -31,10 +33,21 @@ public class ClienteRepository {
 			statement.execute();
 
 			con.close();
-			JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso");
+			mensagemFinal = "Cliente cadastrado com sucesso";
 		} catch (Exception e) {
-			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				//e1.printStackTrace();
+			}
+			//e.printStackTrace();
+			mensagemFinal = "Houve um erro ao cadastrar o funcionario e sua conta.";
+
+			if (e instanceof SQLIntegrityConstraintViolationException) {
+				mensagemFinal += "\nCpf já cadastrado";
+			}
 		}
+		JOptionPane.showMessageDialog(null, mensagemFinal);
 	}
 
 	public static ClienteModel obterPorCpfParaAlocacao(ClienteModel model) {
