@@ -34,6 +34,7 @@ import metodosGerais.TelefoneTextField;
 import model.ClienteModel;
 import model.VeiculoModel;
 import net.miginfocom.swing.MigLayout;
+import javax.swing.UIManager;
 
 public class ClienteView extends JPanel {
 
@@ -62,6 +63,7 @@ public class ClienteView extends JPanel {
 		JTabbedPane clienteTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		clientesPanel.add(clienteTabbedPane);
 		JPanel vizualizarEEditarClientesPanel = new JPanel();
+		vizualizarEEditarClientesPanel.setBackground(Color.WHITE);
 		JPanel cadastrarClientePanel = new JPanel();
 		cadastrarClientePanel.setBackground(Color.WHITE);
 		clienteTabbedPane.addTab("Cadastrar Cliente", cadastrarClientePanel);
@@ -73,71 +75,80 @@ public class ClienteView extends JPanel {
 		Component rigidArea_9 = Box.createRigidArea(new Dimension(120, 462));
 		cadastrarClientePanel.add(rigidArea_9, BorderLayout.EAST);
 
-		Component rigidArea_10 = Box.createRigidArea(new Dimension(600, 72));
+		Component rigidArea_10 = Box.createRigidArea(new Dimension(670, 101));
 		cadastrarClientePanel.add(rigidArea_10, BorderLayout.NORTH);
 
-		Component rigidArea_11 = Box.createRigidArea(new Dimension(600, 54));
+		Component rigidArea_11 = Box.createRigidArea(new Dimension(670, 110));
 		cadastrarClientePanel.add(rigidArea_11, BorderLayout.SOUTH);
 
 		JPanel panel = new JPanel();
+		panel.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		cadastrarClientePanel.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[][grow]", "[][][][][][][][][][][][]"));
-
-		Component rigidArea_14 = Box.createRigidArea(new Dimension(20, 20));
-		panel.add(rigidArea_14, "cell 1 0");
-
-		Component rigidArea_13 = Box.createRigidArea(new Dimension(20, 20));
-		panel.add(rigidArea_13, "cell 1 1");
+		panel.setLayout(new MigLayout("", "[][grow]", "[][][][][][][][]"));
+		
+				Component rigidArea_14 = Box.createRigidArea(new Dimension(20, 20));
+				panel.add(rigidArea_14, "cell 1 0");
 
 		JLabel lblNewLabel = new JLabel("Nome Cliente:");
-		panel.add(lblNewLabel, "cell 0 3,alignx trailing");
+		panel.add(lblNewLabel, "cell 0 1,alignx trailing");
 
 		nomeCompletoTextField = new JTextField();
-		panel.add(nomeCompletoTextField, "cell 1 3,growx");
+		panel.add(nomeCompletoTextField, "cell 1 1,growx");
 		nomeCompletoTextField.setColumns(10);
 		nomeCompletoTextField.setDocument(new LimiteTextField(50));
 
 		JLabel lblNewLabel_1 = new JLabel("CPF:");
-		panel.add(lblNewLabel_1, "cell 0 4,alignx trailing");
+		panel.add(lblNewLabel_1, "cell 0 2,alignx trailing");
 
 		cpfTextField = new CpfTextField();
-		panel.add(cpfTextField, "cell 1 4,growx");
+		panel.add(cpfTextField, "cell 1 2,growx");
 		cpfTextField.setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("Telefone:");
-		panel.add(lblNewLabel_2, "cell 0 5,alignx trailing");
+		panel.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 
 		telefoneTextField = new TelefoneTextField();
-		panel.add(telefoneTextField, "cell 1 5,growx");
+		panel.add(telefoneTextField, "cell 1 3,growx");
 		telefoneTextField.setColumns(10);
 
 		JLabel lblNewLabel_3 = new JLabel("Cnh:");
-		panel.add(lblNewLabel_3, "cell 0 6,alignx trailing");
+		panel.add(lblNewLabel_3, "cell 0 4,alignx trailing");
 
 		cnhTextField = new CnhTextField();
-		panel.add(cnhTextField, "cell 1 6,growx");
+		panel.add(cnhTextField, "cell 1 4,growx");
 		cnhTextField.setColumns(10);
 
 		JLabel lblNewLabel_4 = new JLabel("Data de Nascimento:");
-		panel.add(lblNewLabel_4, "cell 0 7,alignx trailing");
+		panel.add(lblNewLabel_4, "cell 0 5,alignx trailing");
 
 		dataNascimentoTextField = new DataTextField();
-		panel.add(dataNascimentoTextField, "cell 1 7,growx");
+		panel.add(dataNascimentoTextField, "cell 1 5,growx");
 		dataNascimentoTextField.setColumns(10);
 
 		Component rigidArea_15 = Box.createRigidArea(new Dimension(20, 20));
-		panel.add(rigidArea_15, "cell 0 8");
-
-		Component rigidArea_16 = Box.createRigidArea(new Dimension(20, 20));
-		panel.add(rigidArea_16, "cell 0 9");
-
-		JButton cadastrarClienteBtn = new JButton("Cadastrar");
-		cadastrarClienteBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		panel.add(cadastrarClienteBtn, "cell 0 11");
-
-		JButton btnLimpar = new JButton("Limpar");
-		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		panel.add(btnLimpar, "cell 1 11,alignx right");
+		panel.add(rigidArea_15, "cell 0 6");
+				
+						JButton cadastrarClienteBtn = new JButton("Cadastrar");
+						cadastrarClienteBtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
+						panel.add(cadastrarClienteBtn, "cell 0 7");
+						
+								cadastrarClienteBtn.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent e) {
+										cadastrarCliente();
+										ClienteController.preencherTabela(table);
+										limpar();
+									}
+								});
+				
+						JButton btnLimpar = new JButton("Limpar");
+						btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+						panel.add(btnLimpar, "cell 1 7,alignx right");
+				
+						btnLimpar.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								limpar();
+							}
+						});
 		clienteTabbedPane.addTab("Vizualizar e Editar", vizualizarEEditarClientesPanel);
 		vizualizarEEditarClientesPanel.setLayout(new BorderLayout(0, 0));
 
@@ -154,11 +165,15 @@ public class ClienteView extends JPanel {
 		vizualizarEEditarClientesPanel.add(rigidArea_19, BorderLayout.EAST);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
 		vizualizarEEditarClientesPanel.add(panel_1, BorderLayout.CENTER);
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
@@ -177,6 +192,7 @@ public class ClienteView extends JPanel {
 		panel_3.add(rigidArea_21, BorderLayout.EAST);
 
 		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		panel_3.add(panel_4, BorderLayout.CENTER);
 		panel_4.setLayout(new MigLayout("", "[][][][][][][][][][][][][]", "[][][][][]"));
 
@@ -247,20 +263,6 @@ public class ClienteView extends JPanel {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		panel_1.setLayout(gl_panel_1);
-
-		btnLimpar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limpar();
-			}
-		});
-
-		cadastrarClienteBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cadastrarCliente();
-				ClienteController.preencherTabela(table);
-				limpar();
-			}
-		});
 
 		selecionarBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

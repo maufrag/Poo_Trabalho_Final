@@ -70,8 +70,8 @@ public class AlocacoesView extends JPanel {
 	private JComboBox<ClienteModel> comboBoxClientes;
 	private JComboBox<FuncionarioModel> comboBoxFuncionario;
 	private JComboBox<FuncionarioModel> funcionarioComboBox;
-	private JTable tabelaContratos;
 	private JComboBox<OrdenacaoModel> ordenacaoComboBox;
+	private JTable tabelaContratos;
 
 	/**
 	 * Create the panel.
@@ -248,26 +248,24 @@ public class AlocacoesView extends JPanel {
 		consultarContratosPanel.setBackground(Color.WHITE);
 		consultarAluguelPanel.add(consultarContratosPanel, BorderLayout.CENTER);
 
-		JPanel visualizarContratosPanel = new JPanel();
-		visualizarContratosPanel.setBorder(UIManager.getBorder("DesktopIcon.border"));
-
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(Color.WHITE);
-		GroupLayout gl_consultarContratosPanel = new GroupLayout(consultarContratosPanel);
-		gl_consultarContratosPanel.setHorizontalGroup(gl_consultarContratosPanel.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_5, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
-				.addComponent(visualizarContratosPanel, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE));
-		gl_consultarContratosPanel
-				.setVerticalGroup(gl_consultarContratosPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_consultarContratosPanel.createSequentialGroup()
-								.addComponent(visualizarContratosPanel, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)));
-		visualizarContratosPanel.setLayout(new BoxLayout(visualizarContratosPanel, BoxLayout.X_AXIS));
-
+		
 		JScrollPane scrollPane = new JScrollPane();
-		visualizarContratosPanel.add(scrollPane);
-
+		GroupLayout gl_consultarContratosPanel = new GroupLayout(consultarContratosPanel);
+		gl_consultarContratosPanel.setHorizontalGroup(
+			gl_consultarContratosPanel.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel_5, GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+		);
+		gl_consultarContratosPanel.setVerticalGroup(
+			gl_consultarContratosPanel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_consultarContratosPanel.createSequentialGroup()
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
+		);
+		
 		tabelaContratos = new JTable();
 		scrollPane.setViewportView(tabelaContratos);
 		panel_5.setLayout(new BorderLayout(0, 0));

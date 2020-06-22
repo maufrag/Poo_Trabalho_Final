@@ -48,13 +48,13 @@ public class VeiculosView extends JPanel {
 	private JButton atualizarVeiculoBtn;
 	private JCheckBox disponibilidadeChkBox;
 	private JTable table;
-	private JTable edicaoTable;
 	private JTextField fabricanteEdicaoTF;
 	private JTextField modeloEdicaoTF;
 	private JTextField anoEdicaoTF;
 	private JTextField precoEdicaoTF;
 	private JButton removerVeiculoBtn;
 	private JButton cadastrarVeiculoBtn;
+	private JTable edicaoTable;
 
 	/**
 	 * Create the panel.
@@ -298,24 +298,22 @@ public class VeiculosView extends JPanel {
 
 		JPanel panelEdicaoTabela = new JPanel();
 		panelEdicaoTabela.setBackground(Color.WHITE);
-
-		JPanel panelTabelaParaEdicao = new JPanel();
-		panelTabelaParaEdicao.setBorder(UIManager.getBorder("DesktopIcon.border"));
-		panelTabelaParaEdicao.setBackground(SystemColor.menu);
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addComponent(panelEdicaoTabela, GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
-				.addComponent(panelTabelaParaEdicao, GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE));
-		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-						.addComponent(panelTabelaParaEdicao, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(panelEdicaoTabela, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)));
-		panelTabelaParaEdicao.setLayout(new BorderLayout(0, 0));
-
+		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		panelTabelaParaEdicao.add(scrollPane_1, BorderLayout.CENTER);
-
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addComponent(panelEdicaoTabela, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+				.addComponent(scrollPane_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panelEdicaoTabela, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
+		);
+		
 		edicaoTable = new JTable();
 		scrollPane_1.setViewportView(edicaoTable);
 		panelEdicaoTabela.setLayout(new BorderLayout(0, 0));
@@ -474,10 +472,8 @@ public class VeiculosView extends JPanel {
 				removerVeiculo();
 			}
 		});
-
-		VeiculoController.obterListaVeiculos(edicaoTable);
 		VeiculoController.obterListaVeiculos(table);
-
+		VeiculoController.obterListaVeiculos(edicaoTable);
 	}
 
 	private void limparCadastro() {
